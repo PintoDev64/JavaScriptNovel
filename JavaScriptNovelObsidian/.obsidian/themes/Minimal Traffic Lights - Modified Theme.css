@@ -1,0 +1,519 @@
+/* ---- Minimal Traffic Lights Theme ---- */
+
+/* credit to deathau for the andy matuschak mode which is added to obsidian as part of this style sheet */
+/* full credit goes to elliotboyd who created the original traffic lights theme */
+/* i pulled a bunch of css out of his theme but left many of the style changes he had made behind */
+/* although i think his theme has cool character, i prefer a minimal look closer to the default theme */
+/* i've kept this as close to the stock theme as possible */
+
+/* Graph View */
+
+.theme-dark .graph-view.color-fill-tag {
+  color: var(--text-accent);
+}
+
+.theme-light .graph-view.color-fill-tag {
+  color: var(--text-accent);
+}
+.theme-light .graph-view.color-fill {
+	color: var(--text-faint);
+}
+
+/* Tags */
+
+.tag {
+  background-color: var(--text-accent);
+  border: none;
+  color: white;
+  font-size: 15px;
+  padding: 0px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 3px 0px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.tag:hover {
+color: white;
+background-color: var(--text-accent-hover);
+}
+
+/* Quotation character before blockquote */
+
+blockquote:before {
+  font: 14px/20px italic Times, serif;
+  content: "“";
+  font-size: 3em;
+  line-height: 0.1em;
+  vertical-align: -0.42em;
+}
+blockquote p { display: inline; }
+
+/* General Theme Colors */
+
+.theme-light {
+  --interface-color-background:         #f8f8f8; /* active pane header color */
+  --interface-color-background-alt:     #eaeaeb; /* behind the panes */
+  --interface-color-foreground:         #ffffff; /* rigth behind the text */
+  --interface-color-foreground-alt:     #232323;
+  --interface-color-border:             #f2f2f2; /* inactive pane header color */
+  --interface-color-cross:              #dc514b;
+  --interface-color-three-dots:         #32b143;
+  --interface-color-pencil:             #eaa100;
+  --interface-color-icon-in-three-dots: #000000;
+  --interface-color-action:             var(--interface-color-foreground-alt);
+  --interface-color-pin:                var(--interface-color-foreground-alt);
+  --interfa-color-icon:                 var(--font-color-text-normal);
+}
+
+.theme-light {
+  --background-primary:                 var(--interface-color-foreground);
+  --background-primary-alt:             var(--interface-color-background);
+  --background-secondary:               var(--interface-color-foreground);
+  --background-secondary-alt:           var(--interface-color-background-alt);
+}
+
+.theme-dark {
+  --interface-color-background:         #282828; /* active pane header color */
+  --interface-color-background-alt:     #000000; /* behind the panes, change to #161719 for black mode */
+  --interface-color-foreground:         #161719; /* right behind the text, change to #000000 for black mode */
+  --interface-color-foreground-alt:     #c2c2c2;
+  --interface-color-border:             #1f1f1f; /* inactive pane header color */
+  --interface-color-cross:              #a22b26;
+  --interface-color-three-dots:         #21842e;
+  --interface-color-pencil:             #d08f00;
+  --interface-color-icon-in-three-dots: #ffffff;
+  --interface-color-action:             var(--text-normal);
+  --interface-color-pin:                var(--text-normal);
+  --interface-color-icon:               var(--interface-color-border);
+}
+
+.theme-dark {
+  --background-primary:                 var(--interface-color-foreground);
+  --background-primary-alt:             var(--interface-color-background);
+  --background-secondary:               var(--interface-color-foreground);
+  --background-secondary-alt:           var(--interface-color-background-alt);
+}
+
+/* Position text in the markdown window */
+
+.CodeMirror-scroll {
+  padding-top: 12px;
+}
+
+/* Traffic Light Pane Header Buttons */
+
+.view-actions {
+  padding: 0;
+}
+
+.view-action {
+  color: var(--text-normal) !important;
+  top: 1px;
+  margin: 2px 8px 0px 0px;
+  order: 3;
+}
+
+.view-action[aria-label='Pin'] {
+  padding-top: 3px;
+  order: 2;
+}
+
+.view-action[aria-label='Close'] {
+  order: 4;
+}
+
+.view-action[aria-label='Unlink pane'] {
+  padding-top: 3px;
+  order: 1;
+}
+
+.view-action > svg.cross,
+.view-action > svg.vertical-three-dots,
+.view-action > svg.pencil,
+.view-action > svg.lines-of-text {
+  width: 8px;
+  height: 8px;
+  padding: 5.5px;
+  border-radius: 100px;
+}
+
+.view-action > svg.cross {
+  background-color: var(--interface-color-cross);
+}
+.view-action > svg.vertical-three-dots {
+  background-color: var(--interface-color-three-dots);
+}
+
+.view-action > svg.pencil {
+  background-color: var(--interface-color-pencil);
+}
+
+.view-action > svg.lines-of-text {
+  background-color: var(--interface-color-pencil);
+}
+
+.view-action > svg.filled-pin {
+  padding: 1px;
+  color: var(--interface-color-pin) !important;
+  opacity: 0.8;
+}
+
+.view-action > svg.link {
+  width: 19px;
+  height: 19px;
+  padding: 3px;
+  color: var(--interface-color-pin) !important;
+  opacity: 0.8;
+}
+
+.view-action > svg.broken-link {
+  padding: 0px;
+  color: var(--interface-color-pin) !important;
+  opacity: 0.8;
+}
+.view-action:hover > svg.cross,
+.view-action:hover > svg.vertical-three-dots,
+.view-action:hover > svg.pencil,
+.view-action:hover > svg.lines-of-text {
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  border-radius: 100px;
+  color: var(--interface-color-icon-in-three-dots);
+  transition: width, height 0.2s;
+}
+
+.view-action[aria-label='Pin']:hover > svg.filled-pin {
+  width: 23px;
+  height: 23px;
+  transition: width, height 0.2s;
+}
+
+.view-action[aria-label='Unlink pane']:hover > svg.broken-link {
+  width: 19px;
+  height: 19px;
+  transition: width, height 0.2s;
+}
+
+/* Pane Header */
+
+.view-header {
+  border-color: var(--background-secondary);
+  border-top: 0px solid var(--background-secondary);
+  border-bottom: 0px solid var(--interface-color-border);
+  background-color: var(--interface-color-border);
+}
+
+.workspace-leaf.mod-active .view-header {
+  background-color: var(--background-secondary);
+  border-bottom: 2px solid var(--interactive-accent);
+}
+
+.workspace-leaf.mod-active .view-header-title {
+  color: var(--interface-color-foreground-alt);
+}
+
+.workspace-leaf.mod-active .view-action > svg,
+.workspace-leaf.mod-active .view-header-icon > svg {
+  color: var(--interface-color-foreground-alt);
+}
+
+.workspace-leaf.mod-active .view-header {
+  background-color: var(--interface-color-background);
+  border-bottom: 0px;
+}
+
+.workspace-leaf.mod-active > .workspace-leaf-content {
+  border-color: var(--interface-color-background);
+}
+
+.workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type .view-header {
+  border-bottom: 2px var(--interface-color-border);
+  background-color: var(--interface-color-border);
+}
+
+.workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type .workspace-leaf-content {
+  border-color: var(--interface-color-border);
+}
+
+/* Pane Header Scaling */
+
+.view-header,
+.view-header-title-container {
+  height: 28px;
+}
+
+.view-header-title {
+  font-size: var(--font-size-header-titles);
+  line-height: 28px;
+}
+
+.view-action > svg,
+.view-header-icon > svg {
+  width: 13px;
+  height: 17px;
+}
+
+.view-header-icon {
+  padding: 4.4px 2px 5px 8px;
+}
+
+.view-action,
+.view-header-icon {
+  top: 0px;
+}
+
+.view-actions {
+  background-color: transparent;
+}
+
+.view-action,
+.view-header-icon {
+  top: 0px;
+}
+
+.view-actions {
+  background-color: transparent;
+}
+
+.workspace-leaf.mod-active .view-header-title-container:after {
+  background: none;
+}
+
+.view-header-title-container:after {
+  background: none;
+}
+
+.workspace-split.mod-root > .workspace-leaf:first-of-type:last-of-type.mod-active .view-header-title-container:after {
+  background: none;
+}
+
+/* General Workspace */
+
+.workspace {
+  background-color: var(--background-secondary-alt);
+}
+
+.workspace .mod-left *,
+.workspace .mod-right * {
+}
+
+.workspace-leaf-content {
+  border: 0px solid var(--interface-color-border);
+  border-radius: 4px;
+  background-color: var(--background-primary);
+}
+
+.workspace-split.mod-vertical > .workspace-leaf {
+  pading-right: 0px;
+  padding-top: 10px;
+}
+
+.workspace-split.mod-horizontal > .workspace-leaf {
+  padding-top: 10px;
+}
+
+.workspace-split.mod-right-split .workspace-tabs {
+  padding-left: 10px;
+}
+
+.workspace-split.mod-left-split {
+  padding-right: 10px;
+}
+
+.workspace-ribbon.side-dock-ribbon.mod-left.is-collapsed ~ .workspace-split.mod-left-split {
+  padding-right: 0px;
+}
+
+.workspace-split.mod-root .workspace-split.mod-vertical .workspace-leaf-content {
+  padding-right: 0px;
+}
+
+.workspace-tabs .workspace-leaf {
+  background-color: inherit;
+}
+
+.workspace-ribbon.is-collapsed {
+  background-color: var(--background-secondary-alt);
+}
+
+.workspace-leaf-resize-handle {
+  background-color: var(--background-secondary);
+  opacity: 0;
+}
+
+.side-dock-collapsible-section-header-indicator,
+.nav-folder-collapse-indicator {
+  color: var(--font-color-text-normal);
+}
+
+.setting-add-hotkey-button, .setting-restore-hotkey-button {
+  color: var(--font-color-text-normal);
+}
+
+.mod-root .view-content {
+  height: calc(100% - 28px);
+}
+
+/* Tabs */
+
+.workspace-tabs {
+  padding: 0px 0px 0px 0px;
+}
+
+.workspace-split.mod-right-split .workspace-leaf-content {
+   padding: 0px 0px 0px 0px;
+}
+
+.workspace-tab-header.is-active {
+  background-color: var(--interface-color-foreground);
+  color: var(--interface-color-foreground-alt);
+}
+
+.workspace-tab-header-container {
+  padding-top: 10px;
+}
+
+.workspace-tab-header-inner {
+  padding: 1px 12px 3px 12px;
+}
+
+.workspace-tab-header-inner-icon > svg {
+  width: 13px;
+  height: 17px;
+}
+
+.workspace-tab-container-before.is-before-active,
+.workspace-tab-container-after.is-after-active,
+.workspace-tab-header.is-before-active,
+.workspace-tab-header.is-after-active {
+  background-color: var(--interface-color-border);
+  color: #9f9f9f;
+}
+
+.workspace-tab-container-before.is-before-active:hover,
+.workspace-tab-container-after.is-after-active:hover,
+.workspace-tab-header.is-before-active:hover,
+.workspace-tab-header.is-after-active:hover {
+  color: var(--text-normal);
+}
+.workspace-tab-container-after.is-after-active .workspace-tab-header-inner,
+.workspace-tab-header.is-after-active .workspace-tab-header-inner {
+    border-bottom-left-radius: 0px;
+}
+
+.workspace-tab-container-before.is-before-active .workspace-tab-header-inner,
+.workspace-tab-header.is-before-active .workspace-tab-header-inner {
+    border-bottom-right-radius: 0px;
+}
+
+.workspace-tab-header,
+.workspace-tab-header-inner,
+.workspace-tab-container-before,
+.workspace-tab-container-after {
+    transition: none;
+}
+
+/* Status Bar */
+
+.status-bar {
+  background-color: var(--background-secondary-alt);
+  border-color: var(--background-secondary-alt);
+}
+
+.status-bar {
+  padding: 3px 30px 28.4px;
+}
+
+.status-bar-item {
+  background-color: var(--background-primary);
+  border-radius: 0px;
+  font-size: 10px;
+  border: 2px solid var(--background-secondary-alt);
+  display: inline-block;
+  vertical-align: middle;
+  line-height: var(--font-line-height-side);
+}
+
+/* Andy Matuschak Mode (sliding panes) */
+
+.mod-root.workspace-split.mod-vertical {
+  overflow-x:auto;
+  --header-width: 25px;
+  --pane-width: 732px;
+  top: 0px;
+}
+
+.mod-root .view-content {
+  height: 100%;
+}
+
+.mod-root.workspace-split.mod-vertical>div {
+  min-width: calc(var(--pane-width) + var(--header-width));
+  position: sticky;
+  left: 0;
+}
+
+.workspace-split.mod-vertical > .workspace-leaf {
+  padding-top: 10px;
+}
+
+.workspace-split.mod-root .workspace-leaf-content[data-type='markdown'] {
+    clip-path: inset(0px 0px 0px -15px);
+}
+
+.workspace-split.mod-horizontal .workspace-leaf {
+  padding-top: 0px;
+}
+
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-8) { left: calc(var(--header-width) * 0); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-7) { left: calc(var(--header-width) * 1); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-6) { left: calc(var(--header-width) * 2); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-5) { left: calc(var(--header-width) * 3); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-4) { left: calc(var(--header-width) * 4); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-3) { left: calc(var(--header-width) * 5); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-2) { left: calc(var(--header-width) * 6); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n-1) { left: calc(var(--header-width) * 7); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n+0) { left: calc(var(--header-width) * 8); }
+.mod-root.workspace-split.mod-vertical > div:nth-child(10n+1) { left: calc(var(--header-width) * 9); }
+
+.mod-root .workspace-leaf-content {
+  padding-left: var(--header-width);
+  padding-right: 10px;
+  position: relative;
+}
+
+.view-header {
+  writing-mode: vertical-lr;
+  border-top: none;
+  border-bottom: none;
+  height: auto;
+  width: var(--header-width);
+  position: absolute;
+  left:0;
+  top:0;
+  bottom:0;
+}
+
+.view-header-title-container {
+  height: unset;
+  padding-left: unset;
+  left: -1.5px;
+}
+
+.view-header-icon, .view-actions {
+  padding: 10px 0px;
+}
+.view-action {
+  margin: 8px 0px 0px 0px;
+}
+
+.view-content {
+  height: 100%;
+}
+
+.workspace-fake-target-overlay {
+  background-color: var(--background-primary);
+}

@@ -1,0 +1,174 @@
+{
+  "main": {
+    "id": "88b454da8fcec458",
+    "type": "split",
+    "children": [
+      {
+        "id": "5e27a84ef7d54e1a",
+        "type": "tabs",
+        "dimension": 50.97150259067358,
+        "children": [
+          {
+            "id": "ed4e6a2071d66b47",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "✏ Sintaxis.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "3864a993527502cc",
+        "type": "tabs",
+        "dimension": 49.02849740932643,
+        "children": [
+          {
+            "id": "c19c250c5dd5d196",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "487e7c7874ba0e33",
+    "type": "split",
+    "children": [
+      {
+        "id": "3ba4e71b957630a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "71221c4fba3beb9e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d133544c91eaf7b9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d1130d61a698a812",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ffd7dbbfcc32ce6f",
+    "type": "split",
+    "children": [
+      {
+        "id": "dfc283d688855332",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "68b9ad4492111cbb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "✏ Sintaxis.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bf02760cce3b8ca6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "✏ Sintaxis.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "fc43f79a8bdd2a62",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "63108bcb98dad5fe",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "✏ Sintaxis.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "ed4e6a2071d66b47",
+  "lastOpenFiles": [
+    "🔨 JSNovel - Estructura de características.md",
+    "GWXJnkVbQAEi-M9.jpeg",
+    "✏ Sintaxis.md",
+    "🖼 Style Guide Desing.md",
+    "🖼.md",
+    "Welcome.md"
+  ]
+}

@@ -6,7 +6,6 @@
       {
         "id": "5e27a84ef7d54e1a",
         "type": "tabs",
-        "dimension": 50.97150259067358,
         "children": [
           {
             "id": "ed4e6a2071d66b47",
@@ -15,24 +14,9 @@
               "type": "markdown",
               "state": {
                 "file": "✏ Sintaxis.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
-            }
-          }
-        ]
-      },
-      {
-        "id": "3864a993527502cc",
-        "type": "tabs",
-        "dimension": 49.02849740932643,
-        "children": [
-          {
-            "id": "c19c250c5dd5d196",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
             }
           }
         ]
@@ -164,10 +148,10 @@
   },
   "active": "ed4e6a2071d66b47",
   "lastOpenFiles": [
-    "🔨 JSNovel - Estructura de características.md",
-    "GWXJnkVbQAEi-M9.jpeg",
+    "🔨 JavaScriptNovel.md",
     "✏ Sintaxis.md",
-    "🖼 Style Guide Desing.md",
+    "🖼 Style Guide.md",
+    "GWXJnkVbQAEi-M9.jpeg",
     "🖼.md",
     "Welcome.md"
   ]

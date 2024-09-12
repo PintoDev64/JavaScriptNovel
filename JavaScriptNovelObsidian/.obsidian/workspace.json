@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "✏ Sintaxis.md",
-                "mode": "preview",
+                "file": "🖼 Style Guide.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 297.51103591918945
   },
   "right": {
     "id": "ffd7dbbfcc32ce6f",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "✏ Sintaxis.md",
+                "file": "🖼 Style Guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "✏ Sintaxis.md",
+                "file": "🖼 Style Guide.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,12 +120,12 @@
             }
           },
           {
-            "id": "63108bcb98dad5fe",
+            "id": "b0130f5b82a9de1d",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "✏ Sintaxis.md"
+                "file": "🖼 Style Guide.md"
               }
             }
           }
@@ -146,10 +146,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ed4e6a2071d66b47",
+  "active": "71221c4fba3beb9e",
   "lastOpenFiles": [
-    "🔨 JavaScriptNovel.md",
+    "Images/Desing System.png",
+    "Images",
     "✏ Sintaxis.md",
+    "🔨 JavaScriptNovel.md",
     "🖼 Style Guide.md",
     "GWXJnkVbQAEi-M9.jpeg",
     "🖼.md",

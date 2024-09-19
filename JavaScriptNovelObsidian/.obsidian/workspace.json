@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "🖼 Style Guide.md",
+                "file": "🔨 JavaScriptNovel.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "🖼 Style Guide.md",
+                "file": "🔨 JavaScriptNovel.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "🖼 Style Guide.md",
+                "file": "🔨 JavaScriptNovel.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "🖼 Style Guide.md"
+                "file": "🔨 JavaScriptNovel.md"
               }
             }
           }
@@ -148,9 +148,9 @@
   },
   "active": "ed4e6a2071d66b47",
   "lastOpenFiles": [
-    "🔨 JavaScriptNovel.md",
     "✏ Sintaxis.md",
     "🖼 Style Guide.md",
+    "🔨 JavaScriptNovel.md",
     "Images/JavaScriptNovel-240.png.crswap",
     "Images/JavaScriptNovel-240.png",
     "Images/JavaScriptNovel-480-svg.svg",

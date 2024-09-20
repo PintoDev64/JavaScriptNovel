@@ -1,6 +1,8 @@
 {
   "name": "javascriptnovel",
   "version": "0.0.1",
+  "author": "PintoDev64",
+  "license": "ISC",
   "description": "Motor de novelas visuales creado con JavaScript",
   "type": "module",
   "scripts": {
@@ -35,8 +37,6 @@
     "javascriptnovel",
     "jsnovel"
   ],
-  "author": "PintoDev64",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/PintoDev64/JavaScriptNovel/issues"
   },

@@ -1,9 +1,7 @@
 Esta es toda la sintaxis del lenguaje **".njs"**
 ## ⚙API
----
 Definiciones que el lenguaje posee para un uso y acceso mas avanzado a las herramientas de JavaScript:
 - ### Comentarios
-	- [ ] **`//`:** Comentario en linea.
 	- [ ] **`/* ..... */`:** Comentario de bloque.
 - ### Variables
 	- [ ] **`var <nombre> = <valor>`:** Define variables globales estáticas.
@@ -17,7 +15,6 @@ Definiciones que el lenguaje posee para un uso y acceso mas avanzado a las herra
 	- [ ] **`Video <nombre> = <ubicacion>`:** Define una fuente de video.
 	- [ ] **`Character <nombre> = Character(<nombre>, <color>, <outline>)`:** Define una variable "Character" para identificar quien habla en la escena.
 ## 📒 Sintaxis
----
 - ### Escenas
 	- [ ] **`scene(<nombre>) {...}`:** Definir una escena/parte del juego.
 		- [ ] **`:fadeIn :fadeOut`:** efectos de transiciones

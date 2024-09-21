@@ -1,12 +1,39 @@
 {
   "name": "compiler",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "version": "0.0.1",
+  "author": "PintoDev64",
   "license": "ISC",
-  "description": ""
+  "description": "Compilador del lenguaje .jsnovel",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "watch": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PintoDev64/JavaScriptNovel.git"
+  },
+  "keywords": [
+    "visual",
+    "novel",
+    "game",
+    "engine",
+    "javascript",
+    "react",
+    "typescript",
+    "javascriptnovel",
+    "jsnovel",
+    "compilador",
+    "jsnovel"
+  ],
+  "bugs": {
+    "url": "https://github.com/PintoDev64/JavaScriptNovel/issues"
+  },
+  "homepage": "https://github.com/PintoDev64/JavaScriptNovel#readme",
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "typescript": "^5.6.2"
+  }
 }

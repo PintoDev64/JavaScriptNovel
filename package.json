@@ -4,18 +4,17 @@
   "author": "PintoDev64",
   "license": "ISC",
   "description": "Motor de novelas visuales creado con JavaScript",
-  "type": "module",
   "scripts": {
     "test": "echo \"Hello!!\"",
     "editor:start": "",
     "editor:build": "",
     "editor:dev": "",
-    "docs:start": "",
+    "docs:start": "npm run start -w docs",
     "docs:build": "",
     "docs:dev": "",
-    "compiler:start": "",
-    "compiler:build": "",
-    "compiler:dev": ""
+    "compiler:start": "npm run start -w compiler",
+    "compiler:build": "npm run build -w compiler",
+    "compiler:dev": "npm run watch -w compiler"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,5 @@
-example(XD);
-"PintoGamer64";
-1234
+"example"
+
+// Otro comentario
+
+hola("parametro")

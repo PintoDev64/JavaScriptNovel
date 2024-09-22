@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ES2020",          // Define el estándar de JavaScript al que compilará.
-    "module": "CommonJS",          // Configura el uso de módulos ES.
-    "moduleResolution": "Node",  // Resuelve módulos como lo hace Node.js.
-    "rootDir": "./src",          // Define el directorio raíz de los archivos fuente.
-    "outDir": "./dist",          // Define el directorio de salida de los archivos compilados.
-    "strict": true,              // Habilita todas las verificaciones estrictas de tipos.
-    "esModuleInterop": true,     // Habilita la interoperabilidad con módulos CommonJS.
-    "skipLibCheck": true,        // Omite la verificación de tipos de los archivos de declaración.
-    "forceConsistentCasingInFileNames": true, // Fuerza el uso consistente de mayúsculas en los nombres de archivo.
-    "resolveJsonModule": true,   // Permite importar archivos JSON.
-    "allowSyntheticDefaultImports": true, // Permite importar módulos con exports default.
-    "noImplicitReturns": true,   // Requiere return en todas las ramas de una función.
-    "sourceMap": true,            /* Skip type checking all .d.ts files. */
+    "target": "ESNext",
+    "module": "CommonJS", // Cambia a "System"
+    "moduleResolution": "Node",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitReturns": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noEmitOnError": true
   },
-  "include": ["src/**/*", "index.d.ts"],     // Incluye todos los archivos .ts en el directorio src.
-  "exclude": ["node_modules"]    
+  "include": ["src/**/*", "index.d.ts"],
+  "exclude": ["node_modules"]
 }

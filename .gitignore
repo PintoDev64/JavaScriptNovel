@@ -1,7 +1,9 @@
+# Global
 node_modules
+compiler/dist/*
 
 # Production
-docs//build
+docs/build
 
 # Generated files
 docs/.docusaurus

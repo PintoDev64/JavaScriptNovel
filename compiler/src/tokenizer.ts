@@ -2,7 +2,8 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
     let cursorPosition = 0;
     let tokens: LenguajeTokens = [];
 
-    const SEMICOLON = ";"
+    const COMMENT_LINE = /^\s*\/\//;
+    const SEMICOLON = ";";
     const OPEN_PARENTHESIS = "(";
     const CLOSE_PARENTHESIS = ")";
     const WHITESPACES = /\s/;
@@ -13,7 +14,18 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
     while (cursorPosition < lenguajeContent.length) {
         let character = lenguajeContent[cursorPosition];
 
-        // Detect when character is a parenthesis
+        // Manejar comentarios de línea
+        if (COMMENT_LINE.test(lenguajeContent.slice(cursorPosition))) {
+            // Avanza el cursor hasta el final de la línea
+            while (cursorPosition < lenguajeContent.length && character !== "\n") {
+                cursorPosition++;
+                character = lenguajeContent[cursorPosition];
+            }
+            cursorPosition++;
+            continue; // Ignorar el comentario
+        }
+
+        // Procesar otros caracteres
         if (character === OPEN_PARENTHESIS) {
             tokens.push({ type: "parenthesis", value: OPEN_PARENTHESIS });
             cursorPosition++;
@@ -26,31 +38,28 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
             continue;
         }
 
-        // Detect if character is a whitespace
         if (WHITESPACES.test(character)) {
             cursorPosition++;
             continue;
         }
 
-        // Detect if character is a number
         if (NUMBERS.test(character)) {
             let stringNumbers = "";
             while (NUMBERS.test(character)) {
                 stringNumbers += character;
                 cursorPosition++;
-                character = lenguajeContent[cursorPosition]; // Update character after advancing
+                character = lenguajeContent[cursorPosition];
             }
             tokens.push({ type: "number", value: stringNumbers });
             continue;
         }
 
-        // Detect if character is a letter
         if (LETTERS.test(character)) {
             let textString = "";
             while (LETTERS.test(character)) {
                 textString += character;
                 cursorPosition++;
-                character = lenguajeContent[cursorPosition]; // Update character after advancing
+                character = lenguajeContent[cursorPosition];
             }
             tokens.push({ type: "name", value: textString });
             continue;
@@ -64,31 +73,27 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
 
         if (STRING.test(character)) {
             let textString = '';
-            cursorPosition++; // Mueve el cursor después de la comilla de apertura
+            cursorPosition++;
             character = lenguajeContent[cursorPosition];
 
             while (cursorPosition < lenguajeContent.length) {
-                // Maneja comillas escapadas (\")
-                if (character === '\\' && lenguajeContent[cursorPosition + 1].match(STRING)) {
+                if (character === '\\' && lenguajeContent[cursorPosition + 1] === '"') {
                     textString += '"';
-                    cursorPosition += 2; // Saltar la barra invertida y la comilla escapada
+                    cursorPosition += 2;
                     character = lenguajeContent[cursorPosition];
                     continue;
                 }
 
-                // Detecta el fin de la cadena con comilla de cierre
                 if (STRING.test(character)) {
-                    cursorPosition++; // Avanza después de la comilla de cierre
+                    cursorPosition++;
                     break;
                 }
 
-                // Añade el carácter actual a la cadena
                 textString += character;
                 cursorPosition++;
                 character = lenguajeContent[cursorPosition];
             }
 
-            // Si no encuentra la comilla de cierre y llega al final del texto, lanzar un error o manejarlo
             if (!STRING.test(character) && cursorPosition >= lenguajeContent.length) {
                 throw new Error('Cadena sin comilla de cierre');
             }
@@ -97,6 +102,7 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
             continue;
         }
 
+        // Si llegamos aquí, significa que no reconocimos el carácter
         throw new TypeError("I don't know what this character is: " + character);
     }
 

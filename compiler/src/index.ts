@@ -3,16 +3,23 @@ import { extname, join } from 'node:path';
 import Tonekizer from './tokenizer';
 import Parser from './parser';
 
+const Start = Date.now()
+
 // Función para compilar un archivo dado
 function Compiler(file: string) {
     const fileContent = readFileSync(file, { encoding: 'utf-8' });
     // const lenguajeTokens = Tonekizer(fileContent);
-    console.log(fileContent.split(/\n/));
     
     const lenguajeTokens = Tonekizer(fileContent);
-    const lenguajeAST = Parser(lenguajeTokens)
     console.log(lenguajeTokens);
-    console.log(lenguajeAST);
+
+    const lenguajeAST = Parser(lenguajeTokens)
+    console.log(lenguajeAST.body);
+
+    
+    
+    const End = Date.now()
+    console.log(`Command Exec On ${End - Start} ms`)
 }
 
 // Función para buscar archivos con una extensión específica en un directorio y sus subdirectorios

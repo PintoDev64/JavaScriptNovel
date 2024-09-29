@@ -18,7 +18,7 @@ export default function ASTReader(ASTLenguaje: LenguajeAST, ASTVisitor: ASTVisit
                 ReadArray(ASTNode.body, ASTNode)
                 break;
 
-            case "Identifier":
+            case "CallExpression":
                 ReadArray(ASTNode.params, ASTNode)
                 break;
 

@@ -4,7 +4,7 @@ declare type LenguajeTokens = {
 }[]
 
 declare interface LenguajeAST {
-    type: "NumberLiteral" | "StringLiteral" | "Identifier" | "Program";
+    type: "NumberLiteral" | "StringLiteral" | "CallExpression" | "Program";
     [key: string]: any;
 }
 
@@ -17,7 +17,7 @@ declare interface ASTVisitor {
         enter(node: LenguajeAST, parent: LenguajeAST | null): void;
         exit?(node: LenguajeAST, parent: LenguajeAST | null): void
     },
-    Identifier: {
+    CallExpression: {
         enter(node: LenguajeAST, parent: LenguajeAST | null): void;
         exit?(node: LenguajeAST, parent: LenguajeAST | null): void
     },
@@ -28,6 +28,11 @@ declare interface ASTVisitor {
 }
 
 declare interface TransformerAST {
-    type: "NumberLiteral" | "StringLiteral" | "CallExpression";
+    type: "NumberLiteral" | "StringLiteral" | "CallExpression" | "Identifier";
+    [key: string]: any;
+}
+
+declare interface ASTNode {
+    type: "Program" | "CallExpression" | "Identifier" | "NumberLiteral" | "StringLiteral",
     [key: string]: any;
 }

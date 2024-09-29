@@ -2,6 +2,7 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
     let cursorPosition = 0;
     let tokens: LenguajeTokens = [];
 
+    const PARAMS_SEPARATOR = ",";
     const COMMENT_LINE = /^\s*\/\//;
     const SEMICOLON = ";";
     const OPEN_PARENTHESIS = "(";
@@ -25,7 +26,7 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
             continue; // Ignorar el comentario
         }
 
-        // Procesar otros caracteres
+        // Procesar paréntesis
         if (character === OPEN_PARENTHESIS) {
             tokens.push({ type: "parenthesis", value: OPEN_PARENTHESIS });
             cursorPosition++;
@@ -38,11 +39,20 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
             continue;
         }
 
+        // Procesar comas como separadores de parámetros
+        if (character === PARAMS_SEPARATOR) {
+            tokens.push({ type: "comma", value: PARAMS_SEPARATOR });
+            cursorPosition++;
+            continue;
+        }
+
+        // Procesar espacios en blanco
         if (WHITESPACES.test(character)) {
             cursorPosition++;
             continue;
         }
 
+        // Procesar números
         if (NUMBERS.test(character)) {
             let stringNumbers = "";
             while (NUMBERS.test(character)) {
@@ -54,6 +64,7 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
             continue;
         }
 
+        // Procesar nombres (identificadores)
         if (LETTERS.test(character)) {
             let textString = "";
             while (LETTERS.test(character)) {
@@ -65,12 +76,14 @@ export default function Tokenizer(lenguajeContent: string): LenguajeTokens {
             continue;
         }
 
+        // Procesar punto y coma
         if (character === SEMICOLON) {
             tokens.push({ type: "semicolon", value: SEMICOLON });
             cursorPosition++;
             continue;
         }
 
+        // Procesar cadenas
         if (STRING.test(character)) {
             let textString = '';
             cursorPosition++;

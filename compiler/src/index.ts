@@ -2,22 +2,34 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { extname, join } from 'node:path';
 import Tonekizer from './tokenizer';
 import Parser from './parser';
+import Transformer from './transformer';
+import codeCreator from './codeGenerator';
 
-const Start = Date.now()
 
 // Función para compilar un archivo dado
 function Compiler(file: string) {
+    const Start = Date.now()
+
     const fileContent = readFileSync(file, { encoding: 'utf-8' });
     // const lenguajeTokens = Tonekizer(fileContent);
-    
-    const lenguajeTokens = Tonekizer(fileContent);
-    console.log(lenguajeTokens);
 
-    const lenguajeAST = Parser(lenguajeTokens)
-    console.log(lenguajeAST.body);
+    try {
+        const lenguajeTokens = Tonekizer(fileContent);
+        console.log("lenguajeTokens -> ", lenguajeTokens);
 
-    
-    
+        const lenguajeAST = Parser(lenguajeTokens);
+        console.log("lenguajeAST -> ", JSON.stringify(lenguajeAST.body, null, 4));
+
+        const lenguajeTransform = Transformer(lenguajeAST);
+        console.log("lenguajeTransform -> ", JSON.stringify(lenguajeTransform, null, 4));
+
+        const JavaScriptCode = codeCreator(lenguajeTransform);
+        console.log("\n========= Codigo JavaScript =========\n\n", JavaScriptCode, "\n\n========= Codigo JavaScript =========\n");
+        
+    } catch (error: any) {
+        console.log((error as Error).message);
+    }
+
     const End = Date.now()
     console.log(`Command Exec On ${End - Start} ms`)
 }
@@ -26,7 +38,7 @@ function Compiler(file: string) {
 function SearchFiles(folderDirectory: string, extension: string): string[] {
     // Array para almacenar las rutas de los archivos encontrados
     let directories: string[] = [];
-    
+
     // Lee el contenido del directorio especificado
     const files = readdirSync(folderDirectory, { withFileTypes: true });
 
@@ -34,7 +46,7 @@ function SearchFiles(folderDirectory: string, extension: string): string[] {
     files.map(file => {
         // Ruta completa del archivo o directorio actual
         const fullPath = join(folderDirectory, file.name);
-        
+
         if (file.isDirectory()) {
             // Si es un directorio, se llama recursivamente a la función para buscar dentro de él
             directories = directories.concat(SearchFiles(fullPath, extension));

@@ -25,12 +25,12 @@ export default function Transformer(ASTStructure: LenguajeAST) {
                 });
             },
         },
-        Identifier: {
+        CallExpression: {
             enter: function (ASTNode: LenguajeAST, parent: LenguajeAST | null): void {
                 let expression: TransformerAST = {
-                    type: 'Identifier',
+                    type: 'CallExpression',
                     caller: {
-                        type: 'CallExpression',
+                        type: 'Identifier',
                         name: ASTNode.name
                     },
                     params: []
@@ -38,7 +38,7 @@ export default function Transformer(ASTStructure: LenguajeAST) {
 
                 ASTNode._context = expression.params;
 
-                if (parent?.type !== 'Identifier') {
+                if (parent?.type !== 'CallExpression') {
                     parent?._context.push(expression);
                 }
 

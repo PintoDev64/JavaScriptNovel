@@ -13,6 +13,7 @@ export default function Parser(tokens: LenguajeTokens): LenguajeAST {
 
         let actualToken = tokens[cursorPosition];
 
+        // Manejo de literales numéricos
         if (actualToken.type === "number") {
             cursorPosition++;
             return {
@@ -21,6 +22,7 @@ export default function Parser(tokens: LenguajeTokens): LenguajeAST {
             };
         }
 
+        // Manejo de literales de cadenas
         if (actualToken.type === "string") {
             cursorPosition++;
             return {
@@ -29,52 +31,64 @@ export default function Parser(tokens: LenguajeTokens): LenguajeAST {
             };
         }
 
+        // Manejo de identificadores y potenciales llamadas a funciones
         if (actualToken.type === "name") {
             cursorPosition++;
-            let nextToken: ReadTokensReturn = {
+            const identifierNode: ReadTokensReturn = {
                 type: "Identifier",
                 name: actualToken.value,
             };
 
-            // Verificamos si hay paréntesis para capturar parámetros.
-            while (
-                cursorPosition < tokens.length &&
-                tokens[cursorPosition].type === "parenthesis" &&
-                tokens[cursorPosition].value === "("
-            ) {
-                cursorPosition++; // Avanzar para evitar bucle infinito.
-                nextToken = {
-                    ...nextToken,
-                    params: [],
-                }
-                nextToken.params.push(ReadTokens());
+            // Verificamos si es una llamada a función (si hay un paréntesis después del identificador)
+            if (cursorPosition < tokens.length && tokens[cursorPosition].type === "parenthesis" && tokens[cursorPosition].value === "(") {
+                cursorPosition++; // Avanza después del paréntesis de apertura
 
-                // Verifica si el paréntesis de cierre está presente después de los parámetros.
-                if (
-                    cursorPosition < tokens.length &&
-                    tokens[cursorPosition].type === "parenthesis" &&
-                    tokens[cursorPosition].value === ")"
-                ) {
-                    cursorPosition++;
+                const callExpressionNode: ReadTokensReturn = {
+                    type: "CallExpression",
+                    name: identifierNode.name,
+                    params: [],
+                };
+
+                // Procesamos los parámetros de la llamada a función
+                while (cursorPosition < tokens.length && !(tokens[cursorPosition].type === "parenthesis" && tokens[cursorPosition].value === ")")) {
+                    // Si el token es una coma, la ignoramos y avanzamos
+                    if (tokens[cursorPosition].type === "comma") {
+                        cursorPosition++; // Salta la coma
+                        continue; // Continúa procesando el siguiente parámetro
+                    }
+
+                    // Añadimos el parámetro al nodo de la llamada
+                    callExpressionNode.params.push(ReadTokens());
+                }
+
+                // Verificamos si encontramos el paréntesis de cierre
+                if (cursorPosition < tokens.length && tokens[cursorPosition].type === "parenthesis" && tokens[cursorPosition].value === ")") {
+                    cursorPosition++; // Avanza después del paréntesis de cierre
+                    return callExpressionNode;
                 } else {
-                    throw new Error("Closing parenthesis expected");
+                    throw new Error("Expected closing parenthesis after function call");
                 }
             }
 
-            return nextToken;
+            return identifierNode; // Si no es una llamada a función, retorna solo el identificador
         }
 
+        // Manejo de comas (las ignoramos fuera del contexto de parámetros)
+        if (actualToken.type === "comma") {
+            cursorPosition++; // Avanza para ignorar la coma
+            return ReadTokens(); // Continúa procesando el siguiente token
+        }
+
+        // Manejo de paréntesis inesperados
         if (actualToken.type === "parenthesis") {
-            cursorPosition++; // Avanzar para evitar el bucle infinito
+            cursorPosition++; // Avanza para evitar bucle infinito
+            return ReadTokens(); // Continúa con el siguiente token
         }
 
-        "XD"
-
-        throw new TypeError(
-            "I don't know what this character is: " + actualToken.type
-        );
+        throw new TypeError("Unknown token type: " + actualToken.type);
     }
 
+    // Construcción del AST
     const AST: LenguajeAST = {
         type: "Program",
         body: [],

@@ -12,7 +12,7 @@
     "docs:start": "npm run start -w docs",
     "docs:build": "",
     "docs:dev": "",
-    "compiler:start": "npm run start -w compiler",
+    "compiler:start": "cls && npm run start -w compiler",
     "compiler:build": "npm run build -w compiler",
     "compiler:dev": "npm run watch -w compiler"
   },

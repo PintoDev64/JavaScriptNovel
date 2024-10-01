@@ -11,8 +11,8 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitReturns": true,
-    "sourceMap": true,
-    "declaration": true,
+    "sourceMap": false,
+    "declaration": false,
     "noEmitOnError": true
   },
   "include": ["src/**/*", "index.d.ts"],

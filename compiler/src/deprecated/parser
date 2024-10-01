@@ -3,7 +3,7 @@ interface ReadTokensReturn {
     [key: string]: any;
 }
 
-export default function Parser(tokens: LenguajeTokens): LenguajeAST {
+export default function Parser(tokens: LenguajeTokens[]): LenguajeAST {
     let cursorPosition = 0;
 
     function ReadTokens(): ReadTokensReturn {
@@ -83,6 +83,11 @@ export default function Parser(tokens: LenguajeTokens): LenguajeAST {
         if (actualToken.type === "parenthesis") {
             cursorPosition++; // Avanza para evitar bucle infinito
             return ReadTokens(); // Continúa con el siguiente token
+        }
+
+        if (actualToken.type === "global") {
+            cursorPosition++; 
+            return ReadTokens()
         }
 
         throw new TypeError("Unknown token type: " + actualToken.type);

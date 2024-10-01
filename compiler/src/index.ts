@@ -1,68 +1,29 @@
-import { readFileSync, readdirSync } from 'node:fs';
-import { extname, join } from 'node:path';
-import Tonekizer from './tokenizer';
-import Parser from './parser';
-import Transformer from './transformer';
-import codeCreator from './codeGenerator';
+import { readFileSync } from "fs";
 
+// Utils
+import { CheckPerformance, SearchFiles } from "./utils";
 
-// Función para compilar un archivo dado
-function Compiler(file: string) {
-    const Start = Date.now()
+// Program
+import Tokenizer from "./tokenizer";
 
-    const fileContent = readFileSync(file, { encoding: 'utf-8' });
-    // const lenguajeTokens = Tonekizer(fileContent);
+// Constants
+const FOLDER_DIRECTORY = "test"
+const FILE_EXTENSION = ".jsnovel"
 
-    try {
-        const lenguajeTokens = Tonekizer(fileContent);
-        console.log("lenguajeTokens -> ", lenguajeTokens);
+const LocatedFiles = SearchFiles(FOLDER_DIRECTORY, FILE_EXTENSION)
 
-        const lenguajeAST = Parser(lenguajeTokens);
-        console.log("lenguajeAST -> ", JSON.stringify(lenguajeAST.body, null, 4));
+/**
+ * Motor de compilacion del lenguaje .jsnovel
+ */
+function LenguageCompiler(FileLocation: string) {
+    const FileContent = readFileSync(FileLocation, { encoding: 'utf-8' });
 
-        const lenguajeTransform = Transformer(lenguajeAST);
-        console.log("lenguajeTransform -> ", JSON.stringify(lenguajeTransform, null, 4));
-
-        const JavaScriptCode = codeCreator(lenguajeTransform);
-        console.log("\n========= Codigo JavaScript =========\n\n", JavaScriptCode, "\n\n========= Codigo JavaScript =========\n");
-        
-    } catch (error: any) {
-        console.log((error as Error).message);
-    }
-
-    const End = Date.now()
-    console.log(`Command Exec On ${End - Start} ms`)
+    const result = Tokenizer(FileContent)
+    console.log(result);
 }
 
-// Función para buscar archivos con una extensión específica en un directorio y sus subdirectorios
-function SearchFiles(folderDirectory: string, extension: string): string[] {
-    // Array para almacenar las rutas de los archivos encontrados
-    let directories: string[] = [];
-
-    // Lee el contenido del directorio especificado
-    const files = readdirSync(folderDirectory, { withFileTypes: true });
-
-    // Recorre cada elemento encontrado en el directorio
-    files.map(file => {
-        // Ruta completa del archivo o directorio actual
-        const fullPath = join(folderDirectory, file.name);
-
-        if (file.isDirectory()) {
-            // Si es un directorio, se llama recursivamente a la función para buscar dentro de él
-            directories = directories.concat(SearchFiles(fullPath, extension));
-        } else if (file.isFile() && extname(file.name) === extension) {
-            // Si es un archivo y tiene la extensión especificada, se agrega al array de resultados
-            directories.push(fullPath);
-        }
-    });
-
-    // Devuelve la lista completa de archivos encontrados
-    return directories;
+for (const FileLocation of LocatedFiles) {
+    CheckPerformance(() => {
+        LenguageCompiler(FileLocation)
+    })
 }
-
-// Ejemplo de uso para buscar archivos con la extensión ".jsnovel" dentro de la carpeta "test"
-const foundFiles = SearchFiles('test', '.jsnovel');
-// Imprime en consola los resultados
-console.log(foundFiles);
-// Muestra los archivos encontrados
-foundFiles.forEach(file => Compiler(file));

@@ -22,7 +22,6 @@
   },
   "workspaces": [
     "compiler",
-    "editor",
     "docs"
   ],
   "keywords": [

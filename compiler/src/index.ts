@@ -5,6 +5,7 @@ import { CheckPerformance, SearchFiles } from "./utils";
 
 // Program
 import Tokenizer from "./tokenizer";
+import Parser from "./parser";
 
 // Constants
 const FOLDER_DIRECTORY = "test"
@@ -18,8 +19,13 @@ const LocatedFiles = SearchFiles(FOLDER_DIRECTORY, FILE_EXTENSION)
 function LenguageCompiler(FileLocation: string) {
     const FileContent = readFileSync(FileLocation, { encoding: 'utf-8' });
 
-    const result = Tokenizer(FileContent)
-    console.log(result);
+    const tokenResult = Tokenizer(FileContent)
+    /* console.log("Tokenizer Result",tokenResult); */
+
+    /* console.log("\n"); */
+    
+    const astResult = Parser(tokenResult)
+    /* console.log("Parser Result", astResult); */
 }
 
 for (const FileLocation of LocatedFiles) {

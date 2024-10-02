@@ -65,6 +65,20 @@ export default function Tokenizer(lenguajeContent: string, returned: boolean = f
             cursorPosition++;
             continue;
         }
+        
+        // Procesar punto y coma
+        if (character === SEMICOLON) {
+            tokens.push({ type: "semicolon", value: SEMICOLON });
+            cursorPosition++;
+            continue;
+        }
+        
+        // Procesar Iguales
+        if (character === EQUALEVAL) {
+            tokens.push({ type: "semicolon", value: SEMICOLON });
+            cursorPosition++;
+            continue;
+        }
 
         // Procesar números
         if (NUMBERS.test(character)) {
@@ -122,13 +136,6 @@ export default function Tokenizer(lenguajeContent: string, returned: boolean = f
                 tokens.push({ type: "name", value: value });
                 continue;
             }
-        }
-
-        // Procesar punto y coma
-        if (character === SEMICOLON) {
-            tokens.push({ type: "semicolon", value: SEMICOLON });
-            cursorPosition++;
-            continue;
         }
 
         // Procesar cadenas

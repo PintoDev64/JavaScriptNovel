@@ -2,18 +2,18 @@ Esta es toda la sintaxis del lenguaje **".njs"**
 ## ⚙API
 Definiciones que el lenguaje posee para un uso y acceso mas avanzado a las herramientas de JavaScript:
 - ### Comentarios
+	- [x] **`//`:** Comentario de Linea.
 	- [ ] **`/* ..... */`:** Comentario de bloque.
 - ### Variables
-	- [ ] **`var <nombre> = <valor>`:** Define variables globales estáticas.
+	- [x] **`var <nombre> = <valor>`:** Define variables globales estáticas.
 - ### Compatibilidad de JavaScript
 	- [ ] **`if (<condition>) {...}`:** Define un bloque condicional.
-	- [ ] **`function <nombre>() {...}`:** Define una función que se usa en el contexto global.
 	- [ ] **`for (<condition>) {...}`:** Define un bucle condicional que se romperá al no cumplir la condición especificada.
 - ### Tipos
-	- [ ] **`Audio <nombre> = <ubicacion>`:** Define una fuente de audio.
-	- [ ] **`Image <nombre> = <ubicacion>`:** Define un fuente de imagen.
-	- [ ] **`Video <nombre> = <ubicacion>`:** Define una fuente de video.
-	- [ ] **`Character <nombre> = Character(<nombre>, <color>, <outline>)`:** Define una variable "Character" para identificar quien habla en la escena.
+	- [x] **`Audio <nombre> = <ubicacion>`:** Define una fuente de audio.
+	- [x] **`Image <nombre> = <ubicacion>`:** Define un fuente de imagen.
+	- [x] **`Video <nombre> = <ubicacion>`:** Define una fuente de video.
+	- [x] **`Character <nombre> = Character(<nombre>, <color>, <outline>)`:** Define una variable "Character" para identificar quien habla en la escena.
 ## 📒 Sintaxis
 - ### Escenas
 	- [ ] **`scene(<nombre>) {...}`:** Definir una escena/parte del juego.

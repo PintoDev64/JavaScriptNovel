@@ -16,5 +16,5 @@
     "noEmitOnError": true
   },
   "include": ["src/**/*", "index.d.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/deprecated"]
 }

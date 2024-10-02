@@ -14,11 +14,11 @@ export function CheckPerformance(callback: CheckTimePerformanceParams): any {
         return callback()
     } catch (error: any) {
         console.log(
-            `Main Process -> ${(error as Error).name}\n└───┤ ${(error as Error).message} \n`
+            `\nMain Process -> ${(error as Error).name}\n└───┤ ${(error as Error).message} - ${(error as Error).stack} \n`
         )
     } finally {
         const End = Date.now()
-        console.log(`Command Exec On ${End - Start} ms`)
+        console.log(`\n >>> Command Exec On ${End - Start} ms <<<\n`)
     }
 }
 

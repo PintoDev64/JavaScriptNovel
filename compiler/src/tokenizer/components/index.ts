@@ -1,12 +1,24 @@
-import { LETTERS, NUMBERS, STRING } from "../../constants";
+import { LETTERS, NUMBERS, SPACEBAR, STRING } from "../../constants";
 
-interface ReturnParams<T> {
+interface ReturnParams {
     position: number;
-    value: T;
+    value: TokensStructure | null;
 }
 
-// Función que siempre retorna null
-export function CommentLine(Position: number, Content: string): ReturnParams<null> {
+const GlobalVariablesDefinitions: {
+    [key: string]: GlobalVariablesType
+} = {
+    var: "global",
+    Audio: "audio",
+    Image: "image",
+    Video: "video",
+    Character: "character"
+}
+
+/**
+ * Retorna un valor nulo al detectar comentario
+ */
+export function CommentLine(Position: number, Content: string): ReturnParams {
     let actualPosition = Position;
     let character = Content[actualPosition];
 
@@ -23,8 +35,10 @@ export function CommentLine(Position: number, Content: string): ReturnParams<nul
     };
 }
 
-// Función que siempre retorna una cadena de números
-export function StringNumber(Position: number, Content: string): ReturnParams<string> {
+/**
+ * Retorna una cadena de numeros
+ */
+export function StringNumber(Position: number, Content: string): ReturnParams {
     let actualPosition = Position;
     let character = Content[actualPosition];
     let stringNumbers = "";
@@ -39,45 +53,108 @@ export function StringNumber(Position: number, Content: string): ReturnParams<st
 
     return {
         position: actualPosition,
-        value: stringNumbers
+        value: {
+            type: "number",
+            value: stringNumbers
+        }
     };
 }
 
-export function DeclarationNames(Position: number, Content: string): ReturnParams<string> {
+/**
+ * Retorna las declaraciones de variables 
+ */
+export function DeclarationNames(Position: number, Content: string): ReturnParams {
     let actualPosition = Position;
     let character = Content[actualPosition];
-    let stringPart = "";
+    let nameString = "";
 
-    while (LETTERS.test(character)) {
-        stringPart += character;
+    while (LETTERS.test(character) && actualPosition < Content.length) {
+        nameString += character;
         actualPosition++;
-        character = Content[actualPosition];
+        character = Content[actualPosition]
+
+        if (actualPosition > Content.length) {
+            throw new Error(`(DeclarationNames) Exceeded file length while capturing name: "${nameString}"`);
+        }
+        
+    }
+
+    if (GlobalVariablesDefinitions[nameString] !== undefined) {
+        return GlobalVariables(actualPosition, Content, nameString as GlobalVariablesType);
     }
 
     return {
         position: actualPosition,
-        value: stringPart
+        value: {
+            type: "name",
+            value: nameString
+        }
     };
 }
 
-export function Strings(Position: number, Content: string): ReturnParams<string> {
-    let actualPosition = Position + 1; // Salta la comilla de apertura
+
+function GlobalVariables(Position: number, Content: string, Type: GlobalVariablesType): ReturnParams {
+    let actualPosition = Position;
+    let character = Content[actualPosition];
+    actualPosition++;
+    while (SPACEBAR.test(Content[actualPosition])) {
+        actualPosition++;
+    }
+
+    let varName = "";
+    character = Content[actualPosition];
+    while (LETTERS.test(character)) {
+        varName += character;
+        actualPosition++;
+        character = Content[actualPosition];
+    }
+
+    if (varName.length === 0) {
+        throw new TypeError(
+            "(Tokenizer) Variable name not defined 'var {nombre}'"
+        );
+    }
+    if (GlobalVariablesDefinitions[varName] !== undefined) {
+        throw new TypeError(
+            `(Tokenizer) The use of special names such as names is not permitted`
+        );
+    }
+
+    return {
+        position: actualPosition,
+        value: {
+            type: GlobalVariablesDefinitions[Type],
+            value: varName
+        }
+    };
+}
+
+export function Strings(Position: number, Content: string): ReturnParams {
+    let actualPosition = Position + 1; // Saltamos la comilla de apertura
     let character = Content[actualPosition];
     let stringCaptured = "";
 
     while (actualPosition < Content.length) {
-        // Manejar comillas escapadas (ej: \")
-        if (character === '\\' && Content[actualPosition + 1] === '"') {
-            stringCaptured += '"';
-            actualPosition += 2; // Saltar tanto la barra invertida como la comilla
-            character = Content[actualPosition];
-            continue;
-        }
-
         // Si encontramos una comilla de cierre, terminamos de capturar la cadena
         if (character === '"') {
             actualPosition++; // Avanzar después de la comilla de cierre
             break;
+        }
+
+        // Si encontramos una barra invertida, podemos tener un carácter escapado
+        if (character === '\\') {
+            actualPosition++;
+            character = Content[actualPosition];
+
+            if (character === '"') {
+                stringCaptured += '"';
+            } else {
+                stringCaptured += '\\' + character;
+            }
+
+            actualPosition++;
+            character = Content[actualPosition];
+            continue;
         }
 
         // Captura cualquier otro carácter dentro de la cadena
@@ -87,12 +164,15 @@ export function Strings(Position: number, Content: string): ReturnParams<string>
     }
 
     // Verifica si llegamos al final sin encontrar una comilla de cierre
-    if (actualPosition >= Content.length && character !== '"') {
-        throw new Error('Cadena sin comilla de cierre');
+    if (actualPosition > Content.length) {
+        throw new TypeError(`(Tokenizer) The text chain was not closed - ${stringCaptured}`);
     }
 
     return {
         position: actualPosition,  // Posición actualizada después de la comilla de cierre
-        value: stringCaptured      // Cadena capturada correctamente
+        value: {
+            type: "string",
+            value: stringCaptured.trim()
+        }
     }
 }

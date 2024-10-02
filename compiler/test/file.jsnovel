@@ -1,5 +1,9 @@
 // Otro comentario
 
-// var hola = "x"
+var hola = "xhjdgashjdaj";
+Audio BGM = "./src/example.mp3"
+Image Background = "./xddd.jpg"
 
-hola("parametro",   "example","parametro", "example")
+hola("parametro","example","parametro","example")
+
+funcionamiento()

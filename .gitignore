@@ -21,3 +21,6 @@ docs/yarn-debug.log*
 docs/yarn-error.log*
 
 index.html
+
+// Compiler
+compiler/dist

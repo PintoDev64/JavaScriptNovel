@@ -1,10 +1,5 @@
 import { CLOSE_PARENTHESIS, OPEN_PARENTHESIS } from "../constants";
 
-interface ASTBase {
-    type: "Program",
-    body: AstStructure[]
-}
-
 const GlobalVariablesExpect: {
     [key: string]: GlobalExpectType
 } = {
@@ -110,7 +105,7 @@ export default function Parser(ListTokens: TokensStructure[]) {
         throw new TypeError(`(Parser) Unknown token type: ${actualToken.type}`)
     }
 
-    const AST: ASTBase = {
+    const AST: AstBase = {
         type: "Program",
         body: []
     }

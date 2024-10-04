@@ -14,7 +14,7 @@ export function CheckPerformance(callback: CheckTimePerformanceParams): any {
         return callback()
     } catch (error: any) {
         console.log(
-            `\nMain Process -> ${(error as Error).name}\n└───┤ ${(error as Error).message} - ${(error as Error).stack} \n`
+            `\nMain Process -> ${(error as Error).name}\n└───┤ ${(error as Error).message}\n`
         )
     } finally {
         const End = Date.now()

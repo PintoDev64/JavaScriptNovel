@@ -2,7 +2,7 @@
 import { CommentLine, DeclarationNames, StringNumber, Strings } from "./components";
 
 // Contants
-import { CLOSE_PARENTHESIS, COMMENT_LINE, EQUALEVAL, LETTERS, NUMBERS, OPEN_PARENTHESIS, PARAMS_SEPARATOR, SEMICOLON, STRING, WHITESPACES } from "../constants";
+import { CLOSE_KEY, CLOSE_PARENTHESIS, COLON, COMMENT_LINE, EQUALEVAL, LETTERS, NUMBERS, OPEN_KEY, OPEN_PARENTHESIS, PARAMS_SEPARATOR, SEMICOLON, STRING, WHITESPACES } from "../constants";
 
 export default function Tokenizer(FileContent: string): TokensStructure[] {
 
@@ -16,6 +16,12 @@ export default function Tokenizer(FileContent: string): TokensStructure[] {
 
         if (cursorPosition >= FileContent.length) {
             throw new Error("Cursor out of limit")
+        }
+
+        if (actualCharacter === COLON) {
+            tokens.push({ type: "colon", value: COLON });
+            cursorPosition++;
+            continue;
         }
 
         // Manejar comentarios de línea
@@ -59,6 +65,20 @@ export default function Tokenizer(FileContent: string): TokensStructure[] {
             continue;
         }
 
+        // Procesa llaves abiertas
+        if (actualCharacter === OPEN_KEY) {
+            tokens.push({ type: "keys", value: OPEN_KEY })
+            cursorPosition++;
+            continue;
+        }
+
+        // Procesa llaves abiertas
+        if (actualCharacter === CLOSE_KEY) {
+            tokens.push({ type: "keys", value: CLOSE_KEY })
+            cursorPosition++;
+            continue;
+        }
+        
         // Procesa un caracter de "Igual" - "="
         if (actualCharacter === EQUALEVAL) {
             tokens.push({ type: "equal", value: EQUALEVAL });

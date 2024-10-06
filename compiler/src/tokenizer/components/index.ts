@@ -1,4 +1,4 @@
-import { LETTERS, NUMBERS, SPACEBAR, STRING } from "../../constants";
+import { LETTERS, NUMBERS, SPACEBAR } from "../../constants";
 
 interface ReturnParams {
     position: number;
@@ -13,6 +13,25 @@ const GlobalVariablesDefinitions: {
     Image: "image",
     Video: "video",
     Character: "character"
+}
+
+const GlobalSpecialDefinitions: Record<
+    GlobalSpecialType | string,
+    boolean
+> = {
+    Audio: true,
+    character: true,
+    Image: true,
+    Video: true,
+    if: true,
+    for: true,
+    scene: true,
+    background: true,
+    jump: true,
+    call: true,
+    play: true,
+    stop: true,
+    import: false
 }
 
 /**
@@ -76,10 +95,9 @@ export function DeclarationNames(Position: number, Content: string): ReturnParam
         if (actualPosition > Content.length) {
             throw new Error(`(DeclarationNames) Exceeded file length while capturing name: "${nameString}"`);
         }
-        
     }
 
-    if (GlobalVariablesDefinitions[nameString] !== undefined) {
+    if (GlobalVariablesDefinitions[nameString] !== undefined || GlobalSpecialDefinitions[nameString] !== undefined && GlobalSpecialDefinitions[nameString] === undefined) {
         return GlobalVariables(actualPosition, Content, nameString as GlobalVariablesType);
     }
 
@@ -116,7 +134,12 @@ function GlobalVariables(Position: number, Content: string, Type: GlobalVariable
     }
     if (GlobalVariablesDefinitions[varName] !== undefined) {
         throw new TypeError(
-            `(Tokenizer) The use of special names such as names is not permitted`
+            `(Tokenizer) The use of special names such as variable names is not allowed - "${varName}"`
+        );
+    }
+    if (GlobalSpecialDefinitions[varName] !== undefined) {
+        throw new TypeError(
+            `(Tokenizer) The use of special names such as variable names is not allowed - "${varName}"`
         );
     }
 

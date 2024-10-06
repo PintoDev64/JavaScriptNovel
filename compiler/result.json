@@ -13,7 +13,7 @@
                     },
                     "init": {
                         "type": "StringLiteral",
-                        "value": "12345"
+                        "value": "sd12345"
                     }
                 }
             ]
@@ -53,8 +53,35 @@
             ]
         },
         {
-            "type": "StringLiteral",
-            "value": "xhjdgashjdaj"
+            "type": "VariableDeclaration",
+            "kind": "character",
+            "declarations": [
+                {
+                    "type": "VariableDeclarator",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "Ookami"
+                    },
+                    "init": {
+                        "type": "CallExpression",
+                        "name": "character",
+                        "params": [
+                            {
+                                "type": "StringLiteral",
+                                "value": "Ookami"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "red"
+                            },
+                            {
+                                "type": "Identifier",
+                                "name": "black"
+                            }
+                        ]
+                    }
+                }
+            ]
         },
         {
             "type": "CallExpression",
@@ -78,6 +105,157 @@
                 {
                     "type": "StringLiteral",
                     "value": "example"
+                }
+            ],
+            "content": []
+        },
+        {
+            "type": "CallExpression",
+            "caller": {
+                "type": "Identifier",
+                "name": "scene"
+            },
+            "params": [
+                {
+                    "type": "StringLiteral",
+                    "value": "primera escena"
+                }
+            ],
+            "content": [
+                {
+                    "type": "CallExpression",
+                    "name": "play",
+                    "params": [
+                        {
+                            "type": "Identifier",
+                            "name": "BGM"
+                        }
+                    ]
+                },
+                {
+                    "type": "Identifier",
+                    "name": "Ookami"
+                },
+                {
+                    "type": "StringLiteral",
+                    "value": "Hola"
+                },
+                {
+                    "type": "CallExpression",
+                    "name": "choice",
+                    "params": [],
+                    "content": [
+                        {
+                            "type": "StringLiteral",
+                            "value": "Ir a la escuela",
+                            "content": [
+                                {
+                                    "type": "CallExpression",
+                                    "name": "jump",
+                                    "params": [
+                                        {
+                                            "type": "StringLiteral",
+                                            "value": "Escena Escuela"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "StringLiteral",
+                            "value": "No ir a la escuela",
+                            "content": [
+                                {
+                                    "type": "CallExpression",
+                                    "name": "jump",
+                                    "params": [
+                                        {
+                                            "type": "StringLiteral",
+                                            "value": "Escena Casa"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "CallExpression",
+                    "name": "choice",
+                    "params": [],
+                    "content": [
+                        {
+                            "type": "StringLiteral",
+                            "value": "Ir a la escuela",
+                            "content": [
+                                {
+                                    "type": "CallExpression",
+                                    "name": "jump",
+                                    "params": [
+                                        {
+                                            "type": "StringLiteral",
+                                            "value": "Escena Escuela"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "StringLiteral",
+                            "value": "No ir a la escuela",
+                            "content": [
+                                {
+                                    "type": "CallExpression",
+                                    "name": "jump",
+                                    "params": [
+                                        {
+                                            "type": "StringLiteral",
+                                            "value": "Escena Casa"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "CallExpression",
+                    "name": "choice",
+                    "params": [],
+                    "content": [
+                        {
+                            "type": "StringLiteral",
+                            "value": "Ir a la escuela",
+                            "content": [
+                                {
+                                    "type": "CallExpression",
+                                    "name": "jump",
+                                    "params": [
+                                        {
+                                            "type": "StringLiteral",
+                                            "value": "Escena Escuela"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "StringLiteral",
+                            "value": "No ir a la escuela",
+                            "content": [
+                                {
+                                    "type": "CallExpression",
+                                    "name": "jump",
+                                    "params": [
+                                        {
+                                            "type": "StringLiteral",
+                                            "value": "Escena Casa"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },

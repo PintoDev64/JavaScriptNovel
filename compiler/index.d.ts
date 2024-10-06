@@ -1,16 +1,19 @@
+type GlobalSpecialType = "if" | "Audio" | "Image" | "Video" | "Character" | "for" | "scene" | "background" | "jump" | "call" | "play" | "stop" | "import"
 type GlobalVariablesType = "global" | "audio" | "image" | "video" | "character"
 interface TokensStructure {
-    type: GlobalVariablesType | "comma" | "semicolon" | "name" | "number" | "parenthesis" | "string" | "equal",
-    value: number | string,
+    type: GlobalVariablesType | "comma" | "semicolon" | "name" | "number" | "parenthesis" | "string" | "equal" | "keys" | "colon",
+    value: string,
     [key: any]: any
 }
 
-type GlobalExpectType = "GlobalContext" | "AudioContext" | "ImageContext" | "VideoContext" | "CharacterContext" | "Program"
+type GlobalExpectType = "GlobalContext" | "AudioContext" | "ImageContext" | "VideoContext" | "CharacterContext" | "Program" | "ExpressionContent" | "ChoiceExpression"
 interface AstStructure {
     type: GlobalExpectType | "NumberLiteral" | "StringLiteral" | "Identifier" | "CallExpression",
-    name?: string | number,
-    value?: string | number,
+    name?: string,
+    value?: string | AstStructure,
     params?: AstStructure[],
+    valueType?: "number" | "string",
+    content?: AstStructure[],
     body?: AstStructure[],
     _context?: (AstStructure | AstVariableStructure)[],
     caller?: AstStructure
@@ -25,7 +28,7 @@ interface AstBase {
 interface AstDeclarationsStructure {
     type: "VariableDeclarator",
     id: AstStructure,
-    init: AstStructure
+    init: AstStructure | string | number
 }
 
 interface AstVariableStructure {

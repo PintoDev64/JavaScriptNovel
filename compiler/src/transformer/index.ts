@@ -7,7 +7,7 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
     }
 
     // Creamos un contexto para almacenar el nuevo AST.
-    ASTStructure._context = ASTConvert.body
+    ASTStructure._context = ASTConvert.body;
 
     Traverser(ASTStructure, {
         // Convertir literales numéricos
@@ -37,7 +37,8 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
                         type: "Identifier",
                         name: ASTNode.name
                     },
-                    params: []
+                    params: [],
+                    content: []
                 };
 
                 ASTNode._context = Expression.params;
@@ -46,14 +47,25 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
                     throw new Error("(Transformer) The parent node has no context");
                 }
 
-                if (parent?.type !== 'CallExpression') {
+                if (parent.type !== 'CallExpression') {
                     parent._context.push(Expression);
+                }
+
+                // Si hay contenido en la función (un bloque `{}`), lo manejamos
+                if (ASTNode.content && ASTNode.content.length > 0) {
+                    ASTNode.content.forEach((contentNode: AstStructure) => {
+                        Expression.content?.push(contentNode);
+                    });
                 }
             }
         },
         // Convertir contextos globales como 'GlobalContext'
         GlobalContext: {
             Enter(ASTNode, parent) {
+                console.log("GlobalContext -> ", ASTNode);
+
+                console.log("Global ->", ASTNode.valueType);
+
                 let GlobalVar: AstVariableStructure = {
                     type: "VariableDeclaration",
                     kind: "global",
@@ -64,7 +76,7 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
                             name: ASTNode.name
                         },
                         init: {
-                            type: "StringLiteral",
+                            type: /^[0-9]+$/.test(ASTNode.value as string) ? "NumberLiteral" : "StringLiteral",
                             value: ASTNode.value
                         }
                     }]
@@ -117,7 +129,7 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
                 parent?._context?.push(ImageVar);
             }
         },
-        // Otros contextos como 'VideoContext', 'CharacterContext' siguen el mismo patrón
+        // Convertir contextos de video
         VideoContext: {
             Enter(ASTNode, parent) {
                 let VideoVar: AstVariableStructure = {
@@ -139,8 +151,11 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
                 parent?._context?.push(VideoVar);
             }
         },
+        // Convertir contextos de personajes (Character)
         CharacterContext: {
             Enter(ASTNode, parent) {
+                if (ASTNode.value === undefined) throw new Error("(Transformer) Character data is not available");
+
                 let CharacterVar: AstVariableStructure = {
                     type: "VariableDeclaration",
                     kind: "character",
@@ -150,10 +165,7 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
                             type: "Identifier",
                             name: ASTNode.name
                         },
-                        init: {
-                            type: "StringLiteral",
-                            value: ASTNode.value
-                        }
+                        init: ASTNode.value
                     }]
                 };
 

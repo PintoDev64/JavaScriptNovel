@@ -8,5 +8,8 @@ export const LETTERS = /[a-z]/i;
 export const STRING = '"';
 export const SPACEBAR = /\s/
 export const EQUALEVAL = "="
+export const OPEN_KEY = "{"
+export const CLOSE_KEY = "}"
+export const COLON = ":";
 
 export const COMMENT_LINE = /^\s*\/\//;

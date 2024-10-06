@@ -21,7 +21,7 @@ Definiciones que el lenguaje posee para un uso y acceso mas avanzado a las herra
 	- [ ] **`background "<Image/Video Type>"`:** Define la imagen o video de fondo que se usara.
 	- [ ] **`jump(<nombre de la escena>)`:** Define el salto a una escena especifica.
 - ### Funciones
-	- [ ] **`choice { "<opcion>" {...} }`:** Define un menu para la toma de decisiones.
+	- [ ] **`choice() { "<opcion>" {...} }`:** Define un menu para la toma de decisiones.
 	- [ ] **`call <nombre de funcion>()`:** Permite acceder/usar una función creada/provista por el usuario/biblioteca.
 - ### Medios
 	- [ ] **`play(<canal>, <Audio Type>, <efecto>)`:** Reproduce un audio dependiendo el canal y ubicación del audio establecidos con los siguientes formatos establecidos:

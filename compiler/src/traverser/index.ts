@@ -13,6 +13,7 @@ export function Traverser(ASTLenguage: AstBase, ASTVisitor: AstVisitor) {
 
         // Ejecutamos el método "Enter" si existe
         if (MethodsTree.Enter) {
+            
             MethodsTree.Enter(ASTNode, parent);
         }
 

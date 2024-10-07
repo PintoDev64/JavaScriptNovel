@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5e27a84ef7d54e1a",
+        "id": "0bb7afd1b1695344",
         "type": "tabs",
         "children": [
           {
-            "id": "ed4e6a2071d66b47",
+            "id": "d353a404c1593d6b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -129,7 +129,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -146,11 +147,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ed4e6a2071d66b47",
+  "active": "d353a404c1593d6b",
   "lastOpenFiles": [
+    "✏ Sintaxis.md",
+    "2024-10-06.md",
+    "Untitled.canvas",
     "🖼 Style Guide.md",
     "🔨 JavaScriptNovel.md",
-    "✏ Sintaxis.md",
     "Images/JavaScriptNovel-240.png.crswap",
     "Images/JavaScriptNovel-240.png",
     "Images/JavaScriptNovel-480-svg.svg",

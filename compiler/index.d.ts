@@ -6,9 +6,9 @@ interface TokensStructure {
     [key: any]: any
 }
 
-type GlobalExpectType = "GlobalContext" | "AudioContext" | "ImageContext" | "VideoContext" | "CharacterContext" | "Program" | "ExpressionContent" | "ChoiceExpression"
+type GlobalExpectType = "GlobalContext" | "AudioContext" | "ImageContext" | "VideoContext" | "CharacterContext" | "Program" | "ExpressionContent" | "ChoiceExpression" | "NumberLiteral" | "StringLiteral" | "Identifier" | "CallExpression"
 interface AstStructure {
-    type: GlobalExpectType | "NumberLiteral" | "StringLiteral" | "Identifier" | "CallExpression",
+    type: GlobalExpectType,
     name?: string,
     value?: string | AstStructure,
     params?: AstStructure[],

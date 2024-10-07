@@ -18,22 +18,6 @@ scene("primera escena") {
             jump("Escena Casa")
         }
     }
-    choice() {
-        "Ir a la escuela": {
-            jump("Escena Escuela")
-        }
-        "No ir a la escuela": {
-            jump("Escena Casa")
-        }
-    }
-    choice() {
-        "Ir a la escuela": {
-            jump("Escena Escuela")
-        }
-        "No ir a la escuela": {
-            jump("Escena Casa")
-        }
-    }
 }
 
 funcionamiento

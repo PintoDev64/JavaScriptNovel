@@ -62,10 +62,6 @@ export default function Transformer(ASTStructure: AstBase): AstBase {
         // Convertir contextos globales como 'GlobalContext'
         GlobalContext: {
             Enter(ASTNode, parent) {
-                console.log("GlobalContext -> ", ASTNode);
-
-                console.log("Global ->", ASTNode.valueType);
-
                 let GlobalVar: AstVariableStructure = {
                     type: "VariableDeclaration",
                     kind: "global",

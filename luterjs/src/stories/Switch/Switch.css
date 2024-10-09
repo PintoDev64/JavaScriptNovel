@@ -1,0 +1,32 @@
+@import "../../index.css";
+
+.luterjs-switch {
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    border-radius: var(--BorderRadius-Large);
+    transition: all var(--StandarAnimationMedium) ease;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.luterjs-switch--active {
+    background-color: var(--PrimaryAccent);
+}
+.luterjs-switch--desactive {
+    background-color: var(--HoverAccent);
+}
+.luterjs-switch-indicator {
+    width: 20px;
+    height: 20px;
+    background-color: var(--SecondaryColor);
+    border-radius: var(--BorderRadius-Large);
+    transition: all var(--StandarAnimationMedium) ease;
+    position: absolute;
+    left: 0;
+    margin: 0 5px;
+}
+.luterjs-switch--active > .luterjs-switch-indicator {
+    background-color: var(--PrimaryColor);
+    transform: translateX(30px);
+}

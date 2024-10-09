@@ -1,0 +1,14 @@
+:root {
+  --PrimaryAccent: #4772B3;
+  --PrimaryColor: #ffffff;
+  --SecondaryColor: #000000;
+  
+  --BorderRadius-Small: 5px;
+  --BorderRadius-Medium: 10px;
+  --BorderRadius-Large: 15px;
+
+  --HoverAccent: #565656;
+
+  --StandarAnimationSmall: .2s;
+  --StandarAnimationMedium: .3s;
+}

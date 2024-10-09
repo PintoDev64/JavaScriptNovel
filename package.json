@@ -21,9 +21,15 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux",
+
+    "luterjs:start": "",
+    "luterjs:dev": "npm run storybook -w luterjs",
+    "luterjs:build": "npm run build-storybook -w luterjs",
+
     "docs:start": "npm run start -w docs",
     "docs:build": "",
     "docs:dev": "",
+
     "compiler:start": "cls && npm run start -w compiler",
     "compiler:build": "npm run build -w compiler",
     "compiler:dev": "npm run watch -w compiler"
@@ -34,7 +40,8 @@
   },
   "workspaces": [
     "compiler",
-    "docs"
+    "docs",
+    "luterjs"
   ],
   "keywords": [
     "visual",

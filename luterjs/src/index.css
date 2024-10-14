@@ -1,11 +1,14 @@
 :root {
   --PrimaryAccent: #4772B3;
   --PrimaryColor: #ffffff;
+  --SecondaryAccent: #353535;
   --SecondaryColor: #000000;
   
   --BorderRadius-Small: 5px;
   --BorderRadius-Medium: 10px;
   --BorderRadius-Large: 15px;
+
+  --TextSecondaryColor: #b3b3b3;
 
   --HoverAccent: #565656;
 

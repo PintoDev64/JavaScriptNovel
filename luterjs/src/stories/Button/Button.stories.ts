@@ -6,10 +6,6 @@ import Button from './Button';
 const meta = {
   title: 'LuterJs/Button',
   component: Button,
-  parameters: {
-
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   args: { onClick: fn() },
 } satisfies Meta<typeof Button>;

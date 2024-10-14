@@ -6,9 +6,6 @@ import Switch from './Switch'
 const meta = {
   title: 'LuterJs/Switch',
   component: Switch,
-  parameters: {
-    layout: 'centered'
-  },
   tags: ['autodocs'],
   args: { onClick: fn() }
 } satisfies Meta<typeof Switch>
@@ -16,7 +13,7 @@ const meta = {
 export default meta
 
 type Story = StoryObj<typeof meta>
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     defaultValue: false
   }

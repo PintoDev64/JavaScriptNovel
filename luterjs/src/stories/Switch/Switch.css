@@ -5,7 +5,7 @@
     width: 60px;
     height: 30px;
     border-radius: var(--BorderRadius-Large);
-    transition: all var(--StandarAnimationMedium) ease;
+    transition: all var(--StandarAnimationSmall) ease;
     display: flex;
     align-items: center;
     position: relative;
@@ -21,7 +21,7 @@
     height: 20px;
     background-color: var(--SecondaryColor);
     border-radius: var(--BorderRadius-Large);
-    transition: all var(--StandarAnimationMedium) ease;
+    transition: all var(--StandarAnimationSmall) ease;
     position: absolute;
     left: 0;
     margin: 0 5px;

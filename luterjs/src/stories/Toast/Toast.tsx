@@ -16,6 +16,7 @@ export default function Toast() {
             const newToasts = [...data];
             newToasts.splice(index, 1);
             setValue({
+                ...value,
                 toastElements: newToasts,
             });
         }

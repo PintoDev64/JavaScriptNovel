@@ -3,7 +3,9 @@
   --PrimaryColor: #ffffff;
   --SecondaryAccent: #353535;
   --SecondaryColor: #000000;
+  --PrimaryBg: #303030;
   
+  --BorderRadius-XSmall: 2.5px;
   --BorderRadius-Small: 5px;
   --BorderRadius-Medium: 10px;
   --BorderRadius-Large: 15px;
@@ -14,4 +16,6 @@
 
   --StandarAnimationSmall: .2s;
   --StandarAnimationMedium: .3s;
+
+  --BorderHeight-Standard: 3px;
 }

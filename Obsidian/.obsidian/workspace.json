@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0bb7afd1b1695344",
+        "id": "ee4ea2db651bbe70",
         "type": "tabs",
         "children": [
           {
-            "id": "d353a404c1593d6b",
+            "id": "1c57357b2b20b7ad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "✏ Sintaxis.md",
+                "file": "🖼 Style Guide.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "✏ Sintaxis.md",
+                "file": "🖼 Style Guide.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "✏ Sintaxis.md",
+                "file": "🖼 Style Guide.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "✏ Sintaxis.md"
+                "file": "🖼 Style Guide.md"
               }
             }
           }
@@ -147,15 +147,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d353a404c1593d6b",
+  "active": "1c57357b2b20b7ad",
   "lastOpenFiles": [
+    "Images/JavaScriptNovel-240.png",
+    "🖼 Style Guide.md",
     "✏ Sintaxis.md",
+    "🔨 JavaScriptNovel.md",
     "2024-10-06.md",
     "Untitled.canvas",
-    "🖼 Style Guide.md",
-    "🔨 JavaScriptNovel.md",
     "Images/JavaScriptNovel-240.png.crswap",
-    "Images/JavaScriptNovel-240.png",
     "Images/JavaScriptNovel-480-svg.svg",
     "Images/JavaScriptNovel-480.png",
     "Images/JavaScriptNovel-720.png",

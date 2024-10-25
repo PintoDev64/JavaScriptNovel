@@ -1,0 +1,18 @@
+{
+    "es": {
+        "Native": {
+            "File": "Archivo",
+            "Options": {
+                "newProject": "Nuevo Proyecto"
+            }
+        }
+    },
+    "en": {
+        "Native": {
+            "File": "File",
+            "Options": {
+                "newProject": "New Project"
+            }
+        }
+    }
+}

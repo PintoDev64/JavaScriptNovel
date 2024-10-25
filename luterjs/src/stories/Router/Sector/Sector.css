@@ -28,6 +28,7 @@
 }
 .luterjs-router_sector-header-title {
     color: var(--PrimaryColor);
+    font-weight: 700;
     text-align: center;
     width: 100%;
     margin: 0;

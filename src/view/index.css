@@ -1,0 +1,30 @@
+@import url('./satoshi.css');
+
+:root {
+    --PrimaryBg: #000000;
+    --SecondaryBG: #353535;
+    --TertiaryBg: #ff0000;
+
+    --TextColor: #ffffff;
+
+    --AnimationSmall: .2s;
+
+    --NativeHeight: 46px;
+
+    --BorderRadiusSmall: 2.5px;
+    --BorderRadiusMedium: 5px;
+}
+
+* {
+    font-family: Satoshi-Medium, sans-serif;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border: none;
+    outline: none;
+}

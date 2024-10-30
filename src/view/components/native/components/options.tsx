@@ -13,14 +13,26 @@ export default function Options() {
 
     const OptionsList: VarTypes.OptionsList = [
         {
-            name: Native.File,
+            name: Native.File.name,
             options: [
                 {
-                    name: Native.Options.newProject,
+                    name: Native.File.options.newProject,
                     exec: () => {
-                        console.log(Native.Options.newProject);
+                        console.log(Native.File.options.newProject);
                         setSelectOption("")
                     }
+                }
+            ]
+        },
+        {
+            name: Native.Profiles.name,
+            options: [
+                {
+                    name: Native.Profiles.options.default,
+                    exec: () => {
+                        console.log(Native.Profiles.options.default);
+                        setSelectOption("")
+                    },
                 }
             ]
         }

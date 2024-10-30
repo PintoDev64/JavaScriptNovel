@@ -1,17 +1,33 @@
 {
     "es": {
         "Native": {
-            "File": "Archivo",
-            "Options": {
-                "newProject": "Nuevo Proyecto"
+            "File": {
+                "name": "Archivo",
+                "options": {
+                    "newProject": "Nuevo Proyecto"
+                }
+            },
+            "Profiles": {
+                "name": "Perfiles",
+                "options": {
+                    "default": "Por Defecto"
+                }
             }
         }
     },
     "en": {
         "Native": {
-            "File": "File",
-            "Options": {
-                "newProject": "New Project"
+            "File": {
+                "name": "Archivo",
+                "options": {
+                    "newProject": "New Project"
+                }
+            },
+            "Profiles": {
+                "name": "Profiles",
+                "options": {
+                    "default": "Default"
+                }
             }
         }
     }

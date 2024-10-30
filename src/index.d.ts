@@ -37,16 +37,35 @@ declare namespace ContextContent {
   }
   interface Lenguage {
     LenguageState: LenguageValue;
-    ChangeLenguageState(data: ContextContent.LenguageReducer): void;
+    ChangeLenguageState(data: LenguageReducer): void;
+  }
+  // ------------------------------|
+  interface WorkspaceReducer {
+    StateToModify: "data";
+    StateValue: WorkspaceValue["data"];
+  }
+  interface WorkspaceValue {
+    data: {
+      width: number | 0;
+      main?: boolean;
+      content: {
+        identifier: string;
+        height: number | 0;
+      }[];
+    }[];
+  }
+  interface Workspace {
+    WorkspaceState: WorkspaceValue;
+    ChangeWorkspaceState(data: WorkspaceReducer): void;
   }
 }
 
 declare namespace VarTypes {
   type OptionsList = {
-    name: string,
+    name: string;
     options: {
-      name: string
-      exec: () => void
-    }[]
-  }[]
+      name: string;
+      exec: () => void;
+    }[];
+  }[];
 }

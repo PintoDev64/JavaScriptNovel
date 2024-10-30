@@ -1,0 +1,151 @@
+.NovelJs-router_sector {
+    min-width: 250px;
+    min-height: 200px;
+    width: 100%;
+    background: var(--QuarterBg);
+    border-radius: var(--BorderRadiusMedium);
+    position: relative;
+    flex-grow: 1;
+}
+.NovelJs-router_sector-header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border-bottom: var(--BorderHeight-Standard) var(--HoverAccent) solid;
+}
+.NovelJs-router_sector-header-title {
+    color: var(--TextColor);
+    text-align: center;
+    user-select: none;
+    font-size: 18px;
+    width: 100%;
+    font-family: 'Satoshi-Light', sans-serif;
+    margin: 0;
+}
+.NovelJs-router_sector-content {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 10px;
+    position: relative;
+    box-sizing: border-box;
+    height: calc(100% - 50px);
+}
+.NovelJs-router_sector-content::-webkit-scrollbar {
+    width: 5px;
+}
+.NovelJs-router_sector-content::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: var(--SecondaryColor);
+}
+/* ----------------| Selector |---------------- */
+.NovelJs-router_selector {
+    position: relative;
+}
+.NovelJs-router_selector-item {
+    cursor: pointer;
+    width: 64px;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 3px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--FifthBG);
+    border-radius: var(--BorderRadiusSmall);
+    transition: all var(--StandarAnimationSmall) ease;
+}
+.NovelJs-router_selector-item:hover {
+    background-color: var(--HoverAccent);
+}
+.NovelJs-router_selector-item-image,
+.NovelJs-router_selector-item-icon {
+    display: grid;
+    place-content: center;
+    user-select: none;
+    border-radius: var(--BorderRadiusSmall);
+}
+.NovelJs-router_selector-item-icon {
+    width: 12px;
+    height: 25px;
+}
+.NovelJs-router_selector-item-image-item {
+    border-radius: var(--BorderRadiusSmall);
+}
+/* ----------------| Items Selectables |---------------- */
+.NovelJs-router_selector-items_selectables {
+    z-index: 1;
+    position: absolute;
+    top: 150%;
+    left: -5px;
+    padding: 5px;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--SecondaryBG);
+    border-radius: var(--BorderRadiusMedium);
+    box-shadow: var(--PrimaryBg) 0 0 2px;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.NovelJs-router_selector-items_selectables.active {
+    display: flex;
+}
+.NovelJs-router_selector-items_selectables-item {
+    cursor: pointer;
+    display: flex;
+    width: fit-content;
+    margin: 5px;
+    height: 30px;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: var(--BorderRadiusSmall);
+}
+.NovelJs-router_selector-items_selectables-item:hover {
+    background-color: var(--HoverAccent);
+}
+.NovelJs-router_selector-items_selectables-item-image,
+.NovelJs-router_selector-items_selectables-item-span {
+    pointer-events: none;
+}
+.NovelJs-router_selector-items_selectables-item-span {
+    font-family: 'Satoshi-Light', sans-serif;
+    margin: 0 0 0 5px;
+    color: var(--TextColor);
+    font-weight: 700;
+}
+/* ----------------| Extras |---------------- */
+.grab-elementor {
+    cursor: grab;
+    max-width: 54px;
+    max-height: 14px;
+    min-width: 24px;
+    min-height: 14px;
+    padding: 0 6.5px 0 0;
+    margin: 0 0 0 13px;
+    width: 24px;
+    height: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+}
+.grab-elementor:active {
+    cursor: grabbing;
+}
+.grab-elementor-item {
+    width: 5px;
+    height: 5px;
+    border-radius: var(--BorderRadiusSmall);
+    background-color: var(--HoverAccent);
+}

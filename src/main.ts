@@ -3,6 +3,7 @@ import { join, resolve } from "path";
 
 // Events
 import { ElectronEvents } from "./app/events";
+import CreateShortcuts from "./app/shortcuts";
 
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -47,13 +48,11 @@ if (!app.requestSingleInstanceLock()) {
     mainWindow.on("ready-to-show", () => {
       mainWindow.show();
     });
-
-    mainWindow.webContents.openDevTools();
   };
 
   app.whenReady().then(() => {
     createWindow();
-    
+    CreateShortcuts(mainWindow);
     ElectronEvents(mainWindow);
   });
 

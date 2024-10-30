@@ -4,6 +4,10 @@
     --PrimaryBg: #000000;
     --SecondaryBG: #353535;
     --TertiaryBg: #ff0000;
+    --QuarterBg: #303030;
+    --FifthBG: #494949;
+
+    --HoverAccent: #565656;
 
     --TextColor: #ffffff;
 
@@ -13,18 +17,62 @@
 
     --BorderRadiusSmall: 2.5px;
     --BorderRadiusMedium: 5px;
+
+    --BorderHeight-Standard: 3px;
+
+    --StandarAnimationSmall: .1s;
 }
 
 * {
-    font-family: Satoshi-Medium, sans-serif;
+    font-family: 'Satoshi-Regular', sans-serif;
 }
 
 body {
     padding: 0;
     margin: 0;
+    background-color: var(--PrimaryBg);
 }
 
 button {
     border: none;
     outline: none;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.NovelJs-App {
+    width: 100vw;
+    height: 100%;
+    max-width: 100vw;
+    max-height: calc(100vh - 46px);
+    box-sizing: border-box;
+    padding: 5px 10px 10px;
+    display: flex;
+}
+
+.NovelJs-App-Columns {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+    gap: 5px;
+}
+
+.NovelJs-App-Columns-Modifiers {
+    width: 5px;
+    border-radius: var(--BorderRadiusSmall);
+    margin: 0 .5px;
+    min-width: 5px;
+    -webkit-user-drag: element;
+}
+
+.NovelJs-App-Columns-Modifiers:hover {
+    cursor: col-resize;
+    background-color: var(--TextColor);
+    transition: all var(--StandarAnimationSmall) ease;
 }

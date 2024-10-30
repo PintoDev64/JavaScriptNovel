@@ -8,9 +8,7 @@ import Options from "./components/options";
 
 export default function Native() {
     return (
-        <nav className={[
-            `${CSSClass.App}-Native`
-        ].join(" ")}>
+        <nav className={`${CSSClass.App}-Native`}>
             <NativeLogo />
             <Options />
             <NativeControls />

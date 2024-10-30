@@ -21,7 +21,7 @@ export default function LenguageProvider({ children }: LenguageProviderProps) {
     const dictionary = JSON.parse(PreloadContent().lenguage as unknown as string) as ApiDeclarations.PreloadContent['lenguage']
 
     const Initialize: ContextContent.LenguageValue = {
-        location: 'en',
+        location: 'es',
         dictionary
     }
 

@@ -8,10 +8,12 @@ interface OptionsListProps {
 export default function OptionList({ SelectOption, OptionsList }: OptionsListProps) {
     if (SelectOption.length === 0) return null;
 
+    console.log(SelectOption);
+
     return (
         <div className={`${CSSClass.App}-Native-OptionList`}>
             {
-                OptionsList.find(({ name }) => name, SelectOption).options.map(
+                OptionsList.find(({ name }) => name === SelectOption).options.map(
                     ({ name, exec }, index) =>
                         <div
                             key={index}

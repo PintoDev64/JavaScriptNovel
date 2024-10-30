@@ -23,16 +23,12 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "eslint --ext .ts,.tsx .",
-
-    
     "luterjs:start": "",
     "luterjs:dev": "npm run storybook -w luterjs",
     "luterjs:build": "npm run build-storybook -w luterjs",
-
     "docs:start": "npm run start -w docs",
     "docs:build": "",
     "docs:dev": "",
-
     "compiler:start": "cls && npm run start -w compiler",
     "compiler:build": "npm run build -w compiler",
     "compiler:dev": "npm run watch -w compiler"
@@ -55,6 +51,7 @@
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react": "^4.3.3",
     "electron": "33.0.2",
+    "elementaryjs": "^1.1.5",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
     "react": "^18.3.1",

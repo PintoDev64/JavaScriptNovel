@@ -1,6 +1,7 @@
 import { LocalRoute } from "elementaryjs";
 import { CSSClass } from "../../../constants";
 import SectorHeader from "./components/header";
+import GameRoute from "../router/Game";
 
 interface SectorProps {
     identifier: string;
@@ -22,7 +23,7 @@ export default function Sector({ identifier, height }: SectorProps) {
                     <p style={{ color: "#ffffff", margin: 0 }}>Home</p>
                 } />
                 <LocalRoute path="/game" context={identifier} component={
-                    <p style={{ color: "#ffffff", margin: 0 }}>Game</p>
+                    <GameRoute />
                 } />
             </div>
         </div>

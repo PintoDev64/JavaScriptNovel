@@ -30,7 +30,7 @@ export const WorkspaceTemplates: {
   {
     name: "Default",
     data: [
-      {
+      /* {
         width: 250,
         content: [
           {
@@ -42,7 +42,7 @@ export const WorkspaceTemplates: {
             height: 600,
           },
         ],
-      },
+      }, */
       {
         width: 0,
         main: true,

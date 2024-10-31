@@ -32,6 +32,8 @@ if (!app.requestSingleInstanceLock()) {
       height: 600,
       show: false,
       frame: false,
+      darkTheme: true,
+      center: true,
       webPreferences: {
         preload: join(__dirname, "preload.js"),
       },

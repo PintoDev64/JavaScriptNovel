@@ -6,9 +6,12 @@ import './index.css';
 import { WorkspaceContext } from "../../context";
 import Sector from "./components/sector";
 import { LocalRounting } from "elementaryjs";
+import CreateSector from "./components/createSector";
 
 export default function Application() {
     const { WorkspaceState, ChangeWorkspaceState } = useContext(WorkspaceContext);
+
+    console.log("-->", WorkspaceState);
 
     const [isDragging, setIsDragging] = useState(false);
     const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
@@ -30,8 +33,6 @@ export default function Application() {
 
         const deltaX = IsMain ? startX + event.clientX : startX - event.clientX;
 
-        console.log(deltaX);
-
         const newWidth = Math.max(250, initialWidth + deltaX)
 
         const updatedData = [...WorkspaceState.data];
@@ -51,7 +52,7 @@ export default function Application() {
     return (
         <main
             className={`${CSSClass.App}-App`}
-            onMouseMove={isDragging ? handleMouseMove : undefined} // Solo activar onMouseMove cuando esté arrastrando
+            onMouseMove={isDragging ? handleMouseMove : undefined}
             onMouseUp={handleMouseUp}>
             {WorkspaceState.data.map(({ content, width, main }, index) => (
                 <Fragment key={`modifier-${index}`}>
@@ -60,11 +61,11 @@ export default function Application() {
                             onMouseDown={(event) => handleMouseDown(event, index, main)}
                             className={`${CSSClass.App}-App-Columns-Modifiers`}
                             style={{
-                                cursor: "ew-resize", // Cambia el cursor para indicar que es redimensionable
+                                cursor: "ew-resize"
                             }}
                         />
                     )}
-                    <div
+                    <aside
                         style={{ width: width === 0 ? '100%' : `${width}px` }}
                         className={`${CSSClass.App}-App-Columns`} >
                         {content.map(({ height, identifier }, idx) => (
@@ -72,9 +73,11 @@ export default function Application() {
                                 <Sector {...{ height, identifier }} />
                             </LocalRounting>
                         ))}
-                    </div>
+                        <CreateSector type="bottom" index={index} />
+                    </aside>
                 </Fragment>
             ))}
+            <CreateSector type="right" />
         </main>
     );
 }

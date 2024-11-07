@@ -54,6 +54,8 @@
     "elementaryjs": "^1.1.7",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
+    "interlangjs": "^1.0.0",
+    "luter.component": "^1.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-node": "^10.9.2",

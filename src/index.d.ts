@@ -51,6 +51,7 @@ declare namespace ContextContent {
       content: {
         identifier: string;
         height: number | 0;
+        path?: string;
       }[];
     }[];
   }

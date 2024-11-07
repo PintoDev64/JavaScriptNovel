@@ -10,7 +10,8 @@
             "Profiles": {
                 "name": "Perfiles",
                 "options": {
-                    "default": "Por Defecto"
+                    "default": "Por Defecto",
+                    "test": "Prueba"
                 }
             }
         }
@@ -26,7 +27,8 @@
             "Profiles": {
                 "name": "Profiles",
                 "options": {
-                    "default": "Default"
+                    "default": "Default",
+                    "test": "Test"
                 }
             }
         }

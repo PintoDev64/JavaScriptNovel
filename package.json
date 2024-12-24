@@ -1,12 +1,43 @@
 {
-  "name": "noveljs",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "name": "noveljs",
+    "version": "1.0.0",
+    "author": "PintoDev64",
+    "description": "Visual Novel Game Engine for JavaScript",
+    "keywords": [
+        "javascript",
+        "windows",
+        "game-engine",
+        "visual-novel",
+        "noveljs",
+        "electronjs"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "test": "echo test"
+    },
+    "maintainers": [
+        {
+            "name": "PintoDev64",
+            "email": "joan.pinto.dev@gmail.com",
+            "url": "https://github.com/PintoDev64"
+        }
+    ],
+    "workspaces": [
+        "packages/*"
+    ],
+    "contributors": [
+        {
+            "name": "PintoDev64",
+            "email": "joan.pinto.dev@gmail.com",
+            "url": "https://github.com/PintoDev64"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PintoDev64/JavaScriptNovel"
+    },
+    "bugs": {
+        "email": "joan.pinto.dev@gmail.com",
+        "url": "https://github.com/PintoDev64/JavaScriptNovel/issues"
+    }
 }

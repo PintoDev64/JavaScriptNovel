@@ -1,17 +1,84 @@
+declare namespace NUtils {
+    interface Colors {
+        /**
+         * Color the text red
+         * @param text The text to color
+         * @returns The colored text
+         */
+        ErrorText: (text: string) => string;
+        /**
+         * Color the text yellow
+         * @param text The text to color
+         * @returns The colored text
+         */
+        WarningText: (text: string) => string;
+        /**
+         * Color the text cyan
+         * @param text The text to color
+         * @returns The colored text
+         */
+        InfoText: (text: string) => string;
+        /**
+         * Color the text green
+         * @param text The text to color
+         * @returns The colored text
+         */
+        SuccessText: (text: string) => string;
+    }
+}
+
 declare namespace NConstants {
     interface DEFAULT_VALUES {
-        readonly ELECTRON: Electron.BrowserWindowOptions;
+        readonly ELECTRON: Electron.BrowserWindowConstructorOptions;
         readonly SETTINGS: NSettingsModule.ISettignsStructure;
+    }
+}
+
+declare namespace NElectronModule {
+    interface IElectronInstance {
+        /**
+         * Get the electron app instance
+         */
+        getApp(): Electron.App;
+        /**
+         * Create a new browser window
+         */
+        createBrowserWindow(): Electron.BrowserWindow;
+        /**
+         * Start the browser window
+         */
+        startBrowserWindow(): void;
+        /**
+         * Get the browser window instance
+         */
+        getBrowserWindow(): Electron.BrowserWindow;
+        /**
+         * Get the ipcMain instance
+         */
+        getIpcMain(): typeof Electron.ipcMain;
     }
 }
 
 declare namespace NSettingsModule {
     type ISettignsStructure = Partial<{
+        /**
+         * Allows you to select components in the game view (development only)
+         */
         interactivity: boolean;
+        /**
+         * The port to run the Vite server on
+         */
         port: number;
+        /**
+         * The directory where the scripts are stored
+         */
         scriptDir: string;
+        /**
+         * The path to the translator file
+         */
+        traslator: string;
         advanced: {
-            electron: Electron.BrowserWindowOptions;
+            electron: Electron.BrowserWindowConstructorOptions;
         };
     }>
     interface ISettings {

@@ -11,7 +11,7 @@ body:
     description: What operating system did you use when the error occurred?
     options:
       - label: Windows
-        required: false
+        required: true
 
 - type: textarea
   id: expected_behavior
@@ -23,13 +23,6 @@ body:
     required: true
 
 - type: textarea
-  id: additional_context
-  attributes:
-    label: Additional Context
-    description: Add any other context about the problem here.
-    placeholder: Add any other context here...
-
-- type: textarea
   id: steps
   attributes:
     label: Steps to Reproduce
@@ -37,6 +30,13 @@ body:
     placeholder: Describe the steps here...
   validations:
     required: true
+
+- type: textarea
+  id: additional_context
+  attributes:
+    label: Additional Context
+    description: Add any other context about the problem here.
+    placeholder: Add any other context here...
 
 - type: checkboxes
   id: agreement

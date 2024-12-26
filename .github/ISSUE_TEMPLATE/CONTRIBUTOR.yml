@@ -1,0 +1,48 @@
+name: Bug Report
+description: Use this template to report a bug.
+title: "[BUG] Describe the bug here"
+labels: ["bug"]
+
+body: 
+- type: checkboxes
+  id: os
+  attributes:
+    label: Operative System
+    description: What operating system did you use when the error occurred?
+    options:
+      - label: Windows
+        required: false
+
+- type: textarea
+  id: expected_behavior
+  attributes:
+    label: Expected Behavior
+    description: Describe what you expected to happend.
+    placeholder: Describe the expected behavior here...
+  validations:
+    required: true
+
+- type: textarea
+  id: additional_context
+  attributes:
+    label: Additional Context
+    description: Add any other context about the problem here.
+    placeholder: Add any other context here...
+
+- type: textarea
+  id: steps
+  attributes:
+    label: Steps to Reproduce
+    description: Please describe the steps to reproduce the bug or upload a video.
+    placeholder: Describe the steps here...
+  validations:
+    required: true
+
+- type: checkboxes
+  id: agreement
+  attributes:
+    label: Agreement
+    description: Please confirm the following
+    options:
+      - label: I agree to follow the project's contribution guidelines.
+        required: true

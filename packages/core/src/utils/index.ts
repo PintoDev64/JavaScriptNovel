@@ -1,6 +1,24 @@
+import { readFileSync } from 'node:fs';
+import ERROR_DEFINITIONS from '../error';
+
 export const Colors: NUtils.Colors = {
     ErrorText: (text: string) => `\x1b[31m${text}\x1b[0m`,
     WarningText: (text: string) => `\x1b[33m${text}\x1b[0m`,
     InfoText: (text: string) => `\x1b[36m${text}\x1b[0m`,
     SuccessText: (text: string) => `\x1b[32m${text}\x1b[0m`
+};
+
+export const Utilities: NUtils.Utilities = {
+    getCurrentDateTime: (local: string) => new Date().toLocaleString(local),
+    getSyncJSONFile: (path: string) => {
+        try {
+            return JSON.parse(readFileSync(path, { encoding: 'utf-8' }));
+        } catch (error: unknown) {
+            console.log(
+                Colors.WarningText(`${ERROR_DEFINITIONS.SETTINGS.MISSING} Configuration file not found`),
+                Colors.InfoText(`Loading default values`)
+            );
+            return undefined
+        }
+    }
 };

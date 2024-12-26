@@ -1,4 +1,7 @@
 {
     "editor.detectIndentation": false,
-    "editor.indentSize": 4
+    "editor.indentSize": 4,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-issue-config.json": "file:///f%3A/librarys/noveljs/.github/ISSUE_TEMPLATE/config.yml"
+    }
 }

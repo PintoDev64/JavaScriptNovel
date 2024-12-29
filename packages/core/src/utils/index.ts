@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import ERROR_DEFINITIONS from '../error';
+import { resolve } from 'node:path';
 
 export const Colors: NUtils.Colors = {
     ErrorText: (text: string) => `\x1b[31m${text}\x1b[0m`,
@@ -9,7 +10,7 @@ export const Colors: NUtils.Colors = {
 };
 
 export const Utilities: NUtils.Utilities = {
-    getCurrentDateTime: (local: string) => new Date().toLocaleString(local),
+    getCurrentDateTime: (local: Intl.LocalesArgument) => new Date().toLocaleString(local),
     getSyncJSONFile: (path: string) => {
         try {
             return JSON.parse(readFileSync(path, { encoding: 'utf-8' }));
@@ -20,5 +21,12 @@ export const Utilities: NUtils.Utilities = {
             );
             return undefined
         }
+    },
+    getLibraryFiles: () => resolve(__dirname, '../src/files'),
+    getProjectFiles: (fileURl: string | string[]) => {
+        if (fileURl instanceof Array) {
+            return resolve(process.cwd(), ...fileURl);
+        }
+        return resolve(process.cwd(), fileURl);
     }
-};
+}

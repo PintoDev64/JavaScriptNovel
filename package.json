@@ -13,7 +13,10 @@
     ],
     "license": "MIT",
     "scripts": {
-        "test": "echo test"
+        "test": "echo test",
+        
+        "core:start": "npm run start -w packages/core",
+        "core:compile": "npm run compile -w packages/core"
     },
     "maintainers": [
         {

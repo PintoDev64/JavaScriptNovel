@@ -1,0 +1,11 @@
+export const PARENTHESIS_OPEN = '(';
+export const PARENTHESIS_CLOSE = ')';
+export const BRACKET_OPEN = '[';
+export const BRACKET_CLOSE = ']';
+export const CURLY_OPEN = '{';
+export const CURLY_CLOSE = '}';
+export const QUOTE = '"';
+export const SPACE = ' ';
+export const NEWLINE = '\n';
+export const COMMA = ',';
+export const LETTER = /[a-zA-Z]/;

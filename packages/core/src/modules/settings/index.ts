@@ -1,10 +1,11 @@
 import { join } from "node:path";
 import { DEFAULT_VALUES } from "../../constants";
-import { Utilities } from "../../utils";
+import { Colors, Utilities } from "../../utils";
+import ERROR_DEFINITIONS from "../../error";
 
 class Settings implements NSettingsModule.ISettings {
-    private static instance: NSettingsModule.ISettings;
-    private config: NSettingsModule.ISettignsStructure = {};
+    static instance: NSettingsModule.ISettings;
+    private config: NSettingsModule.ISettignsStructure = {} as NSettingsModule.ISettignsStructure;
 
     private constructor() { }
     /**
@@ -25,8 +26,13 @@ class Settings implements NSettingsModule.ISettings {
     getConfig(): NSettingsModule.ISettignsStructure {
         return this.config;
     }
+    getConfigKey(key: keyof NSettingsModule.ISettignsStructure): any {
+        return this.config[key];
+    }
     setConfig(config: NSettingsModule.ISettignsStructure): void {
-        if (!config) throw new Error('Config object is required');
+        if (!config) throw new Error(
+            Colors.ErrorText(`${this.constructor.name} - ${ERROR_DEFINITIONS.SETTINGS.MISSING}: failed to load configuration file`)
+        );
         this.config = config;
     }
 }

@@ -5,7 +5,11 @@
     "license": "MIT",
     "description": "Core module for NovelJs",
     "main": "dist/index.js",
-    "scripts": {},
+    "bin": "./bin/novelcore.js",
+    "scripts": {
+        "compile": "tsc --project ./tsconfig.json",
+        "start": "node ./bin/novelcore.js"
+    },
     "devDependencies": {
         "@types/electron": "^1.4.38",
         "@types/node": "^22.10.2",

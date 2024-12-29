@@ -38,6 +38,16 @@ declare namespace NUtils {
          * @async
          */
         getSyncJSONFile: (path: string) => NSettingsModule.ISettignsStructure | undefined;
+        /**
+         * Get the path to the library files
+         * @returns The path to the library local files
+         */
+        getLibraryFiles: () => string;
+        /**
+         * Get the path to the project files
+         * @returns The path to the project files
+         */
+        getProjectFiles: (fileURL: string) => string;
     }
 }
 
@@ -69,7 +79,7 @@ declare namespace NElectronModule {
         /**
          * Get the ipcMain instance
          */
-        getIpcMain(): typeof Electron.ipcMain;
+        getIpcMain(): Electron.IpcMain;
     }
 }
 
@@ -86,7 +96,7 @@ declare namespace NSettingsModule {
         /**
          * The directory where the scripts are stored
          */
-        scriptDir: string;
+        scripts: string;
         /**
          * The path to the translator file
          */
@@ -104,6 +114,9 @@ declare namespace NSettingsModule {
          * Set the configuration object
          */
         setConfig(config: ISettignsStructure): void;
-
+        /**
+         * Get a specific key from the configuration object
+         */
+        getConfigKey(key: keyof ISettignsStructure): any;
     }
 }

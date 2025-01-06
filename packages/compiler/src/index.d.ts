@@ -1,6 +1,19 @@
+type TTokenTypes =
+    | "paren"
+    | "space"
+    | "name"
+    | "number"
+    | "comma"
+    | "bracket"
+    | "curly"
+    | "doublequote"
+    | "equal";
+
 declare namespace NTokenizer {
     interface IToken {
-        type: TTokenSelectorResult[1];
+        line: number;
+        position: number;
+        type: TTokenTypes;
         character: string;
     }
     /**
@@ -8,20 +21,16 @@ declare namespace NTokenizer {
      * @returns {string[]} [content sector type, line position, cursor position]
      */
     type TTokenSelectorResult = [
-        /**
-         * Content character
-         */
         string,
-        (
-            | "paren"
-            | "space"
-            | "name"
-            | "number"
-            | "comma"
-            | "bracket"
-            | "curly"
-            | "doublequote"
-            | "equal"
-        ),
-        number]
+        TTokenTypes,
+        number
+    ]
+}
+
+declare namespace NParser {
+    interface INode {
+        type: string;
+        value: string;
+        params: INode[];
+    }
 }

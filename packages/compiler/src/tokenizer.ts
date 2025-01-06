@@ -21,7 +21,12 @@ export default async function Tokenizer(scriptContent: string): Promise<NTokeniz
                 cursorPosition
             );
 
-            type !== "space" && tokenList.push({ type, character });
+            type !== "space" && tokenList.push({
+                line: linePosition + 1,
+                position: cursorPosition,
+                type,
+                character
+            });
 
             cursorPosition = cursor + 1;
         }
@@ -94,7 +99,7 @@ function TokenSelector(
         return [stringCharacter, "equal", cursorPosition];
     }
 
-    throw new Error(
+    throw new SyntaxError(
         `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token "${stringCharacter}" at line ${linePosition}, position ${cursorPosition}`
     );
 }

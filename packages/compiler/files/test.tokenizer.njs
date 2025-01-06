@@ -1,2 +1,2 @@
 const Example = "Hola"
-Example
+Example()

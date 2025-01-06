@@ -1,0 +1,2 @@
+const Example = "Hola"
+Example

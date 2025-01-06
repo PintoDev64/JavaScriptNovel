@@ -1,15 +1,18 @@
 declare namespace NTokenizer {
     interface IToken {
-        type: string;
-        value: string;
+        type: TTokenSelectorResult[1];
+        character: string;
     }
     /**
      * Tokenizes the script content into a list of tokens
      * @returns {string[]} [content sector type, line position, cursor position]
      */
     type TTokenSelectorResult = [
-        string, (
-            | "newLine"
+        /**
+         * Content character
+         */
+        string,
+        (
             | "paren"
             | "space"
             | "name"
@@ -17,6 +20,8 @@ declare namespace NTokenizer {
             | "comma"
             | "bracket"
             | "curly"
-            | "quote"
-        ), number, number]
+            | "doublequote"
+            | "equal"
+        ),
+        number]
 }

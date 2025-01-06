@@ -4,7 +4,7 @@
         "dist"
     ],
     "compilerOptions": {
-        "module": "ESNext",
+        "module": "CommonJS",
         "target": "ES6",
         "moduleResolution": "node",
         "rootDir": "./",
@@ -15,6 +15,7 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
+        "skipLibCheck": true,
         "noImplicitAny": true,
         "strictNullChecks": true
     },

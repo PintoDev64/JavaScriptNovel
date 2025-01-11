@@ -9,12 +9,17 @@ type TTokenTypes =
     | "doublequote"
     | "equal";
 
+type TNodeType =
+    | "CallExpression"
+    | "StringLiteral"
+    | "NumberLiteral";
+
 declare namespace NTokenizer {
     interface IToken {
         line: number;
         position: number;
         type: TTokenTypes;
-        character: string;
+        value: string;
     }
     /**
      * Tokenizes the script content into a list of tokens
@@ -31,6 +36,6 @@ declare namespace NParser {
     interface INode {
         type: string;
         value: string;
-        params: INode[];
+        params?: INode[];
     }
 }

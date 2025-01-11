@@ -25,7 +25,7 @@ export default async function Tokenizer(scriptContent: string): Promise<NTokeniz
                 line: linePosition + 1,
                 position: cursorPosition,
                 type,
-                character
+                value: character
             });
 
             cursorPosition = cursor + 1;

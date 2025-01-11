@@ -11,3 +11,15 @@ export const COMMA = ',';
 export const LETTER = /[a-zA-Z]/;
 export const NUMBER = /[0-9]/;
 export const Equal = '=';
+
+export const TOKEN_TYPES: Record<TTokenTypes, TTokenTypes> = {
+    number: "paren",
+    paren: "space",
+    space: "name",
+    name: "number",
+    comma: "comma",
+    bracket: "bracket",
+    curly: "curly",
+    doublequote: "doublequote",
+    equal: "equal"
+};

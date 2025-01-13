@@ -1,0 +1,62 @@
+[
+    {
+        "line": 1,
+        "position": 0,
+        "type": "name",
+        "value": "const"
+    },
+    {
+        "line": 1,
+        "position": 6,
+        "type": "name",
+        "value": "Example"
+    },
+    {
+        "line": 1,
+        "position": 14,
+        "type": "equal",
+        "value": "="
+    },
+    {
+        "line": 1,
+        "position": 16,
+        "type": "doublequote",
+        "value": "\""
+    },
+    {
+        "line": 1,
+        "position": 17,
+        "type": "name",
+        "value": "Hola"
+    },
+    {
+        "line": 1,
+        "position": 21,
+        "type": "doublequote",
+        "value": "\""
+    },
+    {
+        "line": 2,
+        "position": 0,
+        "type": "name",
+        "value": "Example"
+    },
+    {
+        "line": 2,
+        "position": 7,
+        "type": "paren",
+        "value": "("
+    },
+    {
+        "line": 2,
+        "position": 8,
+        "type": "paren",
+        "value": ")"
+    },
+    {
+        "line": 3,
+        "position": 0,
+        "type": "number",
+        "value": "12345"
+    }
+]

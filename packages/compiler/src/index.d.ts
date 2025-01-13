@@ -10,7 +10,11 @@ type TTokenTypes =
     | "equal";
 
 type TNodeType =
+    | "Example"
     | "CallExpression"
+    | "FunctionExpression"
+    | "DefinitionExpression"
+    | "VariableExpression"
     | "StringLiteral"
     | "NumberLiteral";
 
@@ -34,8 +38,10 @@ declare namespace NTokenizer {
 
 declare namespace NParser {
     interface INode {
-        type: string;
-        value: string;
+        type: TNodeType;
+        value: string | number;
         params?: INode[];
+        pseudoParams?: string[],
+        content?: INode[]
     }
 }

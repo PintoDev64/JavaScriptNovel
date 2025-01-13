@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
 // Methods
@@ -14,5 +14,6 @@ describe("Tokenizer", {},() => {
     it("should return a token list {NTokenizer.IToken type}", async () => {
         const tokenList = await Tokenizer(scriptContent);
         console.log("Tokenizer Result:\n",tokenList);
+        writeFileSync("files/test.parser.json", JSON.stringify(tokenList, null, 4))
     });
 });

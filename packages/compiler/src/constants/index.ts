@@ -10,13 +10,13 @@ export const NEWLINE = /\r?\n/g;
 export const COMMA = ',';
 export const LETTER = /[a-zA-Z]/;
 export const NUMBER = /[0-9]/;
-export const Equal = '=';
+export const EQUAL = '=';
 
 export const TOKEN_TYPES: Record<TTokenTypes, TTokenTypes> = {
-    number: "paren",
-    paren: "space",
-    space: "name",
-    name: "number",
+    number: "number",
+    paren: "paren",
+    space: "space",
+    name: "name",
     comma: "comma",
     bracket: "bracket",
     curly: "curly",

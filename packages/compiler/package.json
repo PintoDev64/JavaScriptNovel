@@ -8,7 +8,7 @@
     "scripts": {
         "start": "node ./dist/index.js",
         "compile": "rmdir /s /q dist && tsc --project ./tsconfig.json",
-        "test": "node ./dist/test/tokenizer.test.js"
+        "test": "node --run compile && node ./dist/test/tokenizer.test.js && node ./dist/test/parser.test.js"
     },
     "devDependencies": {
         "@types/node": "^22.10.2",

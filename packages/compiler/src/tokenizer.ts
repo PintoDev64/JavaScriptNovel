@@ -1,4 +1,4 @@
-import { LETTER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, SPACE, BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, NEWLINE, DOUBLEQUOTE, NUMBER, Equal } from "./constants";
+import { LETTER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, SPACE, BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, NEWLINE, DOUBLEQUOTE, NUMBER, EQUAL } from "./constants";
 import ERROR_DEFINITIONS from "./error";
 
 /**
@@ -67,8 +67,21 @@ function TokenSelector(
         return [string, "name", newCursor];
     }
 
+    if (NUMBER.test(stringCharacter)) {
+        let stringNumber = [];
+        let newCursor = cursorPosition;
+        while (
+            scriptContentArray[linePosition].length > newCursor + 1 &&
+            NUMBER.test(scriptContentArray[linePosition][newCursor + 1])
+        ) {
+            newCursor++;
+            stringNumber.push(scriptContentArray[linePosition][newCursor]);
+        }
+        return [stringCharacter.concat(...stringNumber), "number", newCursor];
+    }
+
     if (stringCharacter == COMMA) {
-        return [stringCharacter, "space", cursorPosition];
+        return [stringCharacter, "comma", cursorPosition];
     }
 
     if (stringCharacter === BRACKET_OPEN) {
@@ -91,11 +104,7 @@ function TokenSelector(
         return [stringCharacter, "doublequote", cursorPosition];
     }
 
-    if (NUMBER.test(stringCharacter)) {
-        return [stringCharacter, "number", cursorPosition];
-    }
-
-    if (stringCharacter === Equal) {
+    if (stringCharacter === EQUAL) {
         return [stringCharacter, "equal", cursorPosition];
     }
 

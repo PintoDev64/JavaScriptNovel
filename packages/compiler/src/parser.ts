@@ -1,4 +1,6 @@
-import { CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, SPACE, TOKEN_TYPES } from "./constants";
+import { CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, PARENTHESIS_OPEN, SPACE, TOKEN_TYPES, TOKEN_SPECIAL_TYPES } from "./constants";
+import ErrorFunctions from "./error";
+import { ParserTokenParenValidation } from "./utils";
 
 export default async function Parser(scriptTokens: NTokenizer.IToken[]): Promise<NParser.INode[]> {
     const ASTNodes: NParser.INode[] = [];
@@ -34,7 +36,7 @@ function parseNode(tokens: NTokenizer.IToken[], cursorPosition: number): [number
 
         INode.value = NodeStringCollection.join(SPACE)
 
-        return [actualCursor, INode]
+        return [++actualCursor, INode]
     }
 
     // Eval & Parse Number Literal
@@ -44,37 +46,45 @@ function parseNode(tokens: NTokenizer.IToken[], cursorPosition: number): [number
             value: Number(token.value)
         }
 
-        return [actualCursor, INode]
+        return [++actualCursor, INode]
     }
 
     // Eval & Parse VariableExpression, CallExpression or FunctionExpression
     if (token.type === TOKEN_TYPES.name) {
-        token = tokens[++actualCursor]
-
         let INode: NParser.INode = {
             type: 'VariableExpression',
             value: token.value
         };
+        let nextToken = tokens[actualCursor + 1]
+        
+        if (nextToken.type === TOKEN_TYPES.paren && nextToken.value === PARENTHESIS_OPEN) {
+            if (TOKEN_SPECIAL_TYPES[token.value as TTokenSpecialNames] !== undefined) ErrorFunctions.Parser.NameNotAllowed(token.value, token.line, token.position);
 
-        if (token.type === TOKEN_TYPES.paren && token.value === PARENTHESIS_OPEN) {
+            ++actualCursor
+            token = tokens[actualCursor]
+            nextToken = tokens[actualCursor + 1]
+
             INode.type = "CallExpression"
-            token = tokens[++actualCursor]
-
-            while (token.type !== TOKEN_TYPES.paren && token.value !== PARENTHESIS_CLOSE) {
+            
+            while (ParserTokenParenValidation(token, nextToken)) {
                 if (typeof INode?.params === "undefined") INode["params"] = [];
                 ++actualCursor
 
                 const [cursor, INodeParam] = parseNode(tokens, actualCursor)
                 INode.params?.push(INodeParam)
 
+                
                 actualCursor = cursor
                 token = tokens[actualCursor]
+                nextToken = tokens[actualCursor + 1]
             }
+            
+            ++actualCursor
         }
 
         if (token.type === TOKEN_TYPES.curly && token.value === CURLY_OPEN) {
             INode.type = "FunctionExpression"
-            token = tokens[++actualCursor]
+            token = tokens[actualCursor]
 
             while (token.type !== TOKEN_TYPES.curly && token.value !== CURLY_CLOSE) {
                 if (typeof INode?.content === "undefined") INode["content"] = [];
@@ -84,16 +94,16 @@ function parseNode(tokens: NTokenizer.IToken[], cursorPosition: number): [number
                 INode.content?.push(INodeParam)
 
                 actualCursor = cursor
-                token = tokens[actualCursor]
+                token = tokens[++actualCursor]
             }
         }
 
-        return [actualCursor, INode]
+        return [++actualCursor, INode]
     }
 
     if (token.type === TOKEN_TYPES.comma || token.type === TOKEN_TYPES.equal || token.type === TOKEN_TYPES.bracket || token.type === TOKEN_TYPES.space) {
         return [++actualCursor, { type: "Example", value: token.value }]
     }
 
-    throw new Error(`token no reconized - token: ${token.type} - line: ${token.line}, position: ${token.position}`);
+    return ErrorFunctions.Parser.TokenUnrecognized(token.type, token.value, token.line, token.position)
 }

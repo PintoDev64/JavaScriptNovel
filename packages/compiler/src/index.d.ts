@@ -1,3 +1,9 @@
+type TTokenSpecialNames = 
+    | "const"
+    | "var"
+    | "audio"
+    | "image";
+
 type TTokenTypes =
     | "paren"
     | "space"

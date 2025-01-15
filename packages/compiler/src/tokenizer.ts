@@ -1,5 +1,5 @@
 import { LETTER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, SPACE, BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, NEWLINE, DOUBLEQUOTE, NUMBER, EQUAL } from "./constants";
-import ERROR_DEFINITIONS from "./error";
+import ErrorFunctions from "./error";
 
 /**
  * Tokenizes the script content into a list of tokens
@@ -108,7 +108,5 @@ function TokenSelector(
         return [stringCharacter, "equal", cursorPosition];
     }
 
-    throw new SyntaxError(
-        `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token "${stringCharacter}" at line ${linePosition}, position ${cursorPosition}`
-    );
+    return ErrorFunctions.Tokenizer.TokenUnrecognized(stringCharacter, linePosition, cursorPosition)
 }

@@ -12,6 +12,13 @@ export const LETTER = /[a-zA-Z]/;
 export const NUMBER = /[0-9]/;
 export const EQUAL = '=';
 
+export const TOKEN_SPECIAL_TYPES: Record<TTokenSpecialNames, TTokenSpecialNames> = {
+    const: "const",
+    var: "var",
+    audio: "audio",
+    image: "image"
+}
+
 export const TOKEN_TYPES: Record<TTokenTypes, TTokenTypes> = {
     number: "number",
     paren: "paren",

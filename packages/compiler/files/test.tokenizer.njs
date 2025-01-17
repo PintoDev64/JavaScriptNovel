@@ -1,3 +1,7 @@
 const Example = "Hola"
-Example()
+Example(Example, Hola)
+
+Hola
+"XD"
+
 12345

@@ -9,6 +9,8 @@ import { ConsoleColors } from "../src/utils/index.js";
 // Tests
 describe("Unit Methods Test", {}, () => {
     it("Tokenizer: return a token list with type {NTokenizer.IToken}", async () => {
+        console.log(`${ConsoleColors.cyan("Tokenizer ↘")}`);
+        
         // Files Constants
         const scriptContent = readFileSync("files/test.tokenizer.njs", {
             encoding: "utf-8"
@@ -20,6 +22,8 @@ describe("Unit Methods Test", {}, () => {
     });
 
     it("Parser: return content with type {NParser.IToken}", async () => {
+        console.log(`${ConsoleColors.cyan("Parser ↘")}`);
+        
         // Files Constants
         const scriptContent = readFileSync("files/test.parser.json", {
             encoding: "utf-8"

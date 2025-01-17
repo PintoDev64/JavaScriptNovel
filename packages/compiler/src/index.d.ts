@@ -20,6 +20,7 @@ type TNodeType =
     | "CallExpression"
     | "FunctionExpression"
     | "DefinitionExpression"
+    | "UseExpression"
     | "VariableExpression"
     | "StringLiteral"
     | "NumberLiteral";
@@ -45,7 +46,8 @@ declare namespace NTokenizer {
 declare namespace NParser {
     interface INode {
         type: TNodeType;
-        value: string | number;
+        value?: string | number | INode;
+        name?: string
         params?: INode[];
         pseudoParams?: string[],
         content?: INode[]

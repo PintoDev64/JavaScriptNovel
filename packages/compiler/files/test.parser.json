@@ -50,11 +50,53 @@
     {
         "line": 2,
         "position": 8,
+        "type": "name",
+        "value": "Example"
+    },
+    {
+        "line": 2,
+        "position": 15,
+        "type": "comma",
+        "value": ","
+    },
+    {
+        "line": 2,
+        "position": 17,
+        "type": "name",
+        "value": "Hola"
+    },
+    {
+        "line": 2,
+        "position": 21,
         "type": "paren",
         "value": ")"
     },
     {
-        "line": 3,
+        "line": 4,
+        "position": 0,
+        "type": "name",
+        "value": "Hola"
+    },
+    {
+        "line": 5,
+        "position": 0,
+        "type": "doublequote",
+        "value": "\""
+    },
+    {
+        "line": 5,
+        "position": 1,
+        "type": "name",
+        "value": "XD"
+    },
+    {
+        "line": 5,
+        "position": 3,
+        "type": "doublequote",
+        "value": "\""
+    },
+    {
+        "line": 7,
         "position": 0,
         "type": "number",
         "value": "12345"

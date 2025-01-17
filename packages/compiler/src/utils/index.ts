@@ -1,10 +1,14 @@
-import { PARENTHESIS_CLOSE, TOKEN_TYPES } from "../constants";
+import { PARENTHESIS_CLOSE, TOKEN_SPECIAL_TYPES, TOKEN_TYPES } from "../constants";
 
 export function ParserTokenParenValidation(actualToken: NTokenizer.IToken, nextToken: NTokenizer.IToken) {
-    return (
-        (actualToken.type !== TOKEN_TYPES.paren && actualToken.value !== PARENTHESIS_CLOSE) &&
-        (nextToken.type !== TOKEN_TYPES.paren && nextToken.value === PARENTHESIS_CLOSE)
-    )
+    // Permite procesar mientras no se cierre el paréntesis
+    return !(actualToken.type === TOKEN_TYPES.paren && actualToken.value === PARENTHESIS_CLOSE) &&
+        !(nextToken.type === TOKEN_TYPES.paren && nextToken.value === PARENTHESIS_CLOSE);
+}
+
+
+export function ParserTokenIsNotSpecialName(token: NTokenizer.IToken) {
+    return TOKEN_SPECIAL_TYPES[token.value.toLocaleLowerCase() as TTokenSpecialNames] !== undefined
 }
 
 export const ConsoleColors = {

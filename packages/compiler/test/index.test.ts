@@ -20,7 +20,7 @@ describe("Unit Methods Test", {}, () => {
         console.log(`${ConsoleColors.cyan("Tokenizer Result:")}\n`, tokenList);
         writeFileSync("files/test.parser.json", JSON.stringify(tokenList, null, 4))
     });
-
+    
     it("Parser: return content with type {NParser.IToken}", async () => {
         console.log(`${ConsoleColors.cyan("Parser ↘")}`);
         
@@ -28,8 +28,9 @@ describe("Unit Methods Test", {}, () => {
         const scriptContent = readFileSync("files/test.parser.json", {
             encoding: "utf-8"
         });
-
+        
         const parsedList = await Parser(JSON.parse(scriptContent));
         console.log(`${ConsoleColors.cyan("Parser Result:")}\n`, parsedList);
+        writeFileSync("files/test.transformer.json", JSON.stringify(parsedList, null, 4))
     });
 });

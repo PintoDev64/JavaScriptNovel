@@ -1,0 +1,36 @@
+[
+    {
+        "type": "VariableExpression",
+        "value": {
+            "type": "StringLiteral",
+            "value": "Hola"
+        },
+        "name": "Example"
+    },
+    {
+        "type": "CallExpression",
+        "value": "Example",
+        "params": [
+            {
+                "type": "UseExpression",
+                "value": "Example"
+            },
+            {
+                "type": "UseExpression",
+                "value": "Hola"
+            }
+        ]
+    },
+    {
+        "type": "UseExpression",
+        "value": "Hola"
+    },
+    {
+        "type": "StringLiteral",
+        "value": "XD"
+    },
+    {
+        "type": "NumberLiteral",
+        "value": 12345
+    }
+]

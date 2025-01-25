@@ -8,7 +8,7 @@
         "name": "Example"
     },
     {
-        "type": "CallExpression",
+        "type": "FunctionExpression",
         "value": "Example",
         "params": [
             {
@@ -18,6 +18,32 @@
             {
                 "type": "UseExpression",
                 "value": "Hola"
+            }
+        ],
+        "content": [
+            {
+                "type": "UseExpression",
+                "value": "XD"
+            },
+            {
+                "type": "FunctionExpression",
+                "value": "Example",
+                "params": [
+                    {
+                        "type": "UseExpression",
+                        "value": "Example"
+                    },
+                    {
+                        "type": "UseExpression",
+                        "value": "Hola"
+                    }
+                ],
+                "content": [
+                    {
+                        "type": "UseExpression",
+                        "value": "XD"
+                    }
+                ]
             }
         ]
     },

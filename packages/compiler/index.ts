@@ -1,6 +1,6 @@
 // TODO: File to export compiler methods
-import Tokenizer from "src/tokenizer";
+import CompilerTokenizer from "src/modules/tokenizer/index.js";
 
 export {
-    Tokenizer
+    CompilerTokenizer
 };

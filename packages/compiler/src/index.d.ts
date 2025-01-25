@@ -25,6 +25,34 @@ type TNodeType =
     | "StringLiteral"
     | "NumberLiteral";
 
+declare namespace NError {
+    type TErrorTypes = 
+        | "Tokenizer"
+        | "Parser";
+
+    type TErrorFunctionNames =
+        | "TokenUnrecognized"
+        | "MissingToken"
+        | "NameNotAllowed";
+
+    type TErrorFunction = 
+        | "Tokenizer.TokenUnrecognized"
+        | "Parser.TokenUnrecognized"
+        | "Parser.MissingToken"
+        | "Parser.NameNotAllowed";
+
+    interface IErrorFunctions {
+        Tokenizer: {
+            TokenUnrecognized: (character: string, line: number, cursor: number) => void
+        },
+        Parser: {
+            TokenUnrecognized: (type: string, value: string, line: number, cursor: number) => void,
+            MissingToken: (name: string, line: number, cursor: number) => void,
+            NameNotAllowed: (name: string, line: number, cursor: number) => void
+        }
+    }
+}
+
 declare namespace NTokenizer {
     interface IToken {
         line: number;
@@ -52,4 +80,12 @@ declare namespace NParser {
         pseudoParams?: string[],
         content?: INode[]
     }
+}
+
+declare namespace NDirector {
+    type IInstructionList = Function[]
+}
+
+declare interface EngineContext {
+    [key: string]: any
 }

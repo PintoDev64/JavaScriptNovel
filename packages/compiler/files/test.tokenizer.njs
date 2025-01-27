@@ -1,11 +1,11 @@
-const Example = "Hola"
+const Example32 = "Hola"
 Example(Example, Hola) {
     XD
     XD
-    Example(Example, Hola) {
-        XD
-        ""Hola()""
-    }
+    XD
+    XD
+    XD
+    XD
 }
 
 Hola

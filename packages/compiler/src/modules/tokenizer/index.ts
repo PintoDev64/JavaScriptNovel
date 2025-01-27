@@ -1,45 +1,26 @@
 import { NEWLINE } from "../../constants";
-import TokenSelector from "./convertToToken";
+import CreateToken from "./createToken";
 
-/**
- * Tokenizes the script content into a list of tokens
- * @param {string} scriptContent Content of the script to be parsed as a string
- */
-export default async function CompilerTokenizer(scriptContent: string): Promise<NTokenizer.IToken[]> {
-    const scriptContentArray = scriptContent.split(NEWLINE);
-    const tokenList: NTokenizer.IToken[] = [];
-    let linePosition = 0;
-    let cursorPosition = 0;
+export default function CompilerTokenizer(scriptContent: string): NTokenizer.IToken[] {
+    const ScriptLines = scriptContent.split(NEWLINE);
+    const Tokens: NTokenizer.IToken[] = [];
 
-    function ReadLineContent(scriptContentArray: string[], linePosition: number, cursorPosition: number) {
-        const stringCharacter = scriptContentArray[linePosition][cursorPosition];
-        const [character, type, cursor] = TokenSelector(
-            scriptContentArray,
-            stringCharacter,
-            linePosition,
-            cursorPosition
-        );
+    let actualLine = 0;
+    let actualCursor = 0;
 
-        type !== "space" && tokenList.push({
-            line: linePosition + 1,
-            position: cursorPosition,
-            type: type,
-            value: character
-        });
-
-        cursorPosition = cursor + 1;
-
-        return [cursorPosition];
-    }
-
-    while (scriptContentArray.length > linePosition) {
-        cursorPosition = 0;
-        while (scriptContentArray[linePosition].length > cursorPosition) {
-            const [cursor] = ReadLineContent(scriptContentArray, linePosition, cursorPosition);
-            cursorPosition = cursor;
+    while (actualLine < ScriptLines.length) {
+        actualCursor = 0
+        while (actualCursor < ScriptLines[actualLine].length) {
+            const [line, position, type, value] = CreateToken(
+                ScriptLines[actualLine],
+                actualLine,
+                actualCursor
+            )
+            Tokens.push({ line, position, type, value })
+            actualCursor = position
         }
-        linePosition++
+        actualLine++
     }
 
-    return tokenList;
+    return Tokens
 }

@@ -21,7 +21,7 @@ export const TOKEN_SPECIAL_TYPES: Record<TTokenSpecialNames, TTokenSpecialNames>
 
 export const TOKEN_TYPES: Record<TTokenTypes, TTokenTypes> = {
     number: "number",
-    paren: "paren",
+    parenthesis: "parenthesis",
     space: "space",
     name: "name",
     comma: "comma",

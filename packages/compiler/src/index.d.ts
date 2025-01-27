@@ -5,7 +5,7 @@ type TTokenSpecialNames =
     | "image";
 
 type TTokenTypes =
-    | "paren"
+    | "parenthesis"
     | "space"
     | "name"
     | "number"
@@ -16,7 +16,6 @@ type TTokenTypes =
     | "equal";
 
 type TNodeType =
-    | "Example"
     | "CallExpression"
     | "FunctionExpression"
     | "DefinitionExpression"
@@ -72,17 +71,10 @@ declare namespace NTokenizer {
 }
 
 declare namespace NParser {
-    interface INode {
-        type: TNodeType;
-        value?: string | number | INode;
-        name?: string
-        params?: INode[];
-        pseudoParams?: string[],
-        content?: INode[]
-    }
+
 }
 
-declare namespace NDirector {
+declare namespace NInstructor {
     type IInstructionList = Function[]
 }
 

@@ -1,19 +1,34 @@
-type TTokenSpecialNames = 
-    | "const"
+type TTokenSpecialNames =
     | "var"
     | "audio"
-    | "image";
+    | "image"
+    | "scene"
+    | "jump"
+    | "char"
+    | "play"
+    | "stop"
+    | "await"
+    | "show"
+    | "hide"
+    | "function"
+    | "interface"
+    | "background"
+    | "translate"
+    | "character"
+    | "mediaaudio";
 
 type TTokenTypes =
+    | "keyword"
     | "parenthesis"
     | "space"
-    | "name"
+    | "identifier"
     | "number"
     | "comma"
     | "bracket"
     | "curly"
     | "doublequote"
-    | "equal";
+    | "equal"
+    | "string";
 
 type TNodeType =
     | "CallExpression"
@@ -25,7 +40,7 @@ type TNodeType =
     | "NumberLiteral";
 
 declare namespace NError {
-    type TErrorTypes = 
+    type TErrorTypes =
         | "Tokenizer"
         | "Parser";
 
@@ -34,7 +49,7 @@ declare namespace NError {
         | "MissingToken"
         | "NameNotAllowed";
 
-    type TErrorFunction = 
+    type TErrorFunction =
         | "Tokenizer.TokenUnrecognized"
         | "Parser.TokenUnrecognized"
         | "Parser.MissingToken"
@@ -53,21 +68,15 @@ declare namespace NError {
 }
 
 declare namespace NTokenizer {
+    /**
+     * Interface/structure of each generated token
+     */
     interface IToken {
         line: number;
         position: number;
         type: TTokenTypes;
         value: string;
     }
-    /**
-     * Tokenizes the script content into a list of tokens
-     * @returns {string[]} [content sector type, line position, cursor position]
-     */
-    type TTokenSelectorResult = [
-        string,
-        TTokenTypes,
-        number
-    ]
 }
 
 declare namespace NParser {

@@ -1,14 +1,7 @@
-const Example32 = "Hola"
+const Example32 = "Hola XD"
+Image Example32 = "Hola XD"
+const Example32 = "Hola XD"
 Example(Example, Hola) {
     XD
-    XD
-    XD
-    XD
-    XD
-    XD
 }
-
-Hola
-"XD"
-
 12345

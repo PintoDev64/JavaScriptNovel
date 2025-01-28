@@ -16,7 +16,7 @@ export default function CompilerTokenizer(scriptContent: string): NTokenizer.ITo
                 actualLine,
                 actualCursor
             )
-            Tokens.push({ line, position, type, value })
+            Tokens.push({ line: line + 1, position: actualCursor, type, value })
             actualCursor = position
         }
         actualLine++

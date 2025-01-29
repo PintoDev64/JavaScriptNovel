@@ -5,6 +5,12 @@ const ERROR_DEFINITIONS = {
 
 const ErrorFunctions: NError.IErrorFunctions = {
     Tokenizer: {
+        TypeError: (character: string, line: number, cursor: number) => {
+            throw new SyntaxError(
+                `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token "${character}" at line ${line}, position ${cursor}`
+            );
+        }
+        ,
         TokenUnrecognized: (character: string, line: number, cursor: number) => {
             throw new SyntaxError(
                 `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token "${character}" at line ${line}, position ${cursor}`
@@ -12,6 +18,16 @@ const ErrorFunctions: NError.IErrorFunctions = {
         }
     },
     Parser: {
+        TokenValueInvalid: (type: string, value: string, line: number, cursor: number) => {
+            throw new Error(
+                `${ERROR_DEFINITIONS.PARSER} - token value is not valid with our expression's "${type}" and value: "${value}" at line ${line}, position ${cursor}`
+            )
+        },
+        TokenInvalid: (type: string, value: string, line: number, cursor: number) => {
+            throw new Error(
+                `${ERROR_DEFINITIONS.PARSER} - token is not valid with our expression's "${type}" and value: "${value}" at line ${line}, position ${cursor}`
+            )
+        },
         TokenUnrecognized: (type: string, value: string, line: number, cursor: number) => {
             throw new Error(
                 `${ERROR_DEFINITIONS.PARSER} - token is not recognized for the parser with type "${type}" and value: "${value}" at line ${line}, position ${cursor}`

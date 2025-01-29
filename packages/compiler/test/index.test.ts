@@ -11,6 +11,7 @@ describe("Unit Methods Test", () => {
         console.log(`${ConsoleColors.cyan("Tokenizer ↘")}`);
         const FileContent = readFileSync("files/test.tokenizer.njs", { encoding: 'utf-8' });
         const result = CompilerTokenizer(FileContent)
+        console.log(result);
         const resultConvert = JSON.stringify(result, null,4)
         writeFileSync("files/test.parser.json", resultConvert, { encoding: 'utf-8' })
     });

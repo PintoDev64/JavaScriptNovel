@@ -8,6 +8,7 @@ export const DOUBLEQUOTE = '"';
 export const SPACE = /\s/;
 export const NEWLINE = /\r?\n/g;
 export const COMMA = ',';
+export const POINT = '.';
 export const LETTER = /[a-zA-Z]/;
 export const NUMBER = /[0-9]/;
 export const EQUAL = '=';

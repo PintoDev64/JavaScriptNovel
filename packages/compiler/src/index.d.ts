@@ -31,11 +31,14 @@ type TTokenTypes =
     | "string";
 
 type TNodeType =
+    | "Program"
     | "CallExpression"
     | "FunctionExpression"
-    | "DefinitionExpression"
     | "UseExpression"
     | "VariableExpression"
+    | "ImageExpression"
+    | "AudioExpression"
+    | "CharacterExpression"
     | "StringLiteral"
     | "NumberLiteral";
 
@@ -50,16 +53,22 @@ declare namespace NError {
         | "NameNotAllowed";
 
     type TErrorFunction =
+        | "Tokenizer.TypeError"
         | "Tokenizer.TokenUnrecognized"
         | "Parser.TokenUnrecognized"
+        | "Parser.TokenValueInvalid"
+        | "Parser.TokenNotValid"
         | "Parser.MissingToken"
         | "Parser.NameNotAllowed";
 
     interface IErrorFunctions {
         Tokenizer: {
+            TypeError: (character: string, line: number, cursor: number) => void
             TokenUnrecognized: (character: string, line: number, cursor: number) => void
         },
         Parser: {
+            TokenValueInvalid: (type: string, value: string, line: number, cursor: number) => void
+            TokenInvalid: (type: string, value: string, line: number, cursor: number) => void
             TokenUnrecognized: (type: string, value: string, line: number, cursor: number) => void,
             MissingToken: (name: string, line: number, cursor: number) => void,
             NameNotAllowed: (name: string, line: number, cursor: number) => void
@@ -80,7 +89,18 @@ declare namespace NTokenizer {
 }
 
 declare namespace NParser {
-
+    interface INodeEntry {
+        type: "Program"
+        body: INode[]
+    }
+    interface INode {
+        type: TNodeType
+        name: string
+        value?: string | number
+        params?: INode[]
+        content?: INode[]
+        body?: INode
+    }
 }
 
 declare namespace NInstructor {

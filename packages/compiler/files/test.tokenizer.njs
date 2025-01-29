@@ -1,7 +1,7 @@
-const Example32 = "Hola XD"
+Var Example32 = "Hola XD"
 Image Example32 = "Hola XD"
-const Example32 = "Hola XD"
-Example(Example, Hola) {
+Audio Example32 = "Hola XD"
+Scene(Example, Hola) {
     XD
 }
-12345
+12345.5

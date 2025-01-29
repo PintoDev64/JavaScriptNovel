@@ -2,18 +2,24 @@
     {
         "line": 1,
         "position": 0,
-        "type": "identifier",
-        "value": "const Example32 "
+        "type": "keyword",
+        "value": "Var"
     },
     {
         "line": 1,
-        "position": 16,
+        "position": 3,
+        "type": "identifier",
+        "value": "Example32"
+    },
+    {
+        "line": 1,
+        "position": 13,
         "type": "equal",
         "value": "="
     },
     {
         "line": 1,
-        "position": 17,
+        "position": 15,
         "type": "string",
         "value": "Hola XD"
     },
@@ -27,11 +33,11 @@
         "line": 2,
         "position": 5,
         "type": "identifier",
-        "value": "Example32 "
+        "value": "Example32"
     },
     {
         "line": 2,
-        "position": 16,
+        "position": 15,
         "type": "equal",
         "value": "="
     },
@@ -44,12 +50,18 @@
     {
         "line": 3,
         "position": 0,
-        "type": "identifier",
-        "value": "const Example32 "
+        "type": "keyword",
+        "value": "Audio"
     },
     {
         "line": 3,
-        "position": 16,
+        "position": 5,
+        "type": "identifier",
+        "value": "Example32"
+    },
+    {
+        "line": 3,
+        "position": 15,
         "type": "equal",
         "value": "="
     },
@@ -62,42 +74,42 @@
     {
         "line": 4,
         "position": 0,
-        "type": "identifier",
-        "value": "Example"
+        "type": "keyword",
+        "value": "Scene"
     },
     {
         "line": 4,
-        "position": 7,
+        "position": 5,
         "type": "parenthesis",
         "value": "("
     },
     {
         "line": 4,
-        "position": 8,
+        "position": 6,
         "type": "identifier",
         "value": "Example"
     },
     {
         "line": 4,
-        "position": 15,
+        "position": 13,
         "type": "comma",
         "value": ","
     },
     {
         "line": 4,
-        "position": 16,
+        "position": 14,
         "type": "identifier",
         "value": "Hola"
     },
     {
         "line": 4,
-        "position": 21,
+        "position": 19,
         "type": "parenthesis",
         "value": ")"
     },
     {
         "line": 4,
-        "position": 22,
+        "position": 20,
         "type": "curly",
         "value": "{"
     },
@@ -117,6 +129,6 @@
         "line": 7,
         "position": 0,
         "type": "number",
-        "value": "12345"
+        "value": "12345.5"
     }
 ]

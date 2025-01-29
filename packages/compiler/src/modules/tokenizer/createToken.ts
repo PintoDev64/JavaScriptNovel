@@ -1,4 +1,4 @@
-import { BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, EQUAL, LETTER, NUMBER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, SPACE, TOKEN_KEYWORDS } from "../../constants";
+import { BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, EQUAL, LETTER, NUMBER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, POINT, SPACE, TOKEN_KEYWORDS } from "../../constants";
 import { ThrowErrorIf } from "../../error";
 
 /**
@@ -25,7 +25,7 @@ export default function CreateToken(LineContent: string, line: number, cursor: n
     }
 
     if (NUMBER.test(TokenLetter)) {
-        const [NewCursor, LetterChain] = NumberCheck(LineContent, ActualCursor)
+        const [NewCursor, LetterChain] = NumberCheck(LineContent, line, ActualCursor)
         return [line, NewCursor, "number", LetterChain]
     }
 
@@ -42,7 +42,7 @@ export default function CreateToken(LineContent: string, line: number, cursor: n
     }
 
     if (TokenLetter === DOUBLEQUOTE) {
-        const [NewCursor, _, LetterChain] = NameCheck(LineContent, ++ActualCursor, false)
+        const [NewCursor, _, LetterChain] = NameCheck(LineContent, ++ActualCursor, true)
         return [line, NewCursor + 1, "string", LetterChain]
     }
 
@@ -54,37 +54,45 @@ export default function CreateToken(LineContent: string, line: number, cursor: n
         return [line, ActualCursor + 1, "equal", TokenLetter]
     }
 
-    return ThrowErrorIf(true, "Tokenizer.TokenUnrecognized")(TokenLetter, line + 1, cursor)
+    return ThrowErrorIf(true, "Tokenizer.TokenUnrecognized")(TokenLetter, line + 1, cursor + 1)
 }
 
-function NameCheck(LineContent: string, cursor: number, CheckKeywords: boolean = true): [number, TTokenTypes, string] {
+function NameCheck(LineContent: string, cursor: number, CheckSpaces: boolean = false): [number, TTokenTypes, string] {
     let LetterChain: string = "";
-    let ActualCursor = cursor;
-    let ActualType: TTokenTypes = "identifier";
+    let LocalCursor = cursor;
+    let LocalType: TTokenTypes = "identifier";
     while (
-        ActualCursor < LineContent.length &&
-        LETTER.test(LineContent[ActualCursor]) ||
-        NUMBER.test(LineContent[ActualCursor]) ||
-        SPACE.test(LineContent[ActualCursor])
+        LocalCursor < LineContent.length &&
+        LETTER.test(LineContent[LocalCursor]) ||
+        NUMBER.test(LineContent[LocalCursor]) ||
+        (CheckSpaces && SPACE.test(LineContent[LocalCursor]))
     ) {
-        if (CheckKeywords && typeof TOKEN_KEYWORDS[LetterChain.toLowerCase() as TTokenSpecialNames] !== "undefined") break;
-        LetterChain += LineContent[ActualCursor];
-        ActualCursor++
+        LetterChain += LineContent[LocalCursor];
+        LocalCursor++
     }
-    if (typeof TOKEN_KEYWORDS[LetterChain.toLowerCase() as TTokenSpecialNames] !== "undefined") ActualType = "keyword";
+    if (typeof TOKEN_KEYWORDS[LetterChain.toLowerCase() as TTokenSpecialNames] !== "undefined") LocalType = "keyword";
 
-    return [ActualCursor, ActualType, LetterChain]
+    return [LocalCursor, LocalType, LetterChain]
 }
 
-function NumberCheck(LineContent: string, cursor: number): [number, string] {
+function NumberCheck(LineContent: string, line: number, cursor: number): [number, string] {
     let StringNumber: string = "";
-    let ActualCursor = cursor;
+    let LocalCursor = cursor;
+    let Decimal = false
     while (
-        ActualCursor < LineContent.length &&
-        NUMBER.test(LineContent[ActualCursor])
+        LocalCursor < LineContent.length &&
+        LineContent[LocalCursor] === POINT ||
+        NUMBER.test(LineContent[LocalCursor])
     ) {
-        StringNumber += LineContent[ActualCursor];
-        ActualCursor++
+        if (Decimal === true && LineContent[LocalCursor] === POINT) {
+            ThrowErrorIf(true, "Tokenizer.TypeError")(LineContent[LocalCursor], line + 1, LocalCursor + 1);
+        }
+        if (Decimal === false && LineContent[LocalCursor] === POINT) {
+            Decimal = true
+        }
+
+        StringNumber += LineContent[LocalCursor];
+        LocalCursor++
     }
-    return [ActualCursor, StringNumber]
+    return [LocalCursor, StringNumber]
 }

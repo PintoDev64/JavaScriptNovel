@@ -9,19 +9,19 @@
         "line": 1,
         "position": 3,
         "type": "identifier",
-        "value": "Example32"
+        "value": "HolaXD"
     },
     {
         "line": 1,
-        "position": 13,
+        "position": 10,
         "type": "equal",
         "value": "="
     },
     {
         "line": 1,
-        "position": 15,
-        "type": "string",
-        "value": "Hola XD"
+        "position": 12,
+        "type": "identifier",
+        "value": "HolaXD"
     },
     {
         "line": 2,
@@ -33,19 +33,19 @@
         "line": 2,
         "position": 5,
         "type": "identifier",
-        "value": "Example32"
+        "value": "Paisaje"
     },
     {
         "line": 2,
-        "position": 15,
+        "position": 13,
         "type": "equal",
         "value": "="
     },
     {
         "line": 2,
-        "position": 17,
+        "position": 15,
         "type": "string",
-        "value": "Hola XD"
+        "value": "Paisaje.png"
     },
     {
         "line": 3,
@@ -57,78 +57,138 @@
         "line": 3,
         "position": 5,
         "type": "identifier",
-        "value": "Example32"
+        "value": "BgMusic"
     },
     {
         "line": 3,
-        "position": 15,
+        "position": 13,
         "type": "equal",
         "value": "="
     },
     {
         "line": 3,
-        "position": 17,
-        "type": "string",
-        "value": "Hola XD"
-    },
-    {
-        "line": 4,
-        "position": 0,
+        "position": 15,
         "type": "keyword",
-        "value": "Scene"
+        "value": "MediaAudio"
     },
     {
-        "line": 4,
-        "position": 5,
+        "line": 3,
+        "position": 26,
         "type": "parenthesis",
         "value": "("
     },
     {
-        "line": 4,
-        "position": 6,
-        "type": "identifier",
-        "value": "Example"
+        "line": 3,
+        "position": 27,
+        "type": "string",
+        "value": "music/BgMusic.mp3"
     },
     {
-        "line": 4,
-        "position": 13,
+        "line": 3,
+        "position": 46,
         "type": "comma",
         "value": ","
     },
     {
-        "line": 4,
-        "position": 14,
-        "type": "identifier",
-        "value": "Hola"
+        "line": 3,
+        "position": 47,
+        "type": "string",
+        "value": "bg"
     },
     {
-        "line": 4,
-        "position": 19,
+        "line": 3,
+        "position": 52,
         "type": "parenthesis",
         "value": ")"
     },
     {
         "line": 4,
-        "position": 20,
-        "type": "curly",
-        "value": "{"
+        "position": 0,
+        "type": "keyword",
+        "value": "Char"
     },
     {
-        "line": 5,
-        "position": 0,
+        "line": 4,
+        "position": 4,
         "type": "identifier",
-        "value": "XD"
+        "value": "personaje"
     },
     {
-        "line": 6,
-        "position": 0,
-        "type": "curly",
-        "value": "}"
+        "line": 4,
+        "position": 14,
+        "type": "equal",
+        "value": "="
     },
     {
-        "line": 7,
-        "position": 0,
-        "type": "number",
-        "value": "12345.5"
+        "line": 4,
+        "position": 16,
+        "type": "keyword",
+        "value": "Character"
+    },
+    {
+        "line": 4,
+        "position": 26,
+        "type": "parenthesis",
+        "value": "("
+    },
+    {
+        "line": 4,
+        "position": 27,
+        "type": "string",
+        "value": "personajes"
+    },
+    {
+        "line": 4,
+        "position": 39,
+        "type": "comma",
+        "value": ","
+    },
+    {
+        "line": 4,
+        "position": 40,
+        "type": "bracket",
+        "value": "["
+    },
+    {
+        "line": 4,
+        "position": 42,
+        "type": "string",
+        "value": "sprite1.png"
+    },
+    {
+        "line": 4,
+        "position": 55,
+        "type": "comma",
+        "value": ","
+    },
+    {
+        "line": 4,
+        "position": 56,
+        "type": "string",
+        "value": "sprite2.png"
+    },
+    {
+        "line": 4,
+        "position": 70,
+        "type": "bracket",
+        "value": "]"
+    },
+    {
+        "line": 4,
+        "position": 71,
+        "type": "comma",
+        "value": ","
+    },
+    {
+        "line": 4,
+        "position": 72,
+        "type": "string",
+        "value": "#ff0000"
+    },
+    {
+        "line": 4,
+        "position": 82,
+        "type": "parenthesis",
+        "value": ")"
     }
 ]

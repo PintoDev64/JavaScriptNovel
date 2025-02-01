@@ -1,0 +1,78 @@
+{
+    "type": "Program",
+    "body": [
+        {
+            "type": "VariableDeclaration",
+            "name": "HolaXD",
+            "value": {
+                "type": "StringLiteral",
+                "name": "",
+                "value": "HolaXD"
+            }
+        },
+        {
+            "type": "ImageDeclaration",
+            "name": "Paisaje",
+            "value": {
+                "type": "StringLiteral",
+                "name": "",
+                "value": "Paisaje.png"
+            }
+        },
+        {
+            "type": "AudioDeclaration",
+            "name": "BgMusic",
+            "value": {
+                "type": "CallExpression",
+                "name": "MediaAudio",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "name": "",
+                        "value": "music/BgMusic.mp3"
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "name": "",
+                        "value": "bg"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CharacterDeclaration",
+            "name": "personaje",
+            "value": {
+                "type": "CallExpression",
+                "name": "Character",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "name": "",
+                        "value": "personajes"
+                    },
+                    {
+                        "type": "ArrayExpression",
+                        "elements": [
+                            {
+                                "type": "StringLiteral",
+                                "name": "",
+                                "value": "sprite1.png"
+                            },
+                            {
+                                "type": "StringLiteral",
+                                "name": "",
+                                "value": "sprite2.png"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "name": "",
+                        "value": "#ff0000"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -33,12 +33,13 @@ type TTokenTypes =
 type TNodeType =
     | "Program"
     | "CallExpression"
-    | "FunctionExpression"
-    | "UseExpression"
+    | "FunctionDeclaration"
     | "VariableExpression"
-    | "ImageExpression"
-    | "AudioExpression"
-    | "CharacterExpression"
+    | "ArrayExpression"
+    | "VariableDeclaration"
+    | "ImageDeclaration"
+    | "AudioDeclaration"
+    | "CharacterDeclaration"
     | "StringLiteral"
     | "NumberLiteral";
 
@@ -47,29 +48,15 @@ declare namespace NError {
         | "Tokenizer"
         | "Parser";
 
-    type TErrorFunctionNames =
-        | "TokenUnrecognized"
-        | "MissingToken"
-        | "NameNotAllowed";
-
-    type TErrorFunction =
-        | "Tokenizer.TypeError"
-        | "Tokenizer.TokenUnrecognized"
-        | "Parser.TokenUnrecognized"
-        | "Parser.TokenValueInvalid"
-        | "Parser.TokenNotValid"
-        | "Parser.MissingToken"
-        | "Parser.NameNotAllowed";
-
     interface IErrorFunctions {
         Tokenizer: {
-            TypeError: (character: string, line: number, cursor: number) => void
-            TokenUnrecognized: (character: string, line: number, cursor: number) => void
+            TypeError: (line: number, cursor: number) => void
+            TokenUnrecognized: (line: number, cursor: number) => void
         },
         Parser: {
-            TokenValueInvalid: (type: string, value: string, line: number, cursor: number) => void
-            TokenInvalid: (type: string, value: string, line: number, cursor: number) => void
-            TokenUnrecognized: (type: string, value: string, line: number, cursor: number) => void,
+            TokenValueInvalid: (line: number, cursor: number) => void
+            TokenInvalid: (value: string, line: number, cursor: number) => void
+            TokenUnrecognized: (value: string, line: number, cursor: number) => void,
             MissingToken: (name: string, line: number, cursor: number) => void,
             NameNotAllowed: (name: string, line: number, cursor: number) => void
         }
@@ -77,6 +64,7 @@ declare namespace NError {
 }
 
 declare namespace NTokenizer {
+    type FCreteToken = [number, number, TTokenTypes, string];
     /**
      * Interface/structure of each generated token
      */
@@ -95,11 +83,13 @@ declare namespace NParser {
     }
     interface INode {
         type: TNodeType
-        name: string
-        value?: string | number
-        params?: INode[]
-        content?: INode[]
-        body?: INode
+        name?: string
+        value?: string | number | INode
+        arguments?: INode[]
+        body?: INode[]
+        predirectives?: INode[]
+        directives?: INode[]
+        elements?   : INode[]
     }
 }
 

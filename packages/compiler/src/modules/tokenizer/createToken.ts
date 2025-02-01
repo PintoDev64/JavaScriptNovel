@@ -1,4 +1,4 @@
-import { BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, EQUAL, LETTER, NUMBER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, POINT, SPACE, TOKEN_KEYWORDS } from "../../constants";
+import { BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, EQUAL, LETTER, NUMBER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, POINT, SEMICOLON, SPACE, SPECIALLETTERS, TOKEN_KEYWORDS } from "../../constants";
 import { ThrowErrorIf } from "../../error";
 
 /**
@@ -8,12 +8,12 @@ import { ThrowErrorIf } from "../../error";
  * @param cursor position of the cursor of the fragment to read
  * @returns Returns the new line, position, type and result of the generated token
  */
-export default function CreateToken(LineContent: string, line: number, cursor: number): [number, number, TTokenTypes, string] {
+export default function CreateToken(LineContent: string, line: number, cursor: number): NTokenizer.FCreteToken | undefined {
     let ActualCursor = cursor
     let TokenLetter = LineContent[ActualCursor]
 
-    if (SPACE.test(TokenLetter)) {
-        while (SPACE.test(TokenLetter)) {
+    if (SPACE.test(TokenLetter) || TokenLetter === SEMICOLON) {
+        while (SPACE.test(TokenLetter) || TokenLetter === SEMICOLON) {
             ActualCursor++
             TokenLetter = LineContent[ActualCursor]
         }
@@ -54,7 +54,7 @@ export default function CreateToken(LineContent: string, line: number, cursor: n
         return [line, ActualCursor + 1, "equal", TokenLetter]
     }
 
-    return ThrowErrorIf(true, "Tokenizer.TokenUnrecognized")(TokenLetter, line + 1, cursor + 1)
+    ThrowErrorIf(true, "Tokenizer")?.TokenUnrecognized(line + 1, ActualCursor + 1)
 }
 
 function NameCheck(LineContent: string, cursor: number, CheckSpaces: boolean = false): [number, TTokenTypes, string] {
@@ -63,9 +63,15 @@ function NameCheck(LineContent: string, cursor: number, CheckSpaces: boolean = f
     let LocalType: TTokenTypes = "identifier";
     while (
         LocalCursor < LineContent.length &&
-        LETTER.test(LineContent[LocalCursor]) ||
-        NUMBER.test(LineContent[LocalCursor]) ||
-        (CheckSpaces && SPACE.test(LineContent[LocalCursor]))
+        LineContent[LocalCursor] !== DOUBLEQUOTE &&
+        LineContent[LocalCursor] !== PARENTHESIS_OPEN &&
+        LineContent[LocalCursor] !== CURLY_OPEN &&
+        LineContent[LocalCursor] !== BRACKET_OPEN &&
+        LineContent[LocalCursor] !== COMMA &&
+        (LETTER.test(LineContent[LocalCursor]) ||
+            NUMBER.test(LineContent[LocalCursor]) ||
+            SPECIALLETTERS.test(LineContent[LocalCursor]) ||
+            (CheckSpaces && SPACE.test(LineContent[LocalCursor])))
     ) {
         LetterChain += LineContent[LocalCursor];
         LocalCursor++
@@ -85,7 +91,7 @@ function NumberCheck(LineContent: string, line: number, cursor: number): [number
         NUMBER.test(LineContent[LocalCursor])
     ) {
         if (Decimal === true && LineContent[LocalCursor] === POINT) {
-            ThrowErrorIf(true, "Tokenizer.TypeError")(LineContent[LocalCursor], line + 1, LocalCursor + 1);
+            ThrowErrorIf(true, "Tokenizer")?.TypeError(line + 1, LocalCursor + 1);
         }
         if (Decimal === false && LineContent[LocalCursor] === POINT) {
             Decimal = true

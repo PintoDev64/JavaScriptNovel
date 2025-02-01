@@ -1,71 +1,171 @@
-import { ThrowErrorIf } from "../../error";
-import { EQUAL, TOKEN_KEYWORDS, TOKEN_TYPES } from "../../constants";
-const { var: variable } = TOKEN_KEYWORDS;
-const { keyword, equal, identifier } = TOKEN_TYPES;
-
-export default function CreateNode(Tokens: NTokenizer.IToken[], Cursor: number): [number, NParser.INode] {
+export default function CreateNode(
+    Tokens: NTokenizer.IToken[],
+    Cursor: number
+): [number, NParser.INode] {
     let ActualCursor = Cursor;
     let ActualToken = Tokens[ActualCursor];
 
-    if (ActualToken.type === keyword) {
-        const [NewCursor, Node] = KeywordNode(Tokens, ActualCursor)
-        return [NewCursor + 1, Node]
+    let VariablesKeywords: TTokenSpecialNames[] = ["var", "audio", "char", "image"]
+
+    if (ActualToken.type === "keyword" && VariablesKeywords.includes(ActualToken.value as TTokenSpecialNames)) {
+
     }
 
-    // #region TODO: Remove
-    return [ActualCursor, { type: "CallExpression", name: "XD" }]
+    throw new Error(`Token inesperado: tipo: ${ActualToken.type} - ${ActualToken.value} en línea ${ActualToken.line}`);
 }
 
-/**
- * Parse the Tokens
- * @param Tokens List of Tokens
- * @param Cursor Position of the Token is read
- * @returns Array
- */
-function KeywordNode(Tokens: NTokenizer.IToken[], Cursor: number): [number, NParser.INode] {
-    let LocalCursor = Cursor;
-    let LocalToken = Tokens[LocalCursor];
+function ArrayExpression(
+    Tokens: NTokenizer.IToken[],
+    StartCursor: number
+): [number, NParser.INode] {
+    let cursor = StartCursor;
+    cursor++; // Saltar "["
 
-    function NextCursor() {
-        LocalCursor = LocalCursor + 1;
-        LocalToken = Tokens[LocalCursor];
+    const elements: NParser.INode[] = [];
+    while (Tokens[cursor].value !== "]") {
+        const [newCursor, elementNode] = CreateNode(Tokens, cursor);
+        elements.push(elementNode);
+        cursor = newCursor;
+
+        if (Tokens[cursor].type === "comma") {
+            cursor++;
+        }
     }
 
-    if (LocalToken.value === variable) {
-        NextCursor()
-        ThrowErrorIf(LocalToken.type !== identifier, "Parser.TokenNotValid")(
-            LocalToken.type,
-            LocalToken.value,
-            LocalToken.line,
-            LocalToken.position
-        )
-        const Node: NParser.INode = {
-            type: "VariableExpression",
-            name: LocalToken.value
+    cursor++; // Saltar "]"
+    return [
+        cursor,
+        {
+            type: "ArrayExpression",
+            elements: elements
         }
-        NextCursor()
-        ThrowErrorIf((LocalToken.type !== equal || LocalToken.value as string !== EQUAL), "Parser.TokenNotValid")(
-            LocalToken.type,
-            LocalToken.value,
-            LocalToken.line,
-            LocalToken.position
-        )
-        NextCursor()
-        if (LocalToken.type === "string") {
-            Node.value = LocalToken.value
-            return [LocalCursor, Node]
-        }
-        if (LocalToken.type === "number") {
-            Node.value = Number(LocalToken.value)
-            return [LocalCursor, Node]
-        }
-        ThrowErrorIf(true, "Parser.TokenValueInvalid")(
-            LocalToken.type,
-            LocalToken.value,
-            LocalToken.line,
-            LocalToken.position
-        )
+    ];
+}
+
+function VariableDeclaration(Tokens: NTokenizer.IToken[], StartCursor: number): [number, NParser.INode] {
+    let cursor = StartCursor;
+    const keyword = Tokens[cursor].value; // "Var", "Image", o "Char"
+    cursor++;
+
+    const name = Tokens[cursor].value; // Nombre de la variable
+    cursor++;
+
+    // Verifica el "="
+    if (Tokens[cursor].type !== "equal") {
+        return [
+            cursor,
+            {
+                type: "VariableExpression",
+                name: name,
+            }
+        ];
+    }
+    cursor++;
+
+    let valueNode;
+
+    console.log(Tokens[cursor]);
+
+    // Si es una llamada a `Character(...)`, usa `parseCallExpression`
+    if (Tokens[cursor].type === "keyword" && (Tokens[cursor].value === "Character" || Tokens[cursor].value === "MediaAudio")) {
+        console.log("Expression");
+        [cursor, valueNode] = parseCallExpression(Tokens, cursor);
+    } else {
+        console.log("Node");
+        [cursor, valueNode] = CreateNode(Tokens, cursor);
     }
 
-    return [LocalCursor, { type: "CallExpression", name: "XD" }]
+    let typeNode: TNodeType = "VariableDeclaration"
+
+    if (keyword === "Char") {
+        typeNode = "CharacterDeclaration";
+    }
+    if (keyword === "Image") {
+        typeNode = "ImageDeclaration";
+    }
+    if (keyword === "Audio") {
+        typeNode = "AudioDeclaration";
+    }
+
+    return [
+        cursor,
+        {
+            type: typeNode,
+            name: name,
+            value: valueNode
+        }
+    ];
+}
+
+function parseCallExpression(
+    Tokens: NTokenizer.IToken[],
+    StartCursor: number
+): [number, NParser.INode] {
+    let cursor = StartCursor;
+    const identifier = Tokens[cursor].value; // "Character"
+    cursor++;
+
+    console.log("ParseCallExpression:1 -> ", Tokens[cursor]);
+
+    // Verifica paréntesis de apertura
+    if (Tokens[cursor].value !== "(") {
+        throw new Error("Se esperaba '('");
+    }
+    cursor++;
+
+    console.log("ParseCallExpression:2 -> ", Tokens[cursor]);
+
+    // Parsea los argumentos
+    const args: NParser.INode[] = [];
+    while (Tokens[cursor].value !== ")") {
+        const [newCursor, argNode] = CreateNode(Tokens, cursor);
+        args.push(argNode);
+        cursor = newCursor;
+
+        // Si hay coma, la omitimos
+        if (Tokens[cursor].type === "comma") {
+            cursor++;
+        }
+    }
+    console.log("ParseCallExpression:Args:3 -> ", args);
+    console.log("ParseCallExpression:3 -> ", Tokens[cursor]);
+
+    cursor++; // Saltar ")"
+
+    console.log("ParseCallExpression:5 -> ", Tokens[cursor]);
+
+    const body: NParser.INode[] = [];
+
+    // Parser Function Content
+    if (typeof Tokens[cursor] === undefined) {
+        return [
+            cursor,
+            {
+                type: "CallExpression",
+                name: identifier,
+                arguments: args
+            }
+        ];
+    }
+    
+    if (Tokens[cursor].value !== "{") {
+        cursor++; // Saltar ")"
+        console.log("ParseCallExpression:6 -> ", Tokens[cursor]);
+
+        while (Tokens[cursor].value !== "}") {
+            const [NewCursor, bodyNode] = CreateNode(Tokens, cursor);
+            body.push(bodyNode);
+            cursor = NewCursor;
+        }
+    }
+
+    return [
+        cursor,
+        {
+            type: "FunctionDeclaration",
+            name: identifier,
+            arguments: args,
+            body: body
+        }
+    ];
 }

@@ -5,32 +5,32 @@ const ERROR_DEFINITIONS = {
 
 const ErrorFunctions: NError.IErrorFunctions = {
     Tokenizer: {
-        TypeError: (character: string, line: number, cursor: number) => {
+        TypeError: (line: number, cursor: number) => {
             throw new SyntaxError(
-                `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token "${character}" at line ${line}, position ${cursor}`
+                `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token at line ${line}, position ${cursor}`
             );
         }
         ,
-        TokenUnrecognized: (character: string, line: number, cursor: number) => {
+        TokenUnrecognized: (line: number, cursor: number) => {
             throw new SyntaxError(
-                `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token "${character}" at line ${line}, position ${cursor}`
+                `${ERROR_DEFINITIONS.TOKENIZER} - Unexpected token at line ${line}, position ${cursor}`
             );
         }
     },
     Parser: {
-        TokenValueInvalid: (type: string, value: string, line: number, cursor: number) => {
+        TokenValueInvalid: (line: number, cursor: number) => {
             throw new Error(
-                `${ERROR_DEFINITIONS.PARSER} - token value is not valid with our expression's "${type}" and value: "${value}" at line ${line}, position ${cursor}`
+                `${ERROR_DEFINITIONS.PARSER} - token value is not valid at line ${line}, position ${cursor}`
             )
         },
-        TokenInvalid: (type: string, value: string, line: number, cursor: number) => {
+        TokenInvalid: (value: string, line: number, cursor: number) => {
             throw new Error(
-                `${ERROR_DEFINITIONS.PARSER} - token is not valid with our expression's "${type}" and value: "${value}" at line ${line}, position ${cursor}`
+                `${ERROR_DEFINITIONS.PARSER} - token "${value}" is not valid at line ${line}, position ${cursor}`
             )
         },
-        TokenUnrecognized: (type: string, value: string, line: number, cursor: number) => {
+        TokenUnrecognized: (value: string, line: number, cursor: number) => {
             throw new Error(
-                `${ERROR_DEFINITIONS.PARSER} - token is not recognized for the parser with type "${type}" and value: "${value}" at line ${line}, position ${cursor}`
+                `${ERROR_DEFINITIONS.PARSER} - The token "${value}" is not recognized for the parser at line ${line}, position ${cursor}`
             )
         },
         MissingToken: (name: string, line: number, cursor: number) => {
@@ -46,13 +46,9 @@ const ErrorFunctions: NError.IErrorFunctions = {
     }
 }
 
-function ThrowErrorIf(condition: boolean, errorFunction: NError.TErrorFunction) {
-    const [Type, FunctionName] = errorFunction.split(".") as [NError.TErrorTypes, NError.TErrorFunctionNames];
-    if (condition) {
-        // @ts-ignore
-        return ErrorFunctions[Type][FunctionName]
-    }
-    return () => {}
+function ThrowErrorIf<T extends NError.TErrorTypes>(Condition: boolean, ErrorType: T): NError.IErrorFunctions[T] | undefined {
+    if (!Condition) return ErrorFunctions[ErrorType];
+    return undefined;
 }
 
 export {

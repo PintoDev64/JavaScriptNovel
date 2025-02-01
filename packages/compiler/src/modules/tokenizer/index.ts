@@ -15,7 +15,7 @@ export default function CompilerTokenizer(scriptContent: string): NTokenizer.ITo
                 ScriptLines[actualLine],
                 actualLine,
                 actualCursor
-            )
+            ) as NTokenizer.FCreteToken
             Tokens.push({ line: line + 1, position: actualCursor, type, value })
             actualCursor = position
         }

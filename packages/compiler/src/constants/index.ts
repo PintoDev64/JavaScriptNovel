@@ -7,10 +7,12 @@ export const CURLY_CLOSE = '}';
 export const DOUBLEQUOTE = '"';
 export const SPACE = /\s/;
 export const NEWLINE = /\r?\n/g;
+export const SEMICOLON = ';';
 export const COMMA = ',';
 export const POINT = '.';
 export const LETTER = /[a-zA-Z]/;
 export const NUMBER = /[0-9]/;
+export const SPECIALLETTERS = /[!@#$%^&*()_+{}\[\]:;"'<>,.?\/\\|`~\-]/;
 export const EQUAL = '=';
 
 export const TOKEN_KEYWORDS: Record<TTokenSpecialNames, TTokenSpecialNames> = {

@@ -1,7 +1,8 @@
 import { PARENTHESIS_OPEN } from "../../constants";
 import ArrayExpression from "./utils/arrayExpression.js";
-import BooleanExpression from "./utils/booleanExpression";
-import CallExpression from "./utils/callExpression";
+import BooleanExpression from "./utils/booleanExpression.js";
+import CallExpression from "./utils/callExpression.js";
+import CharacterExpression from "./utils/characterExpression";
 import VariableDeclaration from "./utils/variableDeclaration.js";
 import VariableExpression from "./utils/variableExpression.js";
 
@@ -22,6 +23,11 @@ export default function CreateNode(Tokens: NTokenizer.IToken[], Cursor: number):
 
     if (Tokens[ActualCursor].type === "identifier" && Tokens[ActualCursor + 1].type === "parenthesis" && Tokens[ActualCursor + 1].value === PARENTHESIS_OPEN) {
         const [NewCursor, Node] = CallExpression(Tokens, ActualCursor);
+        return [NewCursor, Node];
+    }
+
+    if (Tokens[ActualCursor].type === "identifier" && Tokens[ActualCursor + 1].type === "string") {
+        const [NewCursor, Node] = CharacterExpression(Tokens, ActualCursor)
         return [NewCursor, Node];
     }
 

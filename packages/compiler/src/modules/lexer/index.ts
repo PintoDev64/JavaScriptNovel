@@ -4,7 +4,7 @@ export default function CompilerLexer(ASTRequest: NParser.INodeEntry): NLexer.IN
     let ActualCursor = 0;
     const ASTBody = ASTRequest.body
     const ASTVerified: NLexer.INodeEntry = {
-        type: "Program",
+        type: ASTRequest.type,
         file: ASTRequest.file,
         body: []
     }
@@ -12,8 +12,8 @@ export default function CompilerLexer(ASTRequest: NParser.INodeEntry): NLexer.IN
     while (ActualCursor < ASTBody.length) {
         const LexerNode = CreateLexer(ASTBody[ActualCursor])
         ASTVerified.body.push(LexerNode)
+        ++ActualCursor
     }
 
     return ASTVerified;
 }
-

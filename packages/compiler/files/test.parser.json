@@ -232,30 +232,18 @@
         {
             "line": 7,
             "position": 8,
-            "type": "identifier",
-            "value": "Exmaple123"
-        },
-        {
-            "line": 7,
-            "position": 18,
-            "type": "comma",
-            "value": ","
-        },
-        {
-            "line": 7,
-            "position": 19,
             "type": "string",
-            "value": "Paisaje.png"
+            "value": "Ejemplo_nombre_de_escena"
         },
         {
             "line": 7,
-            "position": 33,
+            "position": 34,
             "type": "parenthesis",
             "value": ")"
         },
         {
             "line": 7,
-            "position": 34,
+            "position": 35,
             "type": "curly",
             "value": "{"
         },

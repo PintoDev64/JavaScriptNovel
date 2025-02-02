@@ -5,6 +5,7 @@ import { describe, it } from "node:test";
 import { ConsoleColors } from "../src/utils/index.js";
 import CompilerTokenizer from "../src/modules/tokenizer/index.js";
 import CompilerParser from "../src/modules/parser/index.js";
+import CompilerLexer from "../src/modules/lexer/index.js";
 
 // Tests
 describe("Unit Methods Test", () => {
@@ -26,9 +27,16 @@ describe("Unit Methods Test", () => {
         const resultConvert = JSON.stringify(result, null, 4)
         writeFileSync("files/test.lexer.json", resultConvert, { encoding: 'utf-8' })
     });
-
-    it("Lexer: return a refine array AST", { todo: true }, () => {
-        // TODO: Add a test for the lexer
+    
+    it("Lexer: returns the same AST array validating its structure with type {NParser.IToken}", { timeout: 5000 }, () => {
         console.log(`${ConsoleColors.cyan("Lexer ↘")}`);
+        const FileContent = readFileSync("files/test.lexer.json", { encoding: 'utf-8' });
+        const FileContentToJSON: NParser.INodeEntry = JSON.parse(FileContent)
+        const result = CompilerLexer(FileContentToJSON)
+        console.log(result);
     });
+    
+    it("Instructor: returns an Array Collection with all simplified instructions", { todo: true }, () => {
+        console.log(`${ConsoleColors.cyan("Instructor ↘")}`);
+    })
 });

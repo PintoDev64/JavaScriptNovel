@@ -80,21 +80,14 @@
             "name": "Scene",
             "arguments": [
                 {
-                    "type": "VariableExpression",
-                    "name": "Exmaple123"
-                },
-                {
                     "type": "StringLiteral",
-                    "value": "Paisaje.png"
+                    "value": "Ejemplo_nombre_de_escena"
                 }
             ],
             "body": [
                 {
-                    "type": "VariableExpression",
-                    "name": "personaje"
-                },
-                {
-                    "type": "StringLiteral",
+                    "type": "CharacterExpression",
+                    "name": "personaje",
                     "value": "Hola Jugador"
                 }
             ]

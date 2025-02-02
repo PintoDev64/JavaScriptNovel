@@ -36,6 +36,7 @@ type TNodeType =
     | "FunctionDeclaration"
     | "VariableExpression"
     | "ArrayExpression"
+    | "BooleanExpression"
     | "VariableDeclaration"
     | "ImageDeclaration"
     | "AudioDeclaration"
@@ -84,7 +85,7 @@ declare namespace NParser {
     interface INode {
         type: TNodeType
         name?: string
-        value?: string | number | INode
+        value?: string | number | boolean | INode
         arguments?: INode[]
         body?: INode[]
         predirectives?: INode[]

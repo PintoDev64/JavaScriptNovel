@@ -17,17 +17,17 @@ describe("Unit Methods Test", () => {
         writeFileSync("files/test.parser.json", resultConvert, { encoding: 'utf-8' })
     });
 
-    it("Parser: return content with type {NParser.IToken}", { todo: true }, async () => {
+    it("Parser: return content with type {NParser.IToken}", { timeout: 5000 }, async () => {
         console.log(`${ConsoleColors.cyan("Parser ↘")}`);
         const FileContent = readFileSync("files/test.parser.json", { encoding: 'utf-8' });
         const FileContentToJSON = JSON.parse(FileContent)
         const result = CompilerParser(FileContentToJSON)
         console.log(result);
         const resultConvert = JSON.stringify(result, null, 4)
-        writeFileSync("files/test.instructor.json", resultConvert, { encoding: 'utf-8' })
+        writeFileSync("files/test.lexer.json", resultConvert, { encoding: 'utf-8' })
     });
 
-    it("Director: return a array functions", { todo: true }, () => {
+    it("Lexer: return a refine array AST", { todo: true }, () => {
         // TODO: Add a test for the director
         console.log(`${ConsoleColors.cyan("Director ↘")}`);
     });

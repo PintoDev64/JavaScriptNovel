@@ -1,0 +1,195 @@
+{
+  "main": {
+    "id": "234eee770e88912c",
+    "type": "split",
+    "children": [
+      {
+        "id": "3811b54d7c1905a0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "11952e714fb1c909",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "NovelScript Specification.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "NovelScript Specification"
+            }
+          },
+          {
+            "id": "71d91c1a514081f0",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Gragh.canvas",
+                "viewState": {
+                  "x": 230,
+                  "y": 470,
+                  "zoom": 0
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "Gragh"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f0eafa7d289216ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "1d783c0720f99291",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2baaca2f6da6b1f1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "a8caa768f7a4fa8a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "dc6d37cdec2b0212",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "e056c223b8638c58",
+    "type": "split",
+    "children": [
+      {
+        "id": "4ce3486a25cb4840",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "38f587109b6c8307",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "NovelScript Specification.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de NovelScript Specification"
+            }
+          },
+          {
+            "id": "c8a860359db24d6e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Definicion del proyecto.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de Definicion del proyecto"
+            }
+          },
+          {
+            "id": "3b025ece45373231",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "a6262fa8c971b4a9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "NovelScript Specification.md"
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de NovelScript Specification"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "11952e714fb1c909",
+  "lastOpenFiles": [
+    "Gragh.canvas",
+    "NovelScript Specification.md",
+    "Tareas del proyectos.md",
+    "NovelScript Especification.md",
+    "Definicion del proyecto.md",
+    "NovelJs Specification.md",
+    "Sin título 1.canvas",
+    "Bienvenido.md"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+	"nodes":[
+		{"id":"30c9c0d5931e936c","type":"file","file":"Definicion del proyecto.md","x":-200,"y":40,"width":400,"height":400},
+		{"id":"97a9b755e4bb545a","type":"file","file":"Tareas del proyectos.md","x":-200,"y":500,"width":400,"height":400},
+		{"id":"34d28f59f2edc5ce","type":"file","file":"NovelJs Specification.md","x":260,"y":40,"width":400,"height":400}
+	],
+	"edges":[
+		{"id":"a457e618ad5d43c3","fromNode":"30c9c0d5931e936c","fromSide":"bottom","toNode":"97a9b755e4bb545a","toSide":"top"},
+		{"id":"f7805ff09db2af54","fromNode":"30c9c0d5931e936c","fromSide":"right","toNode":"34d28f59f2edc5ce","toSide":"left"}
+	]
+}

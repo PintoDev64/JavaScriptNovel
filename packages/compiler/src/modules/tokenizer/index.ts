@@ -7,6 +7,7 @@ export default function CompilerTokenizer(scriptContent: string): NTokenizer.ITo
 
     let actualLine = 0;
     let actualCursor = 0;
+    let textPosition = 0
 
     while (actualLine < ScriptLines.length) {
         actualCursor = 0
@@ -16,7 +17,8 @@ export default function CompilerTokenizer(scriptContent: string): NTokenizer.ITo
                 actualLine,
                 actualCursor
             ) as NTokenizer.FCreteToken
-            Tokens.push({ line: line + 1, position: actualCursor, type, value })
+            textPosition = actualCursor === 0 ? actualCursor + 1 : actualCursor + 2
+            Tokens.push({ line: line + 1, position: textPosition, type, value })
             actualCursor = position
         }
         actualLine++

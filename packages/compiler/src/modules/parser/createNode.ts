@@ -45,7 +45,10 @@ export default function CreateNode(Tokens: NTokenizer.IToken[], Cursor: number):
             type: "StringLiteral",
             value: Tokens[ActualCursor].value
         }
-        if (Tokens[ActualCursor].type === "number") Node.type = "NumberLiteral";
+        if (Tokens[ActualCursor].type === "number") {
+            Node.type = "NumberLiteral"
+            Node.value = Number(Tokens[ActualCursor].value)
+        };
         ++ActualCursor;
         return [ActualCursor, Node];
     }

@@ -1,10 +1,11 @@
 import CreateNode from "./createNode";
 
-export default function CompilerParser(TokenList: NTokenizer.IToken[]): NParser.INodeEntry {
+export default function CompilerParser(TokenList: NTokenizer.IToken[], FileName: string): NParser.INodeEntry {
     let Cursor = 0;
 
     const ASTMain: NParser.INodeEntry = {
         type: "Program",
+        file: FileName,
         body: []
     }
 

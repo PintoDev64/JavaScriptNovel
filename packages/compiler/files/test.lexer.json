@@ -1,5 +1,6 @@
 {
     "type": "Program",
+    "file": "files/test.tokenizer.njs",
     "body": [
         {
             "type": "VariableDeclaration",
@@ -7,6 +8,14 @@
             "value": {
                 "type": "BooleanExpression",
                 "value": false
+            }
+        },
+        {
+            "type": "VariableDeclaration",
+            "name": "HolaXD",
+            "value": {
+                "type": "NumberLiteral",
+                "value": 12345
             }
         },
         {
@@ -67,7 +76,7 @@
             }
         },
         {
-            "type": "CallExpression",
+            "type": "FunctionDeclaration",
             "name": "Scene",
             "arguments": [
                 {

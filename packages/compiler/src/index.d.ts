@@ -41,6 +41,7 @@ type TNodeType =
     | "ImageDeclaration"
     | "AudioDeclaration"
     | "CharacterDeclaration"
+    | "CharacterExpression"
     | "StringLiteral"
     | "NumberLiteral";
 
@@ -66,9 +67,10 @@ declare namespace NError {
 
 declare namespace NTokenizer {
     type FCreteToken = [number, number, TTokenTypes, string];
-    /**
-     * Interface/structure of each generated token
-     */
+    interface ITokenEntry {
+        file: string,
+        tokens: IToken[]
+    }
     interface IToken {
         line: number;
         position: number;
@@ -80,6 +82,7 @@ declare namespace NTokenizer {
 declare namespace NParser {
     interface INodeEntry {
         type: "Program"
+        file: string
         body: INode[]
     }
     interface INode {
@@ -94,10 +97,7 @@ declare namespace NParser {
     }
 }
 
-declare namespace NInstructor {
-    type IInstructionList = Function[]
-}
-
-declare interface EngineContext {
-    [key: string]: any
+declare namespace NLexer {
+    interface INodeEntry extends NParser.INodeEntry {}
+    interface INode extends NParser.INode {}
 }

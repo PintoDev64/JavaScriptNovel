@@ -37,6 +37,7 @@ export default function CallExpression(Tokens: NTokenizer.IToken[], Cursor: numb
 
     if (Tokens[ActualCursor].type === "curly" && Tokens[ActualCursor].value === CURLY_OPEN) {
         const [NewCursor, BodyNode] = BodyExpression(Tokens, ActualCursor);
+        FunctionDeclarationNode.type = "FunctionDeclaration"
         FunctionDeclarationNode.body = BodyNode;
         NextCursor(NewCursor)
     }

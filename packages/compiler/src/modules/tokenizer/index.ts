@@ -1,7 +1,7 @@
 import { NEWLINE } from "../../constants";
 import CreateToken from "./createToken";
 
-export default function CompilerTokenizer(scriptContent: string): NTokenizer.IToken[] {
+export default function CompilerTokenizer(scriptContent: string, FileName: string): NTokenizer.ITokenEntry {
     const ScriptLines = scriptContent.split(NEWLINE);
     const Tokens: NTokenizer.IToken[] = [];
 
@@ -24,5 +24,8 @@ export default function CompilerTokenizer(scriptContent: string): NTokenizer.ITo
         actualLine++
     }
 
-    return Tokens
+    return {
+        file: FileName,
+        tokens: Tokens
+    }
 }

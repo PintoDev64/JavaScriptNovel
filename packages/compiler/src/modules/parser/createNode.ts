@@ -1,4 +1,4 @@
-import { PARENTHESIS_OPEN } from "../../constants";
+import { BooleanKeywords, PARENTHESIS_OPEN, VariablesKeywords } from "../../constants";
 import ArrayExpression from "./utils/arrayExpression.js";
 import BooleanExpression from "./utils/booleanExpression.js";
 import CallExpression from "./utils/callExpression.js";
@@ -8,8 +8,6 @@ import VariableExpression from "./utils/variableExpression.js";
 
 export default function CreateNode(Tokens: NTokenizer.IToken[], Cursor: number): [number, NParser.INode] {
     let ActualCursor = Cursor;
-    let VariablesKeywords: TTokenSpecialNames[] = ["var", "audio", "char", "image"]
-    let BooleanKeywords: string[] = ["true", "false"]
 
     if (Tokens[ActualCursor].type === "keyword" && VariablesKeywords.includes(Tokens[ActualCursor].value.toLowerCase() as TTokenSpecialNames)) {
         const [NewCursor, Node] = VariableDeclaration(Tokens, ActualCursor);

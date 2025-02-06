@@ -101,3 +101,16 @@ declare namespace NLexer {
     interface INodeEntry extends NParser.INodeEntry {}
     interface INode extends NParser.INode {}
 }
+
+declare namespace NInstructor {
+    type TArrayVariableDeclaration = [
+        ""
+    ];
+
+    type TArrayInstructor = (
+        TArrayVariableDeclaration
+    )[];
+
+    interface INodeEntry extends NParser.INodeEntry {}
+    interface INode extends NParser.INode {}
+}

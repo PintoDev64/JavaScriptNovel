@@ -15,6 +15,9 @@ export const NUMBER = /[0-9]/;
 export const SPECIALLETTERS = /[!@#$%^&_\[\]:;,.?\/\\|`~\-]/;
 export const EQUAL = '=';
 
+export let VariablesKeywords: TTokenSpecialNames[] = ["var", "audio", "char", "image"]
+export let BooleanKeywords: string[] = ["true", "false"]
+
 export const TOKEN_KEYWORDS: Record<TTokenSpecialNames, TTokenSpecialNames> = {
     var: "var",
     audio: "audio",

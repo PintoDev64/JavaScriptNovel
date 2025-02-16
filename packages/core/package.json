@@ -8,7 +8,8 @@
     "bin": "./bin/novelcore.js",
     "scripts": {
         "compile": "tsc --project ./tsconfig.json",
-        "start": "node ./bin/novelcore.js"
+        "bin": "node ./bin/novelcore.js",
+        "start": "npm run compile && electron ./dist/index.js"
     },
     "devDependencies": {
         "@types/electron": "^1.4.38",

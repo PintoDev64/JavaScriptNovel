@@ -3,7 +3,7 @@ import { DEFAULT_VALUES } from '../../constants';
 import { Colors, Utilities } from '../../utils';
 import ERROR_DEFINITIONS from '../../error';
 
-class ElectronInstance implements NElectronModule.IElectronInstance {
+export default class ElectronInstance implements NElectronModule.IElectronInstance {
     private static instance: ElectronInstance;
     private _app: typeof app;
     private _browserWindow: BrowserWindow | null = null;
@@ -22,6 +22,9 @@ class ElectronInstance implements NElectronModule.IElectronInstance {
         return ElectronInstance.instance;
     }
     createBrowserWindow(): BrowserWindow {
+        console.log("BrowserWindow: ", BrowserWindow);
+        console.log("BrowserWindowOptions: ", DEFAULT_VALUES.ELECTRON);
+        
         return this._browserWindow = new BrowserWindow(DEFAULT_VALUES.ELECTRON);
     }
     startBrowserWindow(): void {
@@ -31,6 +34,7 @@ class ElectronInstance implements NElectronModule.IElectronInstance {
         
         console.log(process.env.NODE_ENV);
 
+        console.log(Utilities.getProjectFiles('index.html'));
         this._browserWindow.loadFile(Utilities.getProjectFiles('index.html'));
     }
     getBrowserWindow(): BrowserWindow {
@@ -47,6 +51,3 @@ class ElectronInstance implements NElectronModule.IElectronInstance {
         return this._ipcMain;
     }
 }
-
-const electron = ElectronInstance.getInstance();
-export default electron;

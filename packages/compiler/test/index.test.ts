@@ -35,8 +35,4 @@ describe("Unit Methods Test", () => {
         const result = CompilerLexer(FileContentToJSON)
         console.log(result);
     });
-    
-    it("Instructor: returns an Array Collection with all simplified instructions", { todo: true }, () => {
-        console.log(`${ConsoleColors.cyan("Instructor ↘")}`);
-    })
 });

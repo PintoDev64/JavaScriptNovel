@@ -16,6 +16,7 @@
         "test": "echo test",
         
         "core:start": "npm run start -w packages/core",
+        "core:bin": "npm run bin -w packages/core",
         "core:compile": "npm run compile -w packages/core",
 
         "compiler:start": "npm run start -w packages/compiler",

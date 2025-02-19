@@ -3,9 +3,12 @@
         "../../node_modules/**",
         "dist"
     ],
+    "include": [
+        "src/index.d.ts"
+    ],
     "compilerOptions": {
         "module": "CommonJS",
-        "target": "ES2016",
+        "target": "ES6",
         "moduleResolution": "node",
         "rootDir": "./",
         "baseUrl": "./",

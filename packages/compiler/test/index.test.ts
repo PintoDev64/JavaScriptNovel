@@ -1,3 +1,5 @@
+import "../src/index.d.ts"
+
 import { readFileSync, writeFileSync } from "node:fs";
 import { describe, it } from "node:test";
 
@@ -8,7 +10,7 @@ import CompilerParser from "../src/modules/parser/index.js";
 import CompilerLexer from "../src/modules/lexer/index.js";
 
 // Tests
-describe("Unit Methods Test", () => {
+describe("Describe results step by step of the compiler", () => {
     it("Tokenizer: return a token list with type {NTokenizer.IToken}", { timeout: 10000 }, async () => {
         console.log(`${ConsoleColors.cyan("Tokenizer ↘")}`);
         const FileContent = readFileSync("files/test.tokenizer.njs", { encoding: 'utf-8' });

@@ -1,7 +1,10 @@
-import { NovelCompiler } from "@noveljs/compiler";
+import NovelScriptCompiler from "@noveljs/compiler";
 import ElectronInstance from "./src/modules/electron";
 
-function NovelCore() {
+export function BasicNovelJsInitInstance() {
+
+    NovelScriptCompiler
+
     const NovelWindowManager = ElectronInstance.getInstance()
 
     NovelWindowManager.getApp().whenReady()
@@ -14,5 +17,3 @@ function NovelCore() {
         })
         .catch(e => console.log(e))
 }
-
-NovelCore()

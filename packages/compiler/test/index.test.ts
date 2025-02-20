@@ -1,13 +1,14 @@
-import "../src/index.d.ts"
-
 import { readFileSync, writeFileSync } from "node:fs";
 import { describe, it } from "node:test";
+
+import NovelScriptCompiler from "../index.js";
 
 // Methods
 import { ConsoleColors } from "../src/utils/index.js";
 import CompilerTokenizer from "../src/modules/tokenizer/index.js";
 import CompilerParser from "../src/modules/parser/index.js";
 import CompilerLexer from "../src/modules/lexer/index.js";
+
 
 // Tests
 describe("Describe results step by step of the compiler", () => {
@@ -29,7 +30,7 @@ describe("Describe results step by step of the compiler", () => {
         const resultConvert = JSON.stringify(result, null, 4)
         writeFileSync("files/test.lexer.json", resultConvert, { encoding: 'utf-8' })
     });
-    
+
     it("Lexer: returns the same AST array validating its structure with type {NParser.IToken}", { timeout: 5000 }, () => {
         console.log(`${ConsoleColors.cyan("Lexer ↘")}`);
         const FileContent = readFileSync("files/test.lexer.json", { encoding: 'utf-8' });
@@ -38,3 +39,13 @@ describe("Describe results step by step of the compiler", () => {
         console.log(result);
     });
 });
+
+describe("Exported Library Function", { todo: true }, () => {
+    it("Try", async () => {
+        console.log(`${ConsoleColors.magenta("Exported Compiler ↘")}`);
+        const result = await NovelScriptCompiler("files")
+        console.log("Library: ",result);
+        const resultConvert = JSON.stringify(result, null, 4)
+        writeFileSync("files/test.compiler.json", resultConvert, { encoding: 'utf-8' })
+    })
+})

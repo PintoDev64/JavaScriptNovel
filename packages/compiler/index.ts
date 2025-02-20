@@ -1,22 +1,17 @@
-import "./src/index.d.ts"
-
-import { glob, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
+import { glob } from "node:fs/promises"
 import CompilerTokenizer from "./src/modules/tokenizer/index.js";
 import CompilerParser from "./src/modules/parser/index.js";
 import CompilerLexer from "./src/modules/lexer/index.js";
 
-export default function NovelScriptCompiler(ScriptDirUrl: string) {
-    let NovelScriptFileLocations: string[] = []
-    glob(`${ScriptDirUrl}/**/*.njs`, (err, files) => {
-        if (err) return console.log(err);
-        NovelScriptFileLocations = files
-    })
-
+export default async function NovelScriptCompiler(ScriptDirUrl: string) {
     const Specials: NLexer.INode[] = []
     const Variables: NLexer.INode[] = []
     const Scenes: NLexer.INode[] = []
 
-    NovelScriptFileLocations.forEach((fileDirectory, _) => {
+    const NovelScriptFileLocations = glob(`${ScriptDirUrl}/**/*.njs`)
+
+    for await (const fileDirectory of NovelScriptFileLocations) {
         const LenguageCompile = CompileFile(fileDirectory)
 
         const DefinedSpecials = GetSpecialVariables(LenguageCompile)
@@ -27,7 +22,7 @@ export default function NovelScriptCompiler(ScriptDirUrl: string) {
 
         const DefinedScenes = GetScenesDeclarations(LenguageCompile)
         Scenes.push(...DefinedScenes)
-    })
+    }
 
     return {
         Variables,

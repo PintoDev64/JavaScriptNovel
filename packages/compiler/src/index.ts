@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
 import { glob } from "node:fs/promises"
-import CompilerTokenizer from "./src/modules/tokenizer/index.js";
-import CompilerParser from "./src/modules/parser/index.js";
-import CompilerLexer from "./src/modules/lexer/index.js";
+import CompilerTokenizer from "./modules/tokenizer/index.js";
+import CompilerParser from "./modules/parser/index.js";
+import CompilerLexer from "./modules/lexer/index.js";
 
 export default async function NovelScriptCompiler(ScriptDirUrl: string) {
     const Specials: NLexer.INode[] = []

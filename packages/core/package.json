@@ -1,6 +1,7 @@
 {
     "name": "@noveljs/core",
     "version": "0.0.1",
+    "private": false,
     "author": "PintoDev64",
     "license": "MIT",
     "description": "Core module for NovelJs",

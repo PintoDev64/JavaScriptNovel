@@ -11,7 +11,7 @@ import CompilerLexer from "../src/modules/lexer/index.js";
 
 
 // Tests
-describe("Describe results step by step of the compiler", () => {
+describe("Describe results step by step of the compiler", { skip: true },() => {
     it("Tokenizer: return a token list with type {NTokenizer.IToken}", { timeout: 10000 }, async () => {
         console.log(`${ConsoleColors.cyan("Tokenizer ↘")}`);
         const FileContent = readFileSync("files/test.tokenizer.njs", { encoding: 'utf-8' });

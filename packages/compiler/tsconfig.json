@@ -3,11 +3,17 @@
         "../../node_modules/**",
         "dist"
     ],
+    "files": [
+        "src/types.d.ts"
+    ],
+    "include": [
+        "src"
+    ],
     "compilerOptions": {
         "module": "CommonJS",
         "target": "ES6",
         "moduleResolution": "node",
-        "rootDir": "./",
+        "rootDir": "./src",
         "baseUrl": "./",
         "outDir": "./dist",
         "declaration": true,

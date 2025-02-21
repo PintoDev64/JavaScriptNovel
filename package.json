@@ -1,6 +1,7 @@
 {
-    "name": "noveljs",
+    "name": "javascriptnovel",
     "version": "1.0.0",
+    "private": false,
     "author": "PintoDev64",
     "description": "Visual Novel Game Engine for JavaScript",
     "keywords": [

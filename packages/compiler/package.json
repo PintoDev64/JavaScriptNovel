@@ -1,14 +1,23 @@
 {
     "name": "@noveljs/compiler",
     "version": "0.0.1",
+    "private": false,
     "author": "PintoDev64",
     "license": "MIT",
     "description": "Compiler module for NovelJs",
     "main": "dist/index.js",
+    "files": [
+        "dist/",
+        "dist/types/",
+        "src/types.d.ts"
+    ],
+    "types": "dist/types/index.d.ts",
+    "exports": {
+        ".": "./dist/index.js"
+    },
     "scripts": {
-        "start": "node ./dist/index.js",
         "compile": "tsc --project ./tsconfig.json",
-        "test": "node --run compile && node ./dist/test/index.test.js"
+        "test": "node --run compile && node --trace-warnings ./dist/test/index.test.js"
     },
     "devDependencies": {
         "@types/node": "^22.10.2",

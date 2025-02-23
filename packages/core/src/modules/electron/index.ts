@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import { DEFAULT_VALUES } from '../../constants';
-import { Colors, Utilities } from '../../utils';
-import ERROR_DEFINITIONS from '../../error';
+import { Utilities } from '../../utils';
+import { ERROR_DEFINITIONS, NovelCoreError } from '../../error';
 
 export default class ElectronInstance implements NElectronModule.IElectronInstance {
     private static instance: ElectronInstance;
@@ -22,25 +22,23 @@ export default class ElectronInstance implements NElectronModule.IElectronInstan
         return ElectronInstance.instance;
     }
     createBrowserWindow(): BrowserWindow {
-        console.log("BrowserWindow: ", BrowserWindow);
-        console.log("BrowserWindowOptions: ", DEFAULT_VALUES.ELECTRON);
-        
         return this._browserWindow = new BrowserWindow(DEFAULT_VALUES.ELECTRON);
     }
     startBrowserWindow(): void {
-        if (!this._browserWindow) throw new Error(
-            Colors.ErrorText(`${this.constructor.name} - ${ERROR_DEFINITIONS.ELECTRON.BROWSER_WINDOW}: has no browser window`)
-        );
-        
-        console.log(process.env.NODE_ENV);
+        if (!this._browserWindow) throw new NovelCoreError(
+            this.constructor.name,
+            ERROR_DEFINITIONS.ELECTRON.BROWSER_WINDOW
+        )
 
+        console.log(process.env["NODE_ENV"]);
         console.log(Utilities.getProjectFiles('index.html'));
         this._browserWindow.loadFile(Utilities.getProjectFiles('index.html'));
     }
     getBrowserWindow(): BrowserWindow {
-        if (!this._browserWindow) throw new Error(
-            Colors.ErrorText(`${this.constructor.name} - ${ERROR_DEFINITIONS.ELECTRON.BROWSER_WINDOW}: has no browser window`)
-        );
+        if (!this._browserWindow) throw new NovelCoreError(
+            this.constructor.name,
+            ERROR_DEFINITIONS.ELECTRON.BROWSER_WINDOW
+        )
 
         return this._browserWindow;
     }

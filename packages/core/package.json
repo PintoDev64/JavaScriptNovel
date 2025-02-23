@@ -1,18 +1,17 @@
 {
-    "name": "@noveljs/core",
+    "name": "@novel.js/core",
     "version": "0.0.1",
     "private": false,
     "author": "PintoDev64",
     "license": "MIT",
     "description": "Core module for NovelJs",
     "main": "dist/index.js",
-    "bin": "./bin/novelcore.js",
     "types": "./dist/types/index.d.ts",
     "scripts": {
         "compile": "tsc --project ./tsconfig.json",
         "bin": "node ./bin/novelcore.js",
-        "start": "npm run compile && electron ./dist/index.js",
-        "test": "npm run compile && electron ./dist/test/start.test.js"
+        "start": "npm run compile && electron ./dist/test/start.test.js",
+        "test": "npm run compile && set NODE_ENV=development && electron ./dist/test/start.test.js"
     },
     "devDependencies": {
         "@types/electron": "^1.4.38",

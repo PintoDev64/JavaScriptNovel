@@ -1,9 +1,9 @@
 import { join } from "node:path";
 import { DEFAULT_VALUES } from "../../constants";
-import { Colors, Utilities } from "../../utils";
-import ERROR_DEFINITIONS from "../../error";
+import { Utilities } from "../../utils";
+import { ERROR_DEFINITIONS, NovelCoreError } from "../../error";
 
-class Settings implements NSettingsModule.ISettings {
+class NovelJsSettings implements NSettingsModule.ISettings {
     static instance: NSettingsModule.ISettings;
     private config: NSettingsModule.ISettignsStructure = {} as NSettingsModule.ISettignsStructure;
 
@@ -12,30 +12,31 @@ class Settings implements NSettingsModule.ISettings {
      * Get the instance of the settings module
      */
     static getInstance(): NSettingsModule.ISettings {
-        if (Settings.instance) Settings.instance = new Settings();
+        if (!NovelJsSettings.instance) NovelJsSettings.instance = new NovelJsSettings();
 
         const ConfigFile = Utilities.getSyncJSONFile(
             join(process.cwd(), 'settings.json')
         );
 
-        if (ConfigFile) Settings.instance.setConfig(ConfigFile);
-        else Settings.instance.setConfig(DEFAULT_VALUES.SETTINGS);
+        if (ConfigFile) NovelJsSettings.instance.setConfig(ConfigFile);
+        else NovelJsSettings.instance.setConfig(DEFAULT_VALUES.SETTINGS);
 
-        return Settings.instance;
+        return NovelJsSettings.instance;
     }
     getConfig(): NSettingsModule.ISettignsStructure {
         return this.config;
     }
-    getConfigKey(key: keyof NSettingsModule.ISettignsStructure): any {
+    getConfigKey<T extends keyof NSettingsModule.ISettignsStructure>(key: T): NSettingsModule.ISettignsStructure[T] {
         return this.config[key];
     }
     setConfig(config: NSettingsModule.ISettignsStructure): void {
-        if (!config) throw new Error(
-            Colors.ErrorText(`${this.constructor.name} - ${ERROR_DEFINITIONS.SETTINGS.MISSING}: failed to load configuration file`)
+        if (!config) throw new NovelCoreError(
+            this.constructor.name,
+            ERROR_DEFINITIONS.SETTINGS.MISSING
         );
         this.config = config;
     }
 }
 
-const settings = Settings.getInstance();
-export default settings;
+const LibrarySettings = NovelJsSettings.getInstance()
+export default LibrarySettings

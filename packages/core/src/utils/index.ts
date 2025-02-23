@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import ERROR_DEFINITIONS from '../error';
+import { ERROR_DEFINITIONS } from '../error';
 import { resolve } from 'node:path';
 
 export const Colors: NUtils.Colors = {
@@ -13,11 +13,12 @@ export const Utilities: NUtils.Utilities = {
     getCurrentDateTime: (local: Intl.LocalesArgument) => new Date().toLocaleString(local),
     getSyncJSONFile: (path: string) => {
         try {
-            return JSON.parse(readFileSync(path, { encoding: 'utf-8' }));
+            const FileContentUTF8 = readFileSync(path, { encoding: 'utf-8' })
+            return JSON.parse(FileContentUTF8);
         } catch (error: unknown) {
             console.log(
-                Colors.WarningText(`${ERROR_DEFINITIONS.SETTINGS.MISSING} Configuration file not found`),
-                Colors.InfoText(`Loading default values`)
+                Colors.WarningText(`${ERROR_DEFINITIONS.SETTINGS.MISSING}: `),
+                Colors.InfoText(`Using default configuration`)
             );
             return undefined
         }
@@ -29,4 +30,9 @@ export const Utilities: NUtils.Utilities = {
         }
         return resolve(process.cwd(), fileURl);
     }
+
+}
+
+export const LogFunctions: NUtils.LogFunctions = {
+    Process: (text: string) => console.log(Colors.InfoText(`|> ${text}`))
 }

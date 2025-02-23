@@ -1,7 +1,7 @@
 import { contextBridge } from "electron";
-import settings from "../modules/settings";
+import NovelJsSettings from "../modules/settings";
 
-const SettingsPort = settings.getConfigKey("port");
+const SettingsPort = NovelJsSettings.getConfigKey("port");
 
 const GameAPI = {};
 const DevAPI = {};

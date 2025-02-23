@@ -1,5 +1,5 @@
 {
-    "name": "javascriptnovel",
+    "name": "novel.js",
     "version": "1.0.0",
     "private": false,
     "author": "PintoDev64",
@@ -16,12 +16,10 @@
     "scripts": {
         "test": "echo test",
         
-        "core:start": "npm run start -w packages/core",
         "core:test": "npm run test -w packages/core",
         "core:bin": "npm run bin -w packages/core",
         "core:compile": "npm run compile -w packages/core",
 
-        "compiler:start": "npm run start -w packages/compiler",
         "compiler:compile": "npm run compile -w packages/compiler",
         "compiler:test": "npm run test -w packages/compiler"
     },

@@ -1,12 +1,16 @@
 {
     "exclude": [
         "../../node_modules/**",
-        "dist"
+        "./dist"
     ],
     "compilerOptions": {
+        "lib": ["ES2024"],
         "module": "CommonJS",
         "target": "ES6",
         "moduleResolution": "node",
+        "typeRoots": [
+            "./types.d.ts"
+        ],
         "rootDir": "./",
         "baseUrl": "./",
         "outDir": "./dist",

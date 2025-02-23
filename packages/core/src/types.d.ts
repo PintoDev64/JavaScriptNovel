@@ -25,6 +25,9 @@ declare namespace NUtils {
          */
         SuccessText: (text: string) => string;
     }
+    interface LogFunctions {
+        Process: (text: string) => void
+    }
     interface Utilities {
         /**
          * Get the current date and time
@@ -53,8 +56,8 @@ declare namespace NUtils {
 
 declare namespace NConstants {
     interface DEFAULT_VALUES {
-        readonly ELECTRON: Electron.BrowserWindowConstructorOptions;
-        readonly SETTINGS: NSettingsModule.ISettignsStructure;
+        readonly ELECTRON: Electron.BrowserWindowOptions;
+        readonly SETTINGS: Partial<NSettingsModule.ISettignsStructure>;
     }
 }
 
@@ -84,7 +87,7 @@ declare namespace NElectronModule {
 }
 
 declare namespace NSettingsModule {
-    type ISettignsStructure = Partial<{
+    type ISettignsStructure = {
         /**
          * Allows you to select components in the game view (development only)
          */
@@ -102,9 +105,9 @@ declare namespace NSettingsModule {
          */
         traslator: string;
         advanced: {
-            electron: Electron.BrowserWindowConstructorOptions;
+            electron: Electron.BrowserWindowOptions;
         };
-    }>
+    }
     interface ISettings {
         /**
          * Get the actual configuration object
@@ -113,7 +116,7 @@ declare namespace NSettingsModule {
         /**
          * Set the configuration object
          */
-        setConfig(config: ISettignsStructure): void;
+        setConfig(config: Partial<ISettignsStructure> | ISettignsStructure): void;
         /**
          * Get a specific key from the configuration object
          */

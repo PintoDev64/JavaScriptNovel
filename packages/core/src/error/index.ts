@@ -1,35 +1,38 @@
+import { Colors } from "../utils";
+
 const ERROR_DEFINITIONS = {
     SETTINGS: {
-        /**
-         * Failed to load configuration file
-         * @reason File is missing or default values ​​cannot be loaded
-         */
-        MISSING: "SETTINGS_MISSING",
-        /**
-         * Failed to load configuration file
-         * @reason The file or content is invalid
-         */
-        INVALID: "SETTINGS_INVALID"
+        MISSING: "File is missing or default values cannot be loaded",
+        INVALID: "The file or content is invalid"
     },
     ELECTRON: {
-        /**
-         * The electron instance has no browser window
-         * @reason The browser window has not been created
-         */
-        BROWSER_WINDOW: "ELECTRON_BROWSER_WINDOW",
-        /**
-         * The electron instance has no ipc main
-         * @reason The ipc main has not been created
-         */
-        IPC_MAIN: "ELECTRON_IPC_MAIN"
+        BROWSER_WINDOW: "The browser window has not been created",
+        IPC_MAIN: "The ipc main has not been created"
     },
     UTILITIES: {
-        /**
-         * Failed to get JSON file
-         * @reason The file is missing or the content is invalid
-         */
-        JSON_FILE: "UTILITIES_JSON_FILE"
+        JSON_FILE: "The file is missing or the content is invalid"
     }
 }
 
-export default ERROR_DEFINITIONS;
+class NovelCoreError extends Error {
+    constructor(instanceName: string, cause: string, stackTrace: boolean = true) {
+        super(Colors.ErrorText(cause));
+
+        this.name = instanceName;
+        this.cause = cause;
+        if (stackTrace === false) this.stack = "";
+
+        console.error(
+            `${Colors.InfoText("NovelJs Core Exception")}\n`,
+            `Name: ${this.name}\n`,
+            `${this.message}\n`,
+            this.stack ? `${this.stack}\n` : ""
+        )
+        process.exit(1)
+    }
+}
+
+export {
+    ERROR_DEFINITIONS,
+    NovelCoreError
+};

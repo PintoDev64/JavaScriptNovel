@@ -1,18 +1,16 @@
-import NovelScriptCompiler from "@noveljs/compiler";
-import ElectronInstance from "./src/modules/electron";
+import ElectronInstance from "./modules/electron";
+import { LogFunctions } from "./utils";
 
 export function BasicNovelJsInitInstance() {
-
-    NovelScriptCompiler
 
     const NovelWindowManager = ElectronInstance.getInstance()
 
     NovelWindowManager.getApp().whenReady()
         .then(() => {
-            console.log("Crear la ventana");
+            LogFunctions.Process("Crear la ventana");
             NovelWindowManager.createBrowserWindow()
 
-            console.log("Iniciar la ventana");
+            LogFunctions.Process("Iniciar la ventana");
             NovelWindowManager.startBrowserWindow()
         })
         .catch(e => console.log(e))

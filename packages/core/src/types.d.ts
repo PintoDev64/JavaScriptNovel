@@ -70,7 +70,7 @@ declare namespace NElectronModule {
         /**
          * Create a new browser window
          */
-        createBrowserWindow(): Electron.BrowserWindow;
+        createBrowserWindow(): void;
         /**
          * Start the browser window
          */
@@ -87,7 +87,7 @@ declare namespace NElectronModule {
 }
 
 declare namespace NSettingsModule {
-    type ISettignsStructure = {
+    type ISettignsStructure = Partial<{
         /**
          * Allows you to select components in the game view (development only)
          */
@@ -104,10 +104,11 @@ declare namespace NSettingsModule {
          * The path to the translator file
          */
         traslator: string;
-        advanced: {
+        advanced: Partial<{
             electron: Electron.BrowserWindowOptions;
-        };
-    }
+            indexFile: string
+        }>;
+    }>
     interface ISettings {
         /**
          * Get the actual configuration object
@@ -116,10 +117,37 @@ declare namespace NSettingsModule {
         /**
          * Set the configuration object
          */
-        setConfig(config: Partial<ISettignsStructure> | ISettignsStructure): void;
+        setConfig(config: ISettignsStructure): void;
         /**
          * Get a specific key from the configuration object
          */
         getConfigKey(key: keyof ISettignsStructure): any;
+    }
+}
+
+
+declare namespace NParser {
+    interface INode {
+        type: TNodeType
+        name?: string
+        value?: string | number | boolean | INode
+        arguments?: INode[]
+        body?: INode[]
+        predirectives?: INode[]
+        directives?: INode[]
+        elements?: INode[]
+    }
+}
+
+declare namespace NInterpreterModule {
+    interface IInstructionsStructure {
+        Variables: NParser.INode[]
+        Specials: NParser.INode[]
+        Scenes: NParser.INode[]
+    }
+
+    interface IInterpreter {
+        setInstructions(): IInstructionsStructure
+        getInstructions(): IInstructionsStructure
     }
 }

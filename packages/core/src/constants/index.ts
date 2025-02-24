@@ -15,6 +15,9 @@ export const DEFAULT_VALUES: NConstants.DEFAULT_VALUES = {
     SETTINGS: {
         interactivity: true,
         port: 3000,
+        advanced: {
+            indexFile: Utilities.getProjectFiles("./index.html")
+        },
         traslator: join(process.cwd(), 'src/i18n.csv'),
         scripts: join(process.cwd(), 'src/scripts'),
     }

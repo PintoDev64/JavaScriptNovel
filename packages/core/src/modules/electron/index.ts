@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import { DEFAULT_VALUES } from '../../constants';
 import { Utilities } from '../../utils';
 import { ERROR_DEFINITIONS, NovelCoreError } from '../../error';
+import LibrarySettings from '../settings';
 
 export default class ElectronInstance implements NElectronModule.IElectronInstance {
     private static instance: ElectronInstance;
@@ -21,17 +22,17 @@ export default class ElectronInstance implements NElectronModule.IElectronInstan
         if (!ElectronInstance.instance) ElectronInstance.instance = new ElectronInstance();
         return ElectronInstance.instance;
     }
-    createBrowserWindow(): BrowserWindow {
-        return this._browserWindow = new BrowserWindow(DEFAULT_VALUES.ELECTRON);
+    createBrowserWindow(): void {
+        const DefaultConfig = LibrarySettings.getConfig().advanced?.indexFile
+            ? LibrarySettings.getConfig().advanced?.indexFile
+            : DEFAULT_VALUES.ELECTRON
+        this._browserWindow = new BrowserWindow(DefaultConfig);
     }
     startBrowserWindow(): void {
         if (!this._browserWindow) throw new NovelCoreError(
             this.constructor.name,
             ERROR_DEFINITIONS.ELECTRON.BROWSER_WINDOW
         )
-
-        console.log(process.env["NODE_ENV"]);
-        console.log(Utilities.getProjectFiles('index.html'));
         this._browserWindow.loadFile(Utilities.getProjectFiles('index.html'));
     }
     getBrowserWindow(): BrowserWindow {

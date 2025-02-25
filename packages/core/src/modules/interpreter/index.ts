@@ -1,21 +1,24 @@
 class NovelJsInterpreter implements NInterpreterModule.IInterpreter {
     static instance: NInterpreterModule.IInterpreter;
+    private instructions: NInterpreterModule.IInstructionsStructure = {
+        Scenes: [],
+        Specials: [],
+        Variables: []
+    };
 
-    private constructor() {
-
-    }
+    private constructor() {}
 
     static getInstance() {
         if (!NovelJsInterpreter.instance) NovelJsInterpreter.instance = new NovelJsInterpreter();
         return NovelJsInterpreter.instance
     }
 
-    setInstructions(): NInterpreterModule.IInstructionsStructure {
-        throw new Error("Method not implemented.");
+    setInstructions(InstruccionObject: NInterpreterModule.IInstructionsStructure): void {
+        this.instructions = InstruccionObject
     }
 
     getInstructions(): NInterpreterModule.IInstructionsStructure {
-        throw new Error("Method not implemented.");
+        return this.instructions
     }
 }
 

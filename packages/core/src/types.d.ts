@@ -147,7 +147,7 @@ declare namespace NInterpreterModule {
     }
 
     interface IInterpreter {
-        setInstructions(): IInstructionsStructure
+        setInstructions(InstruccionObject: NInterpreterModule.IInstructionsStructure): void
         getInstructions(): IInstructionsStructure
     }
 }

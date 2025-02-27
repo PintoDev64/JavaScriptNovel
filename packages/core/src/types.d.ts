@@ -30,6 +30,10 @@ declare namespace NUtils {
     }
     interface Utilities {
         /**
+         * 
+         */
+        getEnviroment: () => string | undefined
+        /**
          * Get the current date and time
          * @returns The current date and time
          */
@@ -56,7 +60,7 @@ declare namespace NUtils {
 
 declare namespace NConstants {
     interface DEFAULT_VALUES {
-        readonly ELECTRON: Electron.BrowserWindowOptions;
+        readonly ELECTRON: Electron.BrowserWindowConstructorOptions;
         readonly SETTINGS: Partial<NSettingsModule.ISettignsStructure>;
     }
 }
@@ -105,7 +109,6 @@ declare namespace NSettingsModule {
          */
         traslator: string;
         advanced: Partial<{
-            electron: Electron.BrowserWindowOptions;
             indexFile: string
         }>;
     }>

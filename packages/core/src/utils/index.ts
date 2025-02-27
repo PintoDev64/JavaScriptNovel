@@ -10,6 +10,7 @@ export const Colors: NUtils.Colors = {
 };
 
 export const Utilities: NUtils.Utilities = {
+    getEnviroment: () => process.env["NODE_ENV"],
     getCurrentDateTime: (local: Intl.LocalesArgument) => new Date().toLocaleString(local),
     getSyncJSONFile: (path: string) => {
         try {
@@ -23,12 +24,24 @@ export const Utilities: NUtils.Utilities = {
             return undefined
         }
     },
-    getLibraryFiles: () => resolve(__dirname, '../src/files'),
+    getLibraryFiles: () => {
+        console.log("getLibraryFiles: ", Utilities.getEnviroment());
+        console.log("getLibraryFiles: ", __dirname);
+
+        if (Utilities.getEnviroment() === "development") {
+            console.log(resolve(__dirname, '../files').replace(/\\/g, "/"));
+            return resolve(__dirname, '../files').replace(/\\/g, "/")
+        }
+        console.log(resolve(__dirname, '../files').replace(/\\/g, "/"));
+        return resolve(__dirname, '../files').replace(/\\/g, "/")
+    },
     getProjectFiles: (fileURl: string | string[]) => {
         if (fileURl instanceof Array) {
-            return resolve(process.cwd(), ...fileURl);
+            console.log("getProjectFiles: ", resolve(process.cwd(), ...fileURl).replace(/\\/g, "/"));
+            return resolve(process.cwd(), ...fileURl).replace(/\\/g, "/");
         }
-        return resolve(process.cwd(), fileURl);
+        console.log("getProjectFiles: ", resolve(process.cwd(), fileURl).replace(/\\/g, "/"));
+        return resolve(process.cwd(), fileURl).replace(/\\/g, "/");
     }
 
 }

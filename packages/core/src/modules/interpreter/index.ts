@@ -17,6 +17,7 @@ class NovelJsInterpreter implements NInterpreterModule.IInterpreter {
         this.instructions = InstruccionObject
     }
 
+
     getInstructions(): NInterpreterModule.IInstructionsStructure {
         return this.instructions
     }

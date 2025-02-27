@@ -23,17 +23,22 @@ export default class ElectronInstance implements NElectronModule.IElectronInstan
         return ElectronInstance.instance;
     }
     createBrowserWindow(): void {
-        const DefaultConfig = LibrarySettings.getConfig().advanced?.indexFile
-            ? LibrarySettings.getConfig().advanced?.indexFile
-            : DEFAULT_VALUES.ELECTRON
-        this._browserWindow = new BrowserWindow(DefaultConfig);
+        console.log("createBrowserWindow: ", DEFAULT_VALUES.ELECTRON);
+
+        this._browserWindow = new BrowserWindow(DEFAULT_VALUES.ELECTRON);
     }
     startBrowserWindow(): void {
         if (!this._browserWindow) throw new NovelCoreError(
             this.constructor.name,
             ERROR_DEFINITIONS.ELECTRON.BROWSER_WINDOW
         )
-        this._browserWindow.loadFile(Utilities.getProjectFiles('index.html'));
+        const HTMLFileLocation = LibrarySettings.getConfig().advanced !== undefined && LibrarySettings.getConfig().advanced?.indexFile !== undefined
+            ? LibrarySettings.getConfig().advanced?.indexFile
+            : "./index.html"
+
+        console.log("startBrowserWindow: ", HTMLFileLocation);
+
+        this._browserWindow.loadFile(Utilities.getProjectFiles(HTMLFileLocation!));
     }
     getBrowserWindow(): BrowserWindow {
         if (!this._browserWindow) throw new NovelCoreError(

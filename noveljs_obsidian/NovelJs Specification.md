@@ -2,16 +2,16 @@
 - Core:
 	- Settings
 	- ElectronJs Instance
-	- Events
-	- Animations/Effects
 	- Lenguage Interpreter
-	- Package Manager
 	- Editor Comunicator
 - Compiler:
 	- Parser
 	- Lexer
 	- JavaScript API
-	- Array Instructor
+- Visual Core:
+	- Events
+	- Animations/Effects
+	- ElectronJs Comunicator
 - Cli:
 	- Command Files
 	- Command Config

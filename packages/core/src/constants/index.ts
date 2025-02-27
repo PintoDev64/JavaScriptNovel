@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import { Utilities } from "../utils";
 
-const ELECTORN_PRELOAD_URI = join(Utilities.getLibraryFiles(), "electron_preload.js")
+const ELECTORN_PRELOAD_URI = join(__dirname, "../files/electron.preload.js")
 
 export const DEFAULT_VALUES: NConstants.DEFAULT_VALUES = {
     ELECTRON: {

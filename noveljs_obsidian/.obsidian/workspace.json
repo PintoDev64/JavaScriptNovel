@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NovelScript Specification.md",
+                "file": "NovelJs Specification.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NovelScript Specification"
+              "title": "NovelJs Specification"
             }
           },
           {
@@ -183,8 +183,8 @@
   },
   "active": "11952e714fb1c909",
   "lastOpenFiles": [
-    "Gragh.canvas",
     "NovelScript Specification.md",
+    "Gragh.canvas",
     "Tareas del proyectos.md",
     "NovelScript Especification.md",
     "Definicion del proyecto.md",

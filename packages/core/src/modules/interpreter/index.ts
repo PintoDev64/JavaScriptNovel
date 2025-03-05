@@ -1,3 +1,5 @@
+import { NInterpreterModule } from "src/types";
+
 class NovelJsInterpreter implements NInterpreterModule.IInterpreter {
     static instance: NInterpreterModule.IInterpreter;
     private instructions: NInterpreterModule.IInstructionsStructure = {

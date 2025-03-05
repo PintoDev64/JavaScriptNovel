@@ -1,4 +1,6 @@
-declare namespace NUtils {
+import "jsnovel-compiler"
+
+export namespace NUtils {
     interface Colors {
         /**
          * Color the text red
@@ -58,14 +60,14 @@ declare namespace NUtils {
     }
 }
 
-declare namespace NConstants {
+export namespace NConstants {
     interface DEFAULT_VALUES {
         readonly ELECTRON: Electron.BrowserWindowConstructorOptions;
         readonly SETTINGS: Partial<NSettingsModule.ISettignsStructure>;
     }
 }
 
-declare namespace NElectronModule {
+export namespace NElectronModule {
     interface IElectronInstance {
         /**
          * Get the electron app instance
@@ -90,7 +92,7 @@ declare namespace NElectronModule {
     }
 }
 
-declare namespace NSettingsModule {
+export namespace NSettingsModule {
     type ISettignsStructure = Partial<{
         /**
          * Allows you to select components in the game view (development only)
@@ -128,21 +130,7 @@ declare namespace NSettingsModule {
     }
 }
 
-
-declare namespace NParser {
-    interface INode {
-        type: TNodeType
-        name?: string
-        value?: string | number | boolean | INode
-        arguments?: INode[]
-        body?: INode[]
-        predirectives?: INode[]
-        directives?: INode[]
-        elements?: INode[]
-    }
-}
-
-declare namespace NInterpreterModule {
+export namespace NInterpreterModule {
     interface IInstructionsStructure {
         Variables: NParser.INode[]
         Specials: NParser.INode[]

@@ -1,7 +1,14 @@
 /// <reference types="vite/client" />
 
-declare type NovelJsAPIGameAPI = {
+declare type TNovelJsAPIGameAPI = {
     NovelJsAPIGameAPI: {
-        X: "example"
+        GetInstructions(): unknown
     }
 } & Window & typeof globalThis
+
+declare namespace NNovelJsContext {
+    interface NovelJsWebContext {
+
+        userAgent: string
+    }
+}

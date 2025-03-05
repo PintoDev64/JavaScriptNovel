@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { ERROR_DEFINITIONS } from '../error';
 import { resolve } from 'node:path';
+import { NUtils } from 'src/types';
 
 export const Colors: NUtils.Colors = {
     ErrorText: (text: string) => `\x1b[31m${text}\x1b[0m`,

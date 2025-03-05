@@ -4,6 +4,8 @@ import { Utilities } from '../../utils';
 import { ERROR_DEFINITIONS, NovelCoreError } from '../../error';
 import LibrarySettings from '../settings';
 
+import { NElectronModule } from "src/types";
+
 export default class ElectronInstance implements NElectronModule.IElectronInstance {
     private static instance: ElectronInstance;
     private _app: typeof app;

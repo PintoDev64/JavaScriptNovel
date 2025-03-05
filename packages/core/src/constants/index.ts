@@ -1,6 +1,8 @@
 import { join } from "node:path";
 import { Utilities } from "../utils";
 
+import { NConstants } from "src/types";
+
 const ELECTORN_PRELOAD_URI = join(__dirname, "../files/electron.preload.js")
 
 export const DEFAULT_VALUES: NConstants.DEFAULT_VALUES = {

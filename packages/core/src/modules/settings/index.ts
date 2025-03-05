@@ -3,6 +3,8 @@ import { DEFAULT_VALUES } from "../../constants";
 import { Utilities } from "../../utils";
 import { ERROR_DEFINITIONS, NovelCoreError } from "../../error";
 
+import { NSettingsModule } from "src/types";
+
 class NovelJsSettings implements NSettingsModule.ISettings {
     static instance: NSettingsModule.ISettings;
     private config: NSettingsModule.ISettignsStructure = {} as NSettingsModule.ISettignsStructure;

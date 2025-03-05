@@ -1,5 +1,3 @@
-import type { NLexer } from "./types.js";
-
 import { readFileSync } from "node:fs";
 import { glob } from "node:fs/promises"
 import CompilerTokenizer from "./modules/tokenizer/index.js";

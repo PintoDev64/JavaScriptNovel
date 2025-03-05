@@ -1,5 +1,3 @@
-import type { NTokenizer, NParser } from "src/types";
-
 import { BRACKET_CLOSE } from "../../../constants/index.js";
 import CreateNode from "../createNode.js";
 

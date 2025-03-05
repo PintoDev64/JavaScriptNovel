@@ -1,5 +1,3 @@
-import type { NTokenizer, NParser, TTokenSpecialNames } from "src/types";
-
 import { BooleanKeywords, PARENTHESIS_OPEN, VariablesKeywords } from "../../constants";
 import ArrayExpression from "./utils/arrayExpression.js";
 import BooleanExpression from "./utils/booleanExpression.js";

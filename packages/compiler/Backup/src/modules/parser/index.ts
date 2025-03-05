@@ -1,5 +1,3 @@
-import type { NTokenizer, NParser } from "src/types";
-
 import CreateNode from "./createNode";
 
 export default function CompilerParser(TokenList: NTokenizer.IToken[], FileName: string): NParser.INodeEntry {

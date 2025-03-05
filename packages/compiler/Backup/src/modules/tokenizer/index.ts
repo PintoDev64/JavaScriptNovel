@@ -1,14 +1,6 @@
-import type { NTokenizer } from "src/types";
-
 import { NEWLINE } from "../../constants";
 import CreateToken from "./createToken";
 
-/**
- * Reads the script and transforms it into tokens, which will be processed by the compiler
- * @param scriptContent Plain text content of the script
- * @param FileName Name of the file being compiled
- * @returns {NTokenizer.ITokenEntry} Object { file, tokens }
- */
 export default function CompilerTokenizer(scriptContent: string, FileName: string): NTokenizer.ITokenEntry {
     const ScriptLines = scriptContent.split(NEWLINE);
     const Tokens: NTokenizer.IToken[] = [];

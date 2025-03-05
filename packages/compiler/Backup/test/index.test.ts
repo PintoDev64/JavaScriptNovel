@@ -1,14 +1,13 @@
-import type { NTokenizer, NParser } from "../src/types.js";
-
 import { readFileSync, writeFileSync } from "node:fs";
 import { describe, it } from "node:test";
+
+import NovelScriptCompiler from "../index.js";
 
 // Methods
 import { ConsoleColors } from "../src/utils/index.js";
 import CompilerTokenizer from "../src/modules/tokenizer/index.js";
 import CompilerParser from "../src/modules/parser/index.js";
 import CompilerLexer from "../src/modules/lexer/index.js";
-import NovelScriptCompiler from "../src/index.js"
 
 
 // Tests

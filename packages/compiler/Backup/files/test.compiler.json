@@ -1,0 +1,180 @@
+{
+    "Variables": [
+        {
+            "type": "VariableDeclaration",
+            "name": "Ejemplo",
+            "value": {
+                "type": "BooleanExpression",
+                "value": false
+            }
+        },
+        {
+            "type": "VariableDeclaration",
+            "name": "HolaXD",
+            "value": {
+                "type": "BooleanExpression",
+                "value": false
+            }
+        },
+        {
+            "type": "VariableDeclaration",
+            "name": "HolaXD",
+            "value": {
+                "type": "NumberLiteral",
+                "value": 12345
+            }
+        }
+    ],
+    "Specials": [
+        {
+            "type": "ImageDeclaration",
+            "name": "Cuarto",
+            "value": {
+                "type": "StringLiteral",
+                "value": "Cuarto.png"
+            }
+        },
+        {
+            "type": "AudioDeclaration",
+            "name": "EffectSound",
+            "value": {
+                "type": "CallExpression",
+                "name": "MediaAudio",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "value": "music/EffectSound.mp3"
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "value": "sfx"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CharacterDeclaration",
+            "name": "maria",
+            "value": {
+                "type": "CallExpression",
+                "name": "Character",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "value": "maria"
+                    },
+                    {
+                        "type": "ArrayExpression",
+                        "elements": [
+                            {
+                                "type": "StringLiteral",
+                                "value": "maria1.png"
+                            },
+                            {
+                                "type": "StringLiteral",
+                                "value": "maria2.png"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "value": "#00ff00"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ImageDeclaration",
+            "name": "Paisaje",
+            "value": {
+                "type": "StringLiteral",
+                "value": "Paisaje.png"
+            }
+        },
+        {
+            "type": "AudioDeclaration",
+            "name": "BgMusic",
+            "value": {
+                "type": "CallExpression",
+                "name": "MediaAudio",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "value": "music/BgMusic.mp3"
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "value": "bg"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CharacterDeclaration",
+            "name": "personaje",
+            "value": {
+                "type": "CallExpression",
+                "name": "Character",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "value": "personajes"
+                    },
+                    {
+                        "type": "ArrayExpression",
+                        "elements": [
+                            {
+                                "type": "StringLiteral",
+                                "value": "sprite1.png"
+                            },
+                            {
+                                "type": "StringLiteral",
+                                "value": "sprite2.png"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "value": "#ff0000"
+                    }
+                ]
+            }
+        }
+    ],
+    "Scenes": [
+        {
+            "type": "FunctionDeclaration",
+            "name": "Scene",
+            "arguments": [
+                {
+                    "type": "StringLiteral",
+                    "value": "Maria_Scene"
+                }
+            ],
+            "body": [
+                {
+                    "type": "CharacterExpression",
+                    "name": "maria",
+                    "value": "Hola Jugador"
+                }
+            ]
+        },
+        {
+            "type": "FunctionDeclaration",
+            "name": "Scene",
+            "arguments": [
+                {
+                    "type": "StringLiteral",
+                    "value": "Ejemplo_nombre_de_escena"
+                }
+            ],
+            "body": [
+                {
+                    "type": "CharacterExpression",
+                    "name": "personaje",
+                    "value": "Hola Jugador"
+                }
+            ]
+        }
+    ]
+}

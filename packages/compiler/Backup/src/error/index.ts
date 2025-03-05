@@ -1,5 +1,3 @@
-import type { NError } from "src/types";
-
 const ERROR_DEFINITIONS = {
     TOKENIZER: "TokenizerError",
     PARSER: "ParserError"

@@ -1,5 +1,3 @@
-import type { NLexer } from "src/types";
-
 import LexerCallExpression from "./utils/callExpression";
 import LexerFunctionDeclaration from "./utils/functionDeclaration";
 import LexerVariableDeclaration from "./utils/variableDeclaration";

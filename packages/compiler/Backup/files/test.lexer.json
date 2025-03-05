@@ -1,0 +1,96 @@
+{
+    "type": "Program",
+    "file": "files/test.tokenizer.njs",
+    "body": [
+        {
+            "type": "VariableDeclaration",
+            "name": "HolaXD",
+            "value": {
+                "type": "BooleanExpression",
+                "value": false
+            }
+        },
+        {
+            "type": "VariableDeclaration",
+            "name": "HolaXD",
+            "value": {
+                "type": "NumberLiteral",
+                "value": 12345
+            }
+        },
+        {
+            "type": "ImageDeclaration",
+            "name": "Paisaje",
+            "value": {
+                "type": "StringLiteral",
+                "value": "Paisaje.png"
+            }
+        },
+        {
+            "type": "AudioDeclaration",
+            "name": "BgMusic",
+            "value": {
+                "type": "CallExpression",
+                "name": "MediaAudio",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "value": "music/BgMusic.mp3"
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "value": "bg"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CharacterDeclaration",
+            "name": "personaje",
+            "value": {
+                "type": "CallExpression",
+                "name": "Character",
+                "arguments": [
+                    {
+                        "type": "StringLiteral",
+                        "value": "personajes"
+                    },
+                    {
+                        "type": "ArrayExpression",
+                        "elements": [
+                            {
+                                "type": "StringLiteral",
+                                "value": "sprite1.png"
+                            },
+                            {
+                                "type": "StringLiteral",
+                                "value": "sprite2.png"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "StringLiteral",
+                        "value": "#ff0000"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "FunctionDeclaration",
+            "name": "Scene",
+            "arguments": [
+                {
+                    "type": "StringLiteral",
+                    "value": "Ejemplo_nombre_de_escena"
+                }
+            ],
+            "body": [
+                {
+                    "type": "CharacterExpression",
+                    "name": "personaje",
+                    "value": "Hola Jugador"
+                }
+            ]
+        }
+    ]
+}

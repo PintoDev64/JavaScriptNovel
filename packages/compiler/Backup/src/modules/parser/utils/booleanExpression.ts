@@ -1,5 +1,3 @@
-import type { NTokenizer, NParser } from "src/types";
-
 export default  function BooleanExpression(Tokens: NTokenizer.IToken[], Cursor: number): [number, NParser.INode] {
     let ActualCursor = Cursor;
     const BooleanNode: NParser.INode = {

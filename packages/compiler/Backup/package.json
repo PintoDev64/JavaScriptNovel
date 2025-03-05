@@ -7,13 +7,17 @@
     "description": "Compiler module for NovelJs",
     "main": "dist/index.js",
     "files": [
-        "dist"
+        "dist/types/",
+        "dist/types/index.d.ts",
+        "dist/types/types.d.ts"
     ],
     "types": "dist/types/index.d.ts",
-    "exports": "./dist/index.js",
+    "exports": {
+        ".": "./dist/index.js"
+    },
     "scripts": {
         "prepare": "node --run compile",
-        "compile": "tsc --project ./tsconfig.json",
+        "compile": "tsc --project ./tsconfig.json && node ./bin/copytypes.js",
         "test": "node --run compile && node --trace-warnings ./dist/test/index.test.js"
     },
     "devDependencies": {

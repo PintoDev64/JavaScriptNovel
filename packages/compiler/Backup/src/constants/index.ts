@@ -1,5 +1,3 @@
-import type { TTokenSpecialNames, TTokenTypes } from "src/types";
-
 export const PARENTHESIS_OPEN = '(';
 export const PARENTHESIS_CLOSE = ')';
 export const BRACKET_OPEN = '[';

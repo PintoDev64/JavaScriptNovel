@@ -1,5 +1,3 @@
-import type { NTokenizer, NParser } from "src/types";
-
 export default function VariableExpression(Tokens: NTokenizer.IToken[], Cursor: number): [number, NParser.INode] {
     let ActualCursor = Cursor;
 

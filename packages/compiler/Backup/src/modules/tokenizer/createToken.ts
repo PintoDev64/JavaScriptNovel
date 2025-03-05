@@ -1,5 +1,3 @@
-import type { NTokenizer, TTokenTypes, TTokenSpecialNames } from "src/types";
-
 import { BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, EQUAL, LETTER, NUMBER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, POINT, SEMICOLON, SPACE, SPECIALLETTERS, TOKEN_KEYWORDS } from "../../constants";
 import { ThrowErrorIf } from "../../error";
 
@@ -8,7 +6,7 @@ import { ThrowErrorIf } from "../../error";
  * @param LineContent content of the line
  * ​​@param line line of the cursor of the fragment to read
  * @param cursor position of the cursor of the fragment to read
- * @returns {NTokenizer.FCreteToken | undefined} Array [Line, Cursor, Type, Token]
+ * @returns Returns the new line, position, type and result of the generated token
  */
 export default function CreateToken(LineContent: string, line: number, cursor: number): NTokenizer.FCreteToken | undefined {
     let ActualCursor = cursor

@@ -1,6 +1,5 @@
-import type { NTokenizer, NParser } from "src/types";
-
 import CreateNode from "../createNode.js";
+import CallExpression from "./callExpression.js";
 
 export default function VariableDeclaration(Tokens: NTokenizer.IToken[], Cursor: number): [number, NParser.INode] {
     let ActualCursor = Cursor;

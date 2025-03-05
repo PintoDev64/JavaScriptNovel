@@ -1,5 +1,3 @@
-import type { NTokenizer, NParser } from "src/types";
-
 import { CURLY_OPEN } from "../../../constants";
 import CreateNode from "../createNode.js";
 

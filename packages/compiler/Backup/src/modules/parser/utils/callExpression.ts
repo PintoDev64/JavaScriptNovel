@@ -1,5 +1,3 @@
-import type { NTokenizer, NParser } from "src/types";
-
 import { CURLY_OPEN, PARENTHESIS_CLOSE, PARENTHESIS_OPEN } from "../../../constants/index.js";
 import CreateNode from "../createNode.js";
 import BodyExpression from "./bodyExpression.js";

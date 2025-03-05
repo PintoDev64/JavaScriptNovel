@@ -1,5 +1,3 @@
-import type { NParser, NLexer } from "src/types.js";
-
 import CreateLexer from "./createLexer.js";
 
 export default function CompilerLexer(ASTRequest: NParser.INodeEntry): NLexer.INodeEntry {

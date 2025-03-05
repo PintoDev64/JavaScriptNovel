@@ -1,5 +1,3 @@
-import type { NLexer } from "src/types";
-
 import LexerCallExpression from "./callExpression";
 
 export default function LexerFunctionDeclaration(ParserNode: NLexer.INode): NLexer.INode {

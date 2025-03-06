@@ -20,6 +20,6 @@
     },
     "dependencies": {
         "electron": "^33.2.1",
-        "jsnovel-compiler": "^0.0.4"
+        "noveljs.compiler": "^0.0.4"
     }
 }

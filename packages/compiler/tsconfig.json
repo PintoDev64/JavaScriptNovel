@@ -1,16 +1,14 @@
 {
     "exclude": [
         "../../node_modules/**",
-        "dist"
-    ],
-    "include": [
-        "src"
+        "dist",
+        "Backup"
     ],
     "compilerOptions": {
         "module": "CommonJS",
         "target": "ES6",
         "moduleResolution": "node",
-        "rootDir": "./src",
+        "rootDir": "./",
         "baseUrl": "./",
         "outDir": "./dist",
         "declaration": true,

@@ -1,7 +1,7 @@
-import "jsnovel-compiler"
+import { NParser } from "noveljs.compiler/dist/types/src/types";
 
 export namespace NUtils {
-    interface Colors {
+    export interface Colors {
         /**
          * Color the text red
          * @param text The text to color
@@ -27,10 +27,10 @@ export namespace NUtils {
          */
         SuccessText: (text: string) => string;
     }
-    interface LogFunctions {
+    export interface LogFunctions {
         Process: (text: string) => void
     }
-    interface Utilities {
+    export interface Utilities {
         /**
          * 
          */
@@ -61,14 +61,14 @@ export namespace NUtils {
 }
 
 export namespace NConstants {
-    interface DEFAULT_VALUES {
+    export interface DEFAULT_VALUES {
         readonly ELECTRON: Electron.BrowserWindowConstructorOptions;
         readonly SETTINGS: Partial<NSettingsModule.ISettignsStructure>;
     }
 }
 
 export namespace NElectronModule {
-    interface IElectronInstance {
+    export interface IElectronInstance {
         /**
          * Get the electron app instance
          */
@@ -93,7 +93,7 @@ export namespace NElectronModule {
 }
 
 export namespace NSettingsModule {
-    type ISettignsStructure = Partial<{
+    export type ISettignsStructure = Partial<{
         /**
          * Allows you to select components in the game view (development only)
          */
@@ -114,7 +114,7 @@ export namespace NSettingsModule {
             indexFile: string
         }>;
     }>
-    interface ISettings {
+    export interface ISettings {
         /**
          * Get the actual configuration object
          */
@@ -131,13 +131,13 @@ export namespace NSettingsModule {
 }
 
 export namespace NInterpreterModule {
-    interface IInstructionsStructure {
+    export interface IInstructionsStructure {
         Variables: NParser.INode[]
         Specials: NParser.INode[]
         Scenes: NParser.INode[]
     }
 
-    interface IInterpreter {
+    export interface IInterpreter {
         setInstructions(InstruccionObject: NInterpreterModule.IInstructionsStructure): void
         getInstructions(): IInstructionsStructure
     }

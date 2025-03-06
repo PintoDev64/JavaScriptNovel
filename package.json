@@ -18,6 +18,7 @@
         "visual:build": "npm run build -w packages/visual",
         
         "core:test": "npm run test -w packages/core",
+        "core:start": "npm run start -w packages/core",
         "core:bin": "npm run bin -w packages/core",
         "core:compile": "npm run compile -w packages/core",
 

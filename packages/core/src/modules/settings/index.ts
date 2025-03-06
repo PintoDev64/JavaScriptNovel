@@ -10,6 +10,7 @@ class NovelJsSettings implements NSettingsModule.ISettings {
     private config: NSettingsModule.ISettignsStructure = {} as NSettingsModule.ISettignsStructure;
 
     private constructor() { }
+    
     /**
      * Get the instance of the settings module
      */

@@ -26,22 +26,15 @@ export const Utilities: NUtils.Utilities = {
         }
     },
     getLibraryFiles: () => {
-        console.log("getLibraryFiles: ", Utilities.getEnviroment());
-        console.log("getLibraryFiles: ", __dirname);
-
         if (Utilities.getEnviroment() === "development") {
-            console.log(resolve(__dirname, '../files').replace(/\\/g, "/"));
             return resolve(__dirname, '../files').replace(/\\/g, "/")
         }
-        console.log(resolve(__dirname, '../files').replace(/\\/g, "/"));
         return resolve(__dirname, '../files').replace(/\\/g, "/")
     },
     getProjectFiles: (fileURl: string | string[]) => {
         if (fileURl instanceof Array) {
-            console.log("getProjectFiles: ", resolve(process.cwd(), ...fileURl).replace(/\\/g, "/"));
             return resolve(process.cwd(), ...fileURl).replace(/\\/g, "/");
         }
-        console.log("getProjectFiles: ", resolve(process.cwd(), fileURl).replace(/\\/g, "/"));
         return resolve(process.cwd(), fileURl).replace(/\\/g, "/");
     }
 

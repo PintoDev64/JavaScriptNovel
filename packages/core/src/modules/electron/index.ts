@@ -34,7 +34,7 @@ export default class ElectronInstance implements NElectronModule.IElectronInstan
             this.constructor.name,
             ERROR_DEFINITIONS.ELECTRON.BROWSER_WINDOW
         )
-        const HTMLFileLocation = LibrarySettings.getConfig().advanced !== undefined && LibrarySettings.getConfig().advanced?.indexFile !== undefined
+        const HTMLFileLocation = LibrarySettings.getConfig().advanced?.indexFile !== undefined
             ? LibrarySettings.getConfig().advanced?.indexFile
             : "./index.html"
 

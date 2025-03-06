@@ -1,3 +1,5 @@
+import type { TNovelJsAPIGameAPI } from "../types"
+
 export function useNovelJsAPI() {
     const { NovelJsAPIGameAPI } = window as TNovelJsAPIGameAPI
     return NovelJsAPIGameAPI

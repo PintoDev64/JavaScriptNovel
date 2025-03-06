@@ -1,5 +1,5 @@
 {
-    "name": "jsnovel",
+    "name": "noveljs.core",
     "version": "0.0.1",
     "private": false,
     "author": "PintoDev64",
@@ -19,7 +19,7 @@
         "typescript": "^5.7.2"
     },
     "dependencies": {
-        "electron": "^33.2.1",
+        "electron": "^35.0.0",
         "noveljs.compiler": "^0.0.4"
     }
 }

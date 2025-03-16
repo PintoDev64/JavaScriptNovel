@@ -12,6 +12,7 @@ export type TNodeType =
     | "CharacterExpression"
     | "StringLiteral"
     | "NumberLiteral";
+
 export interface INode {
     type: TNodeType
     name?: string
@@ -34,15 +35,36 @@ export interface KeyboardMap {
 }
 export type KeyboardKeys = string
 
-export type TNovelJsAPIGameAPI = {
+export interface IGameData {
+    gameName: string
+    gameVersion: string
+}
+
+export interface IElectronData {
+    electronVersion: string
+
+}
+
+export type TNovelJsAPIGameAPI<T extends "Application" | "Web"> = {
     NovelJsAPIGameAPI: {
-        GetKeyboardMap(): Set<KeyboardMap>
-        GetGameData(): string
-        GetInstructions(): IInstructions
+        General: {
+            GetKeyboardMap(): T extends "Application" ? Set<KeyboardMap> : void
+            GetGameData(): T extends "Application" ? IGameData : void
+            GetInstructions(): T extends "Application" ? IInstructions : void
+            GetElectronData(): T extends "Application" ? IElectronData : void
+        },
+        Memory: {
+            GetFunctions(): { [K: string]: unknown }
+            GetVariables(): { [K: string]: unknown }
+        }
     }
 } & Window & typeof globalThis
 
 export interface INovelJsWebContext {
+    stateLibrary: string
+    stateApplication: IElectronData
+    keyboardAssignment: Set<KeyboardMap>
+    gameData: IGameData
     instructions: IInstructions
     userAgent: string
 }

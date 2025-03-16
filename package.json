@@ -14,8 +14,8 @@
     ],
     "license": "MIT",
     "scripts": {
-        "visual:storybook": "npm run storybook -w packages/visual",
-        "visual:build": "npm run build -w packages/visual",
+        "engine:storybook": "npm run storybook -w packages/engine",
+        "engine:build": "npm run build -w packages/engine",
         
         "core:test": "npm run test -w packages/core",
         "core:start": "npm run start -w packages/core",

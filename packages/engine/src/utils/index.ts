@@ -1,3 +1,4 @@
+import { HTML__id_classes } from "../constants"
 import type { TNovelJsAPIGameAPI } from "../types"
 
 type TUseNovelJsAPI<T> = T extends "Application" ? TNovelJsAPIGameAPI<"Application">["NovelJsAPIGameAPI"] : TNovelJsAPIGameAPI<"Web">
@@ -24,4 +25,8 @@ export function useNovelJsAPI<T extends "Application" | string>(UserAgent: T): T
 
 export function useGetUserAgent() {
     return window.navigator.userAgent
+}
+
+export function createIDClassName(name: string) {
+    return `${HTML__id_classes}__${name}`
 }

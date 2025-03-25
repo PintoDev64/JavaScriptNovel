@@ -1,7 +1,8 @@
+import { createIDClassName } from "../../utils";
+
 export default function Canvas() {
     return (
-        <canvas>
-            
+        <canvas id={createIDClassName("SpecialCanvas")}>
         </canvas>
     )
 }

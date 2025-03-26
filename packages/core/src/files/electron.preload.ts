@@ -1,7 +1,20 @@
 import { contextBridge } from "electron";
 
-const GameAPI = {};
-const DevAPI = {};
+const GameAPI = {
+    loadInstructions() {
+
+    },
+    loadGameImages() {
+
+    },
+    loadGameVideos() {
+
+    },
+      
+};
+const DevAPI = {
+
+};
 
 contextBridge.exposeInMainWorld("NovelJsAPIGameAPI", GameAPI);
 if (true) {

@@ -12,7 +12,7 @@ import NovelScriptCompiler from "../src/index.js"
 
 
 // Tests
-describe("Describe results step by step of the compiler", { skip: true },() => {
+describe("Describe results step by step of the compiler",() => {
     it("Tokenizer: return a token list with type {NTokenizer.IToken}", { timeout: 10000 }, async () => {
         console.log(`${ConsoleColors.cyan("Tokenizer ↘")}`);
         const FileContent = readFileSync("files/test.tokenizer.njs", { encoding: 'utf-8' });
@@ -41,7 +41,7 @@ describe("Describe results step by step of the compiler", { skip: true },() => {
     });
 });
 
-describe("Exported Library Function", { todo: true }, () => {
+describe("Exported Library Function", { skip: true , todo: true }, () => {
     it("Try", async () => {
         console.log(`${ConsoleColors.magenta("Exported Compiler ↘")}`);
         const result = await NovelScriptCompiler("files")

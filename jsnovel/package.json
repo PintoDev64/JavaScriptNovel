@@ -1,0 +1,26 @@
+{
+  "name": "jsnovel",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "vitest --run",
+    "test:wacth": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.14.1",
+    "@typescript-eslint/eslint-plugin": "^8.30.1",
+    "@typescript-eslint/parser": "^8.30.1",
+    "eslint": "^9.24.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  },
+  "dependencies": {
+    "electron": "^35.1.5"
+  }
+}

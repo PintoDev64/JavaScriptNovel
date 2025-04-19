@@ -1,0 +1,53 @@
+src/
+├── app/                   # Entradas del sistema (CLI, Electron, Web, etc.)
+│   ├── cli/
+│   ├── electron/
+│   └── web/
+│
+├── engine/                # Core del motor, separado por funcionalidades del dominio
+│   ├── script/            # Manejo del lenguaje novelscript
+│   │   ├── parser.ts
+│   │   ├── executor.ts
+│   │   └── types.ts
+│   │
+│   ├── scene/             # Gestión de escenas
+│   │   ├── scene-manager.ts
+│   │   └── scene.ts
+│   │
+│   ├── character/         # Definición y manejo de personajes
+│   │   ├── character.ts
+│   │   └── character-registry.ts
+│   │
+│   ├── media/             # Reproducción y pre-carga de recursos
+│   │   ├── audio.ts
+│   │   ├── image.ts
+│   │   └── preload.ts
+│   │
+│   ├── interface/         # Comunicación con el sistema de UI (React u otros)
+│   │   ├── interface-api.ts
+│   │   └── events.ts
+│   │
+│   └── ports/             # Interfaces (abstracciones hexagonales)
+│       ├── fs-port.ts
+│       ├── ui-port.ts
+│       └── logger-port.ts
+│
+├── adapters/              # Implementaciones concretas de los puertos
+│   ├── node/
+│   │   ├── fs-adapter.ts
+│   │   └── logger-adapter.ts
+│   │
+│   ├── web/
+│   │   ├── fs-adapter.ts
+│   │   └── logger-adapter.ts
+│   │
+│   └── electron/
+│       ├── ipc-adapter.ts
+│       └── preload-adapter.ts
+│
+├── shared/                # Utilidades compartidas y tipos globales
+│   ├── utils.ts
+│   ├── constants.ts
+│   └── types.ts
+│
+└── index.ts               # Punto de entrada del motor (re-exporta o inicia cosas)

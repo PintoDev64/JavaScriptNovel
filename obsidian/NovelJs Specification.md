@@ -1,0 +1,21 @@
+# Modules
+- Core:
+	- Settings
+	- ElectronJs Instance
+	- Lenguage Interpreter
+	- Editor Comunicator
+- Compiler:
+	- Parser
+	- Lexer
+	- JavaScript API
+- Visual Core:
+	- Events
+	- Animations/Effects
+	- ElectronJs Comunicator
+- Cli:
+	- Command Files
+	- Command Config
+	- Command Test
+- Extension:
+	- Extension API
+	- Command Extension

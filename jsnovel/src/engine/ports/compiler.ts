@@ -105,4 +105,8 @@ export namespace NParser {
         directives?: INode[]
         elements?: INode[]
     }
+    export interface IErrorNode {
+        type: "ErrorExpression",
+        value: string
+    }
 }

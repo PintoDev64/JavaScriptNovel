@@ -1,14 +1,14 @@
-import { IEngineInstructor, IEngineInstructorVariables } from "../ports/instructor";
+import { IStateManager, IEngineInstructorVariables } from "../ports/instructor";
 
-export default class EngineInstructor implements IEngineInstructor {
-    static INSTANCE: EngineInstructor | null = null;
+export default class StateManager implements IStateManager {
+    static INSTANCE: StateManager | null = null;
     private variables: IEngineInstructorVariables = {}
 
     private constructor() {}
 
-    static getInstance(): EngineInstructor {
-        if (!EngineInstructor.INSTANCE) EngineInstructor.INSTANCE = new EngineInstructor();
-        return EngineInstructor.INSTANCE
+    static getInstance(): StateManager {
+        if (!StateManager.INSTANCE) StateManager.INSTANCE = new StateManager();
+        return StateManager.INSTANCE
     }
 
     addVariable(name: string, value: string | number | boolean): void {

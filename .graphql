@@ -5,32 +5,43 @@ src/
 │   └── web/
 │
 ├── engine/                # Core del motor, separado por funcionalidades del dominio
-│   ├── script/            # Manejo del lenguaje novelscript
-│   │   ├── parser.ts
-│   │   ├── executor.ts
-│   │   └── types.ts
+│   ├── compiler/          # Manejo del lenguaje novelscript
+│   │   ├── constants/
+|   |   |   └── index.ts
+│   │   ├── error/
+|   |   |   └── index.ts
+│   │   ├── modules/
+|   |   |   ├── lexer/
+|   |   |   ├── parser/
+|   |   |   └── tokenizer/
+│   │   ├── utils/
+|   |   |   └── index.ts
+│   │   └── index.ts
 │   │
 │   ├── scene/             # Gestión de escenas
-│   │   ├── scene-manager.ts
+│   │   ├── manager.ts
 │   │   └── scene.ts
 │   │
 │   ├── character/         # Definición y manejo de personajes
-│   │   ├── character.ts
-│   │   └── character-registry.ts
+│   │   └── instance.ts
 │   │
 │   ├── media/             # Reproducción y pre-carga de recursos
 │   │   ├── audio.ts
 │   │   ├── image.ts
-│   │   └── preload.ts
+|   |   |-- instance.ts
+│   │   └── buffer.ts
+│   │
+│   ├── instructor/        # Almacenamiento de varaibles primitivas
+│   │   └── instance.ts
+│   │
+│   ├── config/            # Almacenamiento de configuraciones del motor/entorno de desarrollo
+│   │   ├── constants/
+|   |   |   └── index.ts
+|   |   └── instance.ts
 │   │
 │   ├── interface/         # Comunicación con el sistema de UI (React u otros)
-│   │   ├── interface-api.ts
+│   │   ├── api.ts
 │   │   └── events.ts
-│   │
-│   └── ports/             # Interfaces (abstracciones hexagonales)
-│       ├── fs-port.ts
-│       ├── ui-port.ts
-│       └── logger-port.ts
 │
 ├── adapters/              # Implementaciones concretas de los puertos
 │   ├── node/
@@ -46,8 +57,8 @@ src/
 │       └── preload-adapter.ts
 │
 ├── shared/                # Utilidades compartidas y tipos globales
-│   ├── utils.ts
 │   ├── constants.ts
+│   ├── utils.ts
 │   └── types.ts
 │
-└── index.ts               # Punto de entrada del motor (re-exporta o inicia cosas)
+└── index.ts               # Punto de entrada del motor (exporta funcionalidades)

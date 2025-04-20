@@ -1,9 +1,10 @@
-import type { INovelVirtualMachine, TNVMInstruction } from "./ports/novel-virtual-machine";
+import { NParser } from "./ports/compiler";
+import type { INovelVirtualMachine } from "./ports/novel-virtual-machine";
 
 export default class NovelVirtualMachine implements INovelVirtualMachine {
     static INSTANCE: NovelVirtualMachine | null = null;
     private interval: NodeJS.Timeout | null = null
-    private instructions: TNVMInstruction = ["AudioDeclaration"]
+    private instructionsList: NParser.INode[] | null = null
 
     private constructor() {
         

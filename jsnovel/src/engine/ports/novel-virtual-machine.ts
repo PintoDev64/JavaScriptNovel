@@ -1,5 +1,3 @@
-import type { TNodeTypeUses } from "./compiler"
-
 export interface INovelVirtualMachine {
     getInstructionList(): void
     nextInstruction(): void
@@ -8,6 +6,3 @@ export interface INovelVirtualMachine {
     stop(): void
     start(): void
 }
-
-export type TNVMInstruction =
-    [TNodeTypeUses, ...(string | number | boolean | TNVMInstruction)[]] | []

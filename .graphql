@@ -28,8 +28,7 @@ src/
 │   ├── media/             # Reproducción y pre-carga de recursos
 │   │   ├── audio.ts
 │   │   ├── image.ts
-|   |   |-- instance.ts
-│   │   └── buffer.ts
+|   |   └── instance.ts
 │   │
 │   ├── instructor/        # Almacenamiento de varaibles primitivas
 │   │   └── instance.ts

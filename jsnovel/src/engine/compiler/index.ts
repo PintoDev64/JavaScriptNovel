@@ -28,15 +28,11 @@ export default async function novelScriptCompiler(ScriptDirUrl: string) {
         Scenes = DefinedScenes
     }
 
-    let CompiledScripts = [
+    return [
         ...Variables,
         ...Specials,
         ...Scenes
     ]
-
-    console.log(CompiledScripts);
-
-    return CompiledScripts
 }
 
 function compileFile(fileDirectory: string) {

@@ -1,5 +1,8 @@
+import { NParser } from "./compiler"
+
 export interface INovelVirtualMachine {
-    getInstructionList(): void
+    ready?: Promise<void> | boolean
+    getInstructionList(): NParser.INode[]
     nextInstruction(): void
     previusInstruction(): void
     notifyInstruction(): void

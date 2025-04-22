@@ -1,17 +1,37 @@
-import { NParser } from "./ports/compiler";
 import type { INovelVirtualMachine } from "./ports/novel-virtual-machine";
+import { NParser } from "./ports/compiler";
+
+// Modules
+import novelScriptCompiler from "./compiler";
+import EngineConfig from "./config/instance";
 
 export default class NovelVirtualMachine implements INovelVirtualMachine {
     static INSTANCE: NovelVirtualMachine | null = null;
+
     private interval: NodeJS.Timeout | null = null
-    private instructionsList: NParser.INode[] | null = null
+    private instructionsList: NParser.INode[] = []
+
+    counter: number = 0
+    ready: Promise<void> | boolean
 
     private constructor() {
-        
+        const engineConfigInstance = EngineConfig.getInstance()
+        let engineScriptsConfigLocation = engineConfigInstance.getConfigKey("scripts")!
+
+        this.ready = novelScriptCompiler(engineScriptsConfigLocation)
+            .then((nodes) => {
+                this.setInstructionList(nodes)
+                this.ready = true
+            })
+            .catch(() => this.setInstructionList([]))
     }
 
-    getInstructionList(): void {
-        throw new Error("Method not implemented.");
+
+    getInstructionList(): NParser.INode[] {
+        return this.instructionsList
+    }
+    setInstructionList(nodes: NParser.INode[]): void {
+        this.instructionsList = nodes
     }
     nextInstruction(): void {
         throw new Error("Method not implemented.");
@@ -27,8 +47,8 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
     }
     start(): void {
         this.interval = setInterval(() => {
-
-        }, 45)
+            this.counter++
+        }, 100)
     }
     static startInstance(): NovelVirtualMachine {
         if (!NovelVirtualMachine.INSTANCE) NovelVirtualMachine.INSTANCE = new NovelVirtualMachine();

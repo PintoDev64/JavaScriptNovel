@@ -6,13 +6,13 @@ import novelScriptCompiler from "src/engine/compiler"
 
 describe("Engine -> Compiler", () => {
     test("Zero errors expect", async () => {
-        const searchPath = "files"
+        const searchPath = "scripts"
 
-        console.log(await novelScriptCompiler(searchPath))
+        await novelScriptCompiler(searchPath)
     })
 
     test('Write script compiled', async () => {
-        const searchPath = "files"
+        const searchPath = "scripts"
         const scriptCompiled = await novelScriptCompiler(searchPath)
         const scriptParsed = JSON.stringify(scriptCompiled, null, 4)
 

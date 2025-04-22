@@ -2,7 +2,7 @@ import { IEngineConfig, IEngineConfigStructure } from "../ports/config";
 
 import {
     DEFAULT__CONFIG
-} from "./constants";
+} from "src/shared/constants";
 
 export default class EngineConfig implements IEngineConfig {
     static INSTANCE: EngineConfig | null = null

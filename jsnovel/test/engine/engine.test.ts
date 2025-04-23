@@ -1,4 +1,4 @@
-import { afterAll, assert, beforeAll, describe, test } from "vitest";
+import { afterAll, assert, describe, test } from "vitest";
 
 import NovelVirtualMachine from "src/engine/novel-virtual-machine";
 
@@ -23,7 +23,9 @@ describe("Engine", async () => {
     })
 })
 
-afterAll(() => {
-    NVM.stop()
+afterAll(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    NVM.stop();
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log(NVM.counter);
-}, 5000)
+});

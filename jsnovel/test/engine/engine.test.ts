@@ -20,12 +20,12 @@ describe("Engine", async () => {
 
     test('Start Engine', () => {
         NVM.start()
+        console.log(NVM);
     })
 })
 
 afterAll(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     NVM.stop();
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(NVM.counter);
+    console.log(NVM);
 });

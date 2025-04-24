@@ -48,7 +48,7 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
     start(): void {
         this.interval = setInterval(() => {
             this.counter++
-        }, 16)
+        }, 100)
     }
     static startInstance(): NovelVirtualMachine {
         if (!NovelVirtualMachine.INSTANCE) NovelVirtualMachine.INSTANCE = new NovelVirtualMachine();

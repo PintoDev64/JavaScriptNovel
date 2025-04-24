@@ -21,6 +21,8 @@ describe("Engine -> Media", () => {
     test("Verify Values - Images", () => {
         const response = newMediaInstance.getMediaImage(TEST_MEDIA_IMAGE_NODE)
         console.log(response);
+
+        //console.log(`Byte lenght: ${Buffer.byteLength(response as Buffer<ArrayBufferLike>, 'utf8') / 1000000} Mb`)
     })
 
     test("No Save Repeat Values - Audio", () => {
@@ -33,5 +35,7 @@ describe("Engine -> Media", () => {
     test("Verify Values - Audio", () => {
         const response = newMediaInstance.getMediaAudio(TEST_MEDIA_AUDIO_NODE)
         console.log(response);
+
+        //console.log(`Byte lenght: ${Buffer.byteLength(response as Buffer<ArrayBufferLike>, 'utf8') / 1000000} Mb`)
     })
 })

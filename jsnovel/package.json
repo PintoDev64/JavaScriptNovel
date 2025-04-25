@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron ./dist/src/app/electron/index.js",
     "compile": "tsc",
     "test": "vitest --run",
     "test:wacth": "vitest"

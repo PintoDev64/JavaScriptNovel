@@ -1,5 +1,5 @@
-import { ICharacterManager } from "../ports/character";
-import { NParser } from "../ports/compiler";
+import { ICharacterManager } from "../types/character";
+import { NParser } from "../types/compiler";
 
 export default class CharacterManager implements ICharacterManager {
     static INSTANCE: CharacterManager | null = null;

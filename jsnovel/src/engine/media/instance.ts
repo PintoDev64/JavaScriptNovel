@@ -1,5 +1,5 @@
-import { NParser } from "../ports/compiler";
-import { IMediaInstance } from "../ports/media";
+import { NParser } from "../types/compiler";
+import { IMediaInstance } from "../types/media";
 
 // Modules
 import AudioToBuffer from "./audio";

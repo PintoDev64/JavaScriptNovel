@@ -1,4 +1,4 @@
-import type { NTokenizer, NParser } from "src/engine/ports/compiler.js";
+import type { NTokenizer, NParser } from "src/engine/types/compiler.js";
 
 import { BRACKET_CLOSE } from "../../../constants/index.js";
 import CreateNode from "../createNode.js";

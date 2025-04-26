@@ -1,4 +1,4 @@
-import type { NParser } from "../ports/compiler";
+import type { NParser } from "../types/compiler";
 
 // Native Modules
 import { readFileSync } from "node:fs";

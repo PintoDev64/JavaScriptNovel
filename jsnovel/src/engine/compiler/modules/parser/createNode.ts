@@ -1,4 +1,4 @@
-import type { NTokenizer, NParser, TTokenSpecialNames } from "src/engine/ports/compiler.js";
+import type { NTokenizer, NParser, TTokenSpecialNames } from "src/engine/types/compiler.js";
 
 import { BooleanKeywords, PARENTHESIS_OPEN, VariablesKeywords } from "../../constants";
 import ArrayExpression from "./utils/arrayExpression.js";

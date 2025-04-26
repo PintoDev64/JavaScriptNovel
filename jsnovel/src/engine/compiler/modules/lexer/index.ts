@@ -1,5 +1,5 @@
 
-import type { NParser } from "src/engine/ports/compiler.js";
+import type { NParser } from "src/engine/types/compiler.js";
 
 import CreateLexer from "./createLexer.js";
 

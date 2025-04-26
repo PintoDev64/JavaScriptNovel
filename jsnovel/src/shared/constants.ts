@@ -1,4 +1,4 @@
-import { IEngineConfigStructure } from "src/engine/ports/config"
+import { IEngineConfigStructure } from "src/engine/types/config"
 import { resolve } from "node:path"
 
 export const PROJECT_PATH = process.cwd()

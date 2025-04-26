@@ -1,4 +1,4 @@
-import type { NTokenizer, NParser } from "src/engine/ports/compiler.js";
+import type { NTokenizer, NParser } from "src/engine/types/compiler.js";
 
 export default  function BooleanExpression(Tokens: NTokenizer.IToken[], Cursor: number): [number, NParser.INode] {
     let ActualCursor = Cursor;

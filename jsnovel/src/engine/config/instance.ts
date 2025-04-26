@@ -1,4 +1,4 @@
-import { IEngineConfig, IEngineConfigStructure } from "../ports/config";
+import { IEngineConfig, IEngineConfigStructure } from "../types/config";
 
 import {
     DEFAULT__CONFIG

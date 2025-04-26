@@ -1,4 +1,4 @@
-import type { NTokenizer, TTokenTypes, TTokenSpecialNames } from "src/engine/ports/compiler.js";
+import type { NTokenizer, TTokenTypes, TTokenSpecialNames } from "src/engine/types/compiler.js";
 
 import { BRACKET_CLOSE, BRACKET_OPEN, COMMA, CURLY_CLOSE, CURLY_OPEN, DOUBLEQUOTE, EQUAL, LETTER, NUMBER, PARENTHESIS_CLOSE, PARENTHESIS_OPEN, POINT, SEMICOLON, SPACE, SPECIALLETTERS, TOKEN_KEYWORDS } from "../../constants";
 import { ThrowErrorIf } from "../../error";

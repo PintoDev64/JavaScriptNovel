@@ -1,5 +1,5 @@
-import type { INovelVirtualMachine } from "./ports/novel-virtual-machine";
-import { NParser } from "./ports/compiler";
+import type { INovelVirtualMachine } from "./types/novel-virtual-machine";
+import { NParser } from "./types/compiler";
 
 // Modules
 import novelScriptCompiler from "./compiler";

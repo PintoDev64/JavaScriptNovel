@@ -2,8 +2,8 @@ import type { INovelVirtualMachine } from "./types/novel-virtual-machine";
 import { NParser } from "./types/compiler";
 
 // Modules
-import novelScriptCompiler from "./compiler";
-import EngineConfig from "./config/instance";
+import MediaInstance from "./media/instance";
+import EngineInstructor from "./instructor/instance";
 
 export default class NovelVirtualMachine implements INovelVirtualMachine {
     static INSTANCE: NovelVirtualMachine | null = null;
@@ -11,21 +11,11 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
     private interval: NodeJS.Timeout | null = null
     private instructionsList: NParser.INode[] = []
 
-    counter: number = 0
-    ready: Promise<void> | boolean
-
     private constructor() {
-        const engineConfigInstance = EngineConfig.getInstance()
-        let engineScriptsConfigLocation = engineConfigInstance.getConfigKey("scripts")!
-
-        this.ready = novelScriptCompiler(engineScriptsConfigLocation)
-            .then((nodes) => {
-                this.setInstructionList(nodes)
-                this.ready = true
-            })
-            .catch(() => this.setInstructionList([]))
+        const engineInstructorInstance = EngineInstructor.getInstance()
+        const engineMediaInstance = MediaInstance.getInstance()
+        
     }
-
 
     getInstructionList(): NParser.INode[] {
         return this.instructionsList
@@ -47,7 +37,7 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
     }
     start(): void {
         this.interval = setInterval(() => {
-            this.counter++
+
         }, 100)
     }
     static startInstance(): NovelVirtualMachine {

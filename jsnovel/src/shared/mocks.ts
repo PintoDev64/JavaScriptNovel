@@ -2,10 +2,10 @@ import { NParser } from "src/engine/types/compiler";
 
 export const TEST_MEDIA_IMAGE_NODE: NParser.INode = {
     "type": "ImageDeclaration",
-    "name": "anime",
+    "name": "Paisaje",
     "value": {
         "type": "StringLiteral",
-        "value": "files/anime_example.png"
+        "value": "Paisaje.png"
     }
 }
 
@@ -18,7 +18,7 @@ export const TEST_MEDIA_AUDIO_NODE: NParser.INode = {
         "arguments": [
             {
                 "type": "StringLiteral",
-                "value": "files/example_audio.mp3"
+                "value": "music/BgMusic.mp3"
             },
             {
                 "type": "StringLiteral",

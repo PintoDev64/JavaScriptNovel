@@ -8,6 +8,5 @@ export interface IInstructionMap {
 
 export interface IInstructor {
     ready: Promise<void> | true
-    setInstructionLocation(): void
-    getInstructionLocation(): void
+    getInstructionMap(): IInstructionMap
 }

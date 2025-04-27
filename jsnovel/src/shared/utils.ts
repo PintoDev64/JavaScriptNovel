@@ -7,18 +7,26 @@ import {
     PROJECT_PATH
 } from "./constants";
 
-function resolvedPath(basePath: string, pattern: string | string[]): string {
+export function resolvedPath(basePath: string, pattern: string | string[]): string {
     return Array.isArray(pattern)
         ? resolve(basePath, ...pattern)
         : resolve(basePath, pattern)
 }
 
-export function searchFilesFromProject(pattern: string | string[]): string[] {
+export function searchMultipleFilesFromProject(pattern: string | string[]): string[] {
     let searchPath = resolvedPath(PROJECT_PATH, pattern)
     return globSync(searchPath)
 }
+export function searchFileFromProject(pattern: string | string[]): string {
+    let searchPath = resolvedPath(PROJECT_PATH, pattern)
+    return searchPath
+}
 
-export function searchFilesFromLibrary(pattern: string | string[]): string[] {
+export function searchMultipleFilesFromLibrary(pattern: string | string[]): string[] {
     let searchPath = resolvedPath(LIBRARY_PATH, pattern)
     return globSync(searchPath)
+}
+export function searchFileFromLibrary(pattern: string | string[]): string {
+    let searchPath = resolvedPath(LIBRARY_PATH, pattern)
+    return searchPath
 }

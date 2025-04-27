@@ -5,7 +5,7 @@ Char personaje = Character("personajes", ["sprite1.png", "sprite2.png"], "#ff000
 Var HolaXD = true
 Var HolaXD = 12345
 
-Scene("Ejemplo_nombre_de_escena") {
+Scene("PruebaXD") {
     personaje
     personaje "Hola Jugador"
 }

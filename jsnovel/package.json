@@ -6,7 +6,7 @@
     "start": "electron ./dist/src/app/electron/index.js",
     "compile": "tsc",
     "test": "vitest --run",
-    "test:media": "vitest ./test/engine/media.test.ts",
+    "test:media": "vitest --run ./test/engine/media.test.ts",
     "test:watch": "vitest"
   },
   "keywords": [],

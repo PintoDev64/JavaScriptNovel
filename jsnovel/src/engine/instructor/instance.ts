@@ -11,6 +11,7 @@ import { NParser } from "../types/compiler";
 export default class EngineInstructor implements IInstructor {
     static INSTANCE: EngineInstructor | null = null
 
+    private compileScripts: NParser.INode[] = []
     private instructionMap: IInstructionMap = {};
 
     ready: Promise<void> | true
@@ -19,6 +20,7 @@ export default class EngineInstructor implements IInstructor {
         const InstanceEngineConfig = EngineConfig.getInstance()
         this.ready = novelScriptCompiler(InstanceEngineConfig.getConfigKey("scripts")!)
             .then((nodes) => {
+                this.setCompiledScript(nodes)
                 this.setInstructionMap(nodes)
                 this.ready = true
             })
@@ -30,6 +32,10 @@ export default class EngineInstructor implements IInstructor {
         return EngineInstructor.INSTANCE
     }
 
+    private setCompiledScript(nodes: NParser.INode[]): void {
+        this.compileScripts = nodes
+    }
+
     private setInstructionMap(nodes: NParser.INode[]): void {
         const filteredNodes = nodes.filter(({ type, name }) => type === "FunctionDeclaration" && name == "Scene")
 
@@ -37,6 +43,10 @@ export default class EngineInstructor implements IInstructor {
             const InstructionLocation = args![0].value as string
             this.instructionMap[InstructionLocation] = body!
         })
+    }
+
+    getCompileScript(): NParser.INode[] {
+        return this.compileScripts
     }
 
     getInstructionMap(): IInstructionMap {

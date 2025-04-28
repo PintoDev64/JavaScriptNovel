@@ -7,6 +7,6 @@ export interface IInstructionMap {
 }
 
 export interface IInstructor {
-    ready: Promise<void> | true
+    ready: Promise<void> | boolean
     getInstructionMap(): IInstructionMap
 }

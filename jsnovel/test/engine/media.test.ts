@@ -17,15 +17,13 @@ let ScriptCompiled: NParser.INode[] = []
 let newMediaInstance: MediaInstance
 
 beforeAll(async () => {
-    console.log(process.env["MODE"]);
-    
+    console.log("\n|---------------------------------------------\n\n\n\n\n");
+
     const ScriptConfig = EngineConfig.getInstance()
-    console.log(ScriptConfig.getConfigKey("scripts")!);
 
     ScriptCompiled = await novelScriptCompiler(ScriptConfig.getConfigKey("scripts")!)
 
     newMediaInstance = MediaInstance.getInstance(ScriptCompiled)
-    console.log(newMediaInstance);
 })
 
 describe("Engine -> Media", () => {
@@ -35,7 +33,7 @@ describe("Engine -> Media", () => {
 
         //console.log(`Byte lenght: ${Buffer.byteLength(response as Buffer<ArrayBufferLike>, 'utf8') / 1000000} Mb`)
     })
-    
+
     test("Verify Values - Audio", () => {
         const response = newMediaInstance.getMediaAudio(TEST_MEDIA_AUDIO_NODE)
         console.log(response);
@@ -45,5 +43,5 @@ describe("Engine -> Media", () => {
 })
 
 afterAll(() => {
-    console.log("\n\n\n\n\n\n\n\n\n");
+    console.log("\n\n\n\n\n|---------------------------------------------\n");
 })

@@ -1,8 +1,12 @@
-import { afterAll, assert, describe, test } from "vitest";
+import { afterAll, assert, beforeAll, describe, test } from "vitest";
 
 import NovelVirtualMachine from "src/engine/novel-virtual-machine";
 
 let NVM: NovelVirtualMachine;
+
+beforeAll(() => {
+    console.log("\n|---------------------------------------------\n\n\n\n\n");
+})
 
 describe("Engine", { skip: true }, () => {
     NVM = NovelVirtualMachine.startInstance()
@@ -23,5 +27,5 @@ describe("Engine", { skip: true }, () => {
 })
 
 afterAll(() => {
-    console.log("\n\n\n\n\n\n\n\n\n");
+    console.log("\n\n\n\n\n\n\n\n|---------------------------------------------\n");
 })

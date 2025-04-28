@@ -1,63 +1,74 @@
-import { ICharacterManager } from "../types/character";
+import { ICharacter, ICharacterManager } from "../types/character";
 import { NParser } from "../types/compiler";
+import SpritesToBuffers from "./sprites";
 
 export default class CharacterManager implements ICharacterManager {
     static INSTANCE: CharacterManager | null = null;
-    private characterList: NParser.INode[] = [];
+    private characterMap: Map<string, ICharacter> = new Map();
+    private characterList: Set<string> = new Set()
 
-    private constructor() {}
+    private constructor(nodes: NParser.INode[]) {
+        this.setCharacterMap(nodes)
+    }
 
-    static getInstance(): CharacterManager {
-        if (!CharacterManager.INSTANCE) CharacterManager.INSTANCE = new CharacterManager();
+    static getInstance(nodes: NParser.INode[]): CharacterManager {
+        if (!CharacterManager.INSTANCE) CharacterManager.INSTANCE = new CharacterManager(nodes);
         return CharacterManager.INSTANCE
     }
 
-    addCharacter(characterNode: NParser.INode): NParser.IErrorNode | void {
-        if (!this.characterList) return {
-            type: "ErrorExpression",
-            value: "Character list not available."
-        };
-        this.characterList.push(characterNode);
+    private setCharacterMap(nodes: NParser.INode[]): void {
+        const filteredCharacterNodes = nodes.filter(({ type }) => type === "CharacterDeclaration")
+
+        filteredCharacterNodes.forEach(Node => {
+            this.addCharacter(Node)
+        })
     }
 
-    updateCharacter(characterNode: NParser.INode): NParser.INode | NParser.IErrorNode {
-        if (!this.characterList) return {
-            type: "ErrorExpression",
-            value: "Character list not available."
-        };
-        const character = this.characterList.findIndex((node) => node.name === characterNode.name);
-        if (character === -1) return {
-            type: "ErrorExpression",
-            value: `Character with name ${characterNode.name} not found.`
-        };
-        this.characterList[character] = characterNode;
-        return characterNode;
+    private isCharacterNode(node: NParser.INode): boolean {
+        return node.type === "CharacterDeclaration"
     }
 
-    updateCharacterColor(characterName: string, newColor: `#${string}`): NParser.INode | NParser.IErrorNode {
-        const character = this.getCharacter(characterName);
-        if (character.type === "ErrorExpression") return character
-        character.arguments![2].value = newColor;
-        return character;
+    private addCharacter(characterNode: NParser.INode): NParser.IErrorNode | void {
+        const characterNodeName = characterNode.name as string
+
+        if (this.characterList.has(characterNodeName)) return {
+            type: "ErrorExpression",
+            value: `The character ${characterNodeName} is already defined.`
+        }
+
+        const characterCallExpressionArguments = (characterNode.value! as NParser.INode).arguments! as NParser.INode[]
+        const characterSpritedCompiled = SpritesToBuffers(characterNode)
+
+        if (characterSpritedCompiled.type && characterSpritedCompiled.type === "ErrorExpression") return characterSpritedCompiled as NParser.IErrorNode;
+
+        this.characterList.add(characterNodeName)
+        this.characterMap.set(characterNodeName, {
+            name: characterNodeName,
+            character: characterCallExpressionArguments[0].value as string,
+            color: characterCallExpressionArguments[2].value as string,
+            sprites: characterSpritedCompiled as ICharacter["sprites"]
+        });
     }
 
-    updateCharacterName(characterName: string, newName: string): NParser.INode | NParser.IErrorNode {
-        const character = this.getCharacter(characterName);
-        if (character.type === "ErrorExpression") return character
-        character.arguments![0].value = newName;
-        return character;
-    }
+    getCharacter(characterNode: NParser.INode): ICharacter | NParser.IErrorNode {
+        const characterNodeName = characterNode.name as string
 
-    getCharacter(characterName: string): NParser.INode | NParser.IErrorNode {
-        if (!this.characterList) return {
+        if (!this.isCharacterNode(characterNode)) return {
             type: "ErrorExpression",
-            value: "Character list not available."
-        };
-        const character = this.characterList.find((node) => node.name === characterName);
-        if (!character) return {
+            value: "The Node is not of type character."
+        }
+
+        if (!this.characterList.has(characterNodeName)) return {
             type: "ErrorExpression",
-            value: `Character with name ${characterName} not found.`
+            value: `The character ${characterNodeName} not exist or available in CharacterList.`
         };
-        return character;
+
+        const BufferGetted = this.characterMap.get(characterNodeName);
+        if (!BufferGetted) return {
+            type: "ErrorExpression",
+            value: "Buffer not found."
+        }
+
+        return BufferGetted
     }
 }

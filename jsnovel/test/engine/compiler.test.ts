@@ -1,8 +1,12 @@
 // Native Modules
 import { writeFileSync } from "node:fs"
-import { afterAll, describe, test } from "vitest"
+import { afterAll, beforeAll, describe, test } from "vitest"
 
 import novelScriptCompiler from "src/engine/compiler"
+
+beforeAll(() => {
+    console.log("\n|---------------------------------------------\n\n\n\n\n");
+})
 
 describe("Engine -> Compiler", () => {
     test("Zero errors expect", { timeout: 2500 }, async () => {
@@ -21,5 +25,5 @@ describe("Engine -> Compiler", () => {
 })
 
 afterAll(() => {
-    console.log("\n\n\n\n\n\n\n\n\n");
+    console.log("\n\n\n\n\n\n\n\n|---------------------------------------------\n");
 })

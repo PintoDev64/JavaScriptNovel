@@ -1,9 +1,11 @@
 import EngineInstructor from "src/engine/instructor/instance";
 import { afterAll, beforeAll, describe, test } from "vitest";
 
-const InstructorInstance = EngineInstructor.getInstance()
+let InstructorInstance: EngineInstructor
 
 beforeAll(async () => {
+    InstructorInstance = EngineInstructor.getInstance()
+    console.log("\n|---------------------------------------------\n\n\n\n\n");
     await InstructorInstance.ready
 })
 
@@ -14,5 +16,5 @@ describe("Instructor", () => {
 })
 
 afterAll(() => {
-    console.log("\n\n\n\n\n\n\n\n\n");
+    console.log("\n\n\n\n\n\n\n\n|---------------------------------------------\n");
 })

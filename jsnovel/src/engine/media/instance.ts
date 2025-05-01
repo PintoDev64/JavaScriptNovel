@@ -105,7 +105,7 @@ export default class MediaInstance implements IMediaInstance {
     getMediaImage(node: NParser.INode): Buffer<ArrayBufferLike> | NParser.IErrorNode {
         const ImageVariableName = node.name as string
 
-        if (!this.isAudioNode(node)) return {
+        if (!this.isImageNode(node)) return {
             type: "ErrorExpression",
             value: "The node is not of type image"
         };
@@ -125,7 +125,7 @@ export default class MediaInstance implements IMediaInstance {
     getMediaAudio(node: NParser.INode): Buffer<ArrayBufferLike> | NParser.IErrorNode {
         const AudioVariableName = node.name as string
 
-        if (!this.isImageNode(node)) return {
+        if (!this.isAudioNode(node)) return {
             type: "ErrorExpression",
             value: "The node is not of type audio"
         };

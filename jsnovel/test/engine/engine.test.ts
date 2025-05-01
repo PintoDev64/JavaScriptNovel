@@ -4,12 +4,12 @@ import NovelVirtualMachine from "src/engine/novel-virtual-machine";
 
 let NVM: NovelVirtualMachine;
 
-beforeAll(() => {
+beforeAll(async () => {
+    NVM = await NovelVirtualMachine.startInstance()
     console.log("\n|---------------------------------------------\n\n\n\n\n");
 })
 
 describe("Engine", { skip: true }, () => {
-    NVM = NovelVirtualMachine.startInstance()
 
     test("Verify Instance", () => {
         console.log(NVM);

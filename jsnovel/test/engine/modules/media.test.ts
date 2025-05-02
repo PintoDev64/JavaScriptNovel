@@ -1,4 +1,4 @@
-import { afterAll, assertType, beforeAll, describe, test } from "vitest"
+import { assert, beforeAll, describe, test } from "vitest"
 
 import { NParser } from "src/engine/types/compiler"
 
@@ -17,7 +17,7 @@ let ScriptCompiled: NParser.INode[] = []
 let newMediaInstance: MediaInstance
 
 beforeAll(async () => {
-    console.log("\n|---------------------------------------------\n\n\n\n\n");
+    console.log("\n|---------------------------------------------");
 
     const ScriptConfig = EngineConfig.getInstance()
 
@@ -31,19 +31,15 @@ describe("Engine -> Media", () => {
         const response = newMediaInstance.getMediaImage(TEST_MEDIA_IMAGE_NODE)
         console.log("Verify Values - Images --> ", response);
 
-        assertType<Buffer<ArrayBufferLike>>(response as Buffer<ArrayBufferLike>)
-        //console.log(`Byte lenght: ${Buffer.byteLength(response as Buffer<ArrayBufferLike>, 'utf8') / 1000000} Mb`)
+        // @ts-ignore
+        assert(typeof response === "object", response.value)
     })
-
+    
     test("Verify Values - Audio", () => {
         const response = newMediaInstance.getMediaAudio(TEST_MEDIA_AUDIO_NODE)
         console.log("Verify Values - Audio --> ", response);
-
-        assertType<Buffer<ArrayBufferLike>>(response as Buffer<ArrayBufferLike>)
-        //console.log(`Byte lenght: ${Buffer.byteLength(response as Buffer<ArrayBufferLike>, 'utf8') / 1000000} Mb`)
+        
+        // @ts-ignore
+        assert(typeof response === "object", response.value)
     })
-})
-
-afterAll(() => {
-    console.log("\n\n\n\n\n|---------------------------------------------\n");
 })

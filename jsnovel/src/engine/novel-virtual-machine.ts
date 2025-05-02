@@ -5,6 +5,8 @@ import { NParser } from "./types/compiler";
 import MediaInstance from "./media/instance";
 import EngineInstructor from "./instructor/instance";
 import CharacterManager from "./character/instance";
+import EngineConfig from "./config/instance";
+import StateManager from "./state_manager/instance";
 
 export default class NovelVirtualMachine implements INovelVirtualMachine {
     static INSTANCE: NovelVirtualMachine | null = null;
@@ -18,8 +20,11 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
         const engineInstructorInstance = EngineInstructor.getInstance();
         await engineInstructorInstance.ready
 
-        MediaInstance.getInstance(engineInstructorInstance.getCompileScript());
-        CharacterManager.getInstance(engineInstructorInstance.getCompileScript())
+        const scriptNodes = engineInstructorInstance.getCompileScript()
+
+        MediaInstance.getInstance(scriptNodes);
+        CharacterManager.getInstance(scriptNodes);
+        StateManager.getInstance(scriptNodes);
     }
 
     getInstructionList(): NParser.INode[] {

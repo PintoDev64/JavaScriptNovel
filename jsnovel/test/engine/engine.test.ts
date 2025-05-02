@@ -1,4 +1,4 @@
-import { afterAll, assert, beforeAll, describe, test } from "vitest";
+import { beforeAll, describe, test } from "vitest";
 
 import NovelVirtualMachine from "src/engine/novel-virtual-machine";
 
@@ -6,7 +6,7 @@ let NVM: NovelVirtualMachine;
 
 beforeAll(async () => {
     NVM = await NovelVirtualMachine.startInstance()
-    console.log("\n|---------------------------------------------\n\n\n\n\n");
+    console.log("\n|---------------------------------------------");
 })
 
 describe("Engine", { skip: true }, () => {
@@ -24,8 +24,4 @@ describe("Engine", { skip: true }, () => {
         NVM.stop();
         console.log(NVM);
     })
-})
-
-afterAll(() => {
-    console.log("\n\n\n\n\n\n\n\n|---------------------------------------------\n");
 })

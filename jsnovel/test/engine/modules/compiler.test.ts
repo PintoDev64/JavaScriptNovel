@@ -5,7 +5,7 @@ import { afterAll, beforeAll, describe, test } from "vitest"
 import novelScriptCompiler from "src/engine/compiler"
 
 beforeAll(() => {
-    console.log("\n|---------------------------------------------\n\n\n\n\n");
+    console.log("\n|---------------------------------------------");
 })
 
 describe("Engine -> Compiler", () => {
@@ -22,8 +22,4 @@ describe("Engine -> Compiler", () => {
 
         writeFileSync(`${searchPath}/lenguage.compile.json`, scriptParsed)
     })
-})
-
-afterAll(() => {
-    console.log("\n\n\n\n\n\n\n\n|---------------------------------------------\n");
 })

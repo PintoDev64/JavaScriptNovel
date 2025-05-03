@@ -12,7 +12,6 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
     static INSTANCE: NovelVirtualMachine | null = null;
 
     private interval: NodeJS.Timeout | null = null
-    private instructionsList: NParser.INode[] = []
 
     private constructor() { }
 
@@ -25,22 +24,6 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
         MediaInstance.getInstance(scriptNodes);
         CharacterManager.getInstance(scriptNodes);
         StateManager.getInstance(scriptNodes);
-    }
-
-    getInstructionList(): NParser.INode[] {
-        return this.instructionsList
-    }
-    setInstructionList(nodes: NParser.INode[]): void {
-        this.instructionsList = nodes
-    }
-    nextInstruction(): void {
-        throw new Error("Method not implemented.");
-    }
-    previusInstruction(): void {
-        throw new Error("Method not implemented.");
-    }
-    notifyInstruction(): void {
-        throw new Error("Method not implemented.");
     }
     stop(): void {
         this.interval && clearInterval(this.interval)

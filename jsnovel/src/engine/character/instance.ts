@@ -7,12 +7,17 @@ export default class CharacterManager implements ICharacterManager {
     private characterMap: Map<string, ICharacter> = new Map();
     private characterList: Set<string> = new Set()
 
-    private constructor(nodes: NParser.INode[]) {
+    private constructor(nodes: NParser.INode[] = []) {
+        if (!Array.isArray(nodes) || nodes.length === 0) return;
         this.setCharacterMap(nodes)
     }
 
-    static getInstance(nodes: NParser.INode[]): CharacterManager {
+    static setInstance(nodes: NParser.INode[]): CharacterManager {
         if (!CharacterManager.INSTANCE) CharacterManager.INSTANCE = new CharacterManager(nodes);
+        return CharacterManager.INSTANCE
+    }
+
+    static getInstance(): CharacterManager | null {
         return CharacterManager.INSTANCE
     }
 
@@ -48,6 +53,10 @@ export default class CharacterManager implements ICharacterManager {
             color: characterCallExpressionArguments[2].value as string,
             sprites: characterSpritedCompiled as ICharacter["sprites"]
         });
+    }
+
+    getAllCharacters(): Map<string, ICharacter> {
+        return this.characterMap
     }
 
     getCharacter(characterNode: NParser.INode): ICharacter | NParser.IErrorNode {

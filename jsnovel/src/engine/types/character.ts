@@ -6,7 +6,8 @@ export interface ICharacter {
     color: `#${string}` | string
     sprites: { [K: string]: Buffer<ArrayBufferLike> }
 }
-
+    
 export interface ICharacterManager {
+    getAllCharacters(): Map<string, ICharacter>
     getCharacter(characterName: NParser.INode): ICharacter | NParser.IErrorNode
 }

@@ -10,13 +10,13 @@ beforeAll(() => {
 
 describe("Engine -> Compiler", () => {
     test("Zero errors expect", { timeout: 2500 }, async () => {
-        const searchPath = "files/scripts"
+        const searchPath = "mocks/scripts"
 
         await novelScriptCompiler(searchPath)
     })
 
     test('Write script compiled', { timeout: 2500 }, async () => {
-        const searchPath = "files/scripts"
+        const searchPath = "mocks/scripts"
         const scriptCompiled = await novelScriptCompiler(searchPath)
         const scriptParsed = JSON.stringify(scriptCompiled, null, 4)
 

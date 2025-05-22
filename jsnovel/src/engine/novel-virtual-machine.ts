@@ -12,16 +12,25 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
     private interval: NodeJS.Timeout | null = null
 
     private constructor() { }
+    
+    static async startInstance(): Promise<NovelVirtualMachine> {
+        if (!NovelVirtualMachine.INSTANCE) {
+            NovelVirtualMachine.INSTANCE = new NovelVirtualMachine();
+            await NovelVirtualMachine.INSTANCE.initialize();
+        }
+        return NovelVirtualMachine.INSTANCE;
+    }
 
     private async initialize(): Promise<void> {
         const engineInstructorInstance = EngineInstructor.getInstance();
         await engineInstructorInstance.ready
-
+        
         const scriptNodes = engineInstructorInstance.getCompileScript()
-
+        
         MediaInstance.getInstance(scriptNodes);
-        CharacterManager.getInstance(scriptNodes);
+        CharacterManager.setInstance(scriptNodes);
         StateManager.getInstance(scriptNodes);
+        
     }
     stop(): void {
         this.interval && clearInterval(this.interval)
@@ -30,12 +39,5 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
         this.interval = setInterval(() => {
 
         }, 100)
-    }
-    static async startInstance(): Promise<NovelVirtualMachine> {
-        if (!NovelVirtualMachine.INSTANCE) {
-            NovelVirtualMachine.INSTANCE = new NovelVirtualMachine();
-            await NovelVirtualMachine.INSTANCE.initialize();
-        }
-        return NovelVirtualMachine.INSTANCE;
     }
 }

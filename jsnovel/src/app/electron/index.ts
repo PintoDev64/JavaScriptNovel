@@ -1,5 +1,7 @@
 import { app, BrowserWindow } from "electron";
 import { join } from "path";
+/* import { readFileSync } from "fs";
+import { runInThisContext } from "vm"; */
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -36,5 +38,3 @@ app.on("window-all-closed", () => {
 app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
-
-import("./preload.js")

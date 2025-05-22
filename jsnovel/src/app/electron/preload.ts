@@ -1,1 +1,1 @@
-export const Hola = ""
+console.log("XD");

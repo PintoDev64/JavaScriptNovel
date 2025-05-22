@@ -1,11 +1,9 @@
 import type { INovelVirtualMachine } from "./types/novel-virtual-machine";
-import { NParser } from "./types/compiler";
 
 // Modules
 import MediaInstance from "./media/instance";
 import EngineInstructor from "./instructor/instance";
 import CharacterManager from "./character/instance";
-import EngineConfig from "./config/instance";
 import StateManager from "./state_manager/instance";
 
 export default class NovelVirtualMachine implements INovelVirtualMachine {

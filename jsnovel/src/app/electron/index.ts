@@ -19,11 +19,12 @@ function createWindow() {
 
     if (process.env.NODE_ENV === "development") {
         mainWindow.loadURL("http://localhost:5173"); // si estás usando Vite
-        mainWindow.webContents.openDevTools();
     } else {
-        mainWindow.loadFile(join(__dirname, "../dist/index.html"));
+        mainWindow.loadFile(join(__dirname, "../../shared/index.html"));
     }
-
+    
+    mainWindow.webContents.openDevTools();
+    
     mainWindow.on("closed", () => {
         mainWindow = null;
     });

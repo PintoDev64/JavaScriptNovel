@@ -37,7 +37,7 @@ export default class NovelVirtualMachine implements INovelVirtualMachine {
     }
     start(): void {
         this.interval = setInterval(() => {
-
+            
         }, 100)
     }
 }

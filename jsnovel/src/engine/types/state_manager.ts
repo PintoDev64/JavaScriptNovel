@@ -5,4 +5,5 @@ export interface IStateManager {
     addVariable(name: string, value: IStateManagerVariablesValues): void
     updateVariable(name: string, value: IStateManagerVariablesValues): void
     getVariable(name: string): IStateManagerVariablesValues
+    getAllVariables(): IStateManagerVariables
 }

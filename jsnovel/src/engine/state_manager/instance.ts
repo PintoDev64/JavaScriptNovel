@@ -9,7 +9,7 @@ export default class StateManager implements IStateManager {
         const variablesFiltered = nodes.filter(node => node.type === "VariableDeclaration")
 
         variablesFiltered.forEach(node => {
-            this.addVariable(node.name!, node.value as IStateManagerVariablesValues)
+            this.addVariable(node.name!, (node.value as NParser.INode).value as IStateManagerVariablesValues)
         })
     }
 
@@ -19,7 +19,7 @@ export default class StateManager implements IStateManager {
     }
 
     addVariable(name: string, value: string | number | boolean): void {
-        if (!this.variables[name]) return;
+        if (this.variables[name]) return;
         this.variables[name] = value
     }
     updateVariable(name: string, value: string | number | boolean): void {
@@ -29,5 +29,8 @@ export default class StateManager implements IStateManager {
     getVariable(name: string): string | number | boolean {
         if (!this.variables[name]) return "Variable not declared";
         return this.variables[name]
+    }
+    getAllVariables(): IStateManagerVariables {
+        return this.variables
     }
 }

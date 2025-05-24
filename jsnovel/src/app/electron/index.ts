@@ -1,7 +1,12 @@
 import { app, BrowserWindow } from "electron";
-import { join } from "path";
+import { join, resolve } from "path";
+import { loadEnvFile } from "process";
 /* import { readFileSync } from "fs";
 import { runInThisContext } from "vm"; */
+
+import { PROJECT_PATH } from "../../shared/constants";
+
+loadEnvFile(resolve(PROJECT_PATH, ".development.env"));
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -17,10 +22,13 @@ function createWindow() {
         title: "NovelJs - Preview",
     });
 
+    console.log("--> ", process.env.NODE_ENV);
+
     if (process.env.NODE_ENV === "development") {
         mainWindow.loadURL("http://localhost:5173"); // si estás usando Vite
     } else {
-        mainWindow.loadFile(join(__dirname, "../../shared/index.html"));
+        console.log("--> ",resolve(PROJECT_PATH, "src/shared/index.html"));
+        mainWindow.loadFile(resolve(PROJECT_PATH, "src/shared/index.html"));
     }
     
     mainWindow.webContents.openDevTools();

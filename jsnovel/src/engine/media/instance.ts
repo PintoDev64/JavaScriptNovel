@@ -1,4 +1,4 @@
-import { resolvedPath, searchFileFromProject } from "src/shared/utils";
+import { resolvedPath, searchFileFromProject } from "../../shared/utils";
 import { existsSync } from "node:fs";
 
 // Types
@@ -9,7 +9,7 @@ import { NParser } from "../types/compiler";
 import EngineConfig from "../config/instance";
 import AudioToBuffer from "./audio";
 import ImageToBuffer from "./image";
-import { PROJECT_PATH } from "src/shared/constants";
+import { PROJECT_PATH } from "../../shared/constants";
 
 const engineConfigInstance = EngineConfig.getInstance()
 
@@ -19,12 +19,17 @@ export default class MediaInstance implements IMediaInstance {
     private MediaImage: Set<string> = new Set()
     private MediaAudio: Set<string> = new Set()
 
-    private constructor(nodes: NParser.INode[]) {
+    private constructor(nodes: NParser.INode[] = []) {
+        if (!Array.isArray(nodes) || nodes.length === 0) return;
         this.setMediaMap(nodes)
     }
 
-    static getInstance(nodes: NParser.INode[]): MediaInstance {
+    static setInstance(nodes: NParser.INode[]): MediaInstance {
         if (!MediaInstance.INSTANCE) MediaInstance.INSTANCE = new MediaInstance(nodes);
+        return MediaInstance.INSTANCE
+    }
+    
+    static getInstance(): MediaInstance | null {
         return MediaInstance.INSTANCE
     }
 
@@ -139,6 +144,9 @@ export default class MediaInstance implements IMediaInstance {
         const BufferGetted = this.BufferMap.get(AudioVariableName)
         if (!BufferGetted) return { type: "ErrorExpression", value: "Buffer not found." }
         return BufferGetted
+    }
 
+    getAllMedia(): Map<string, Buffer<ArrayBufferLike>> {
+        return this.BufferMap
     }
 }

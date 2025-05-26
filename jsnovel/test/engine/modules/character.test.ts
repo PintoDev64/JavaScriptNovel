@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
-import CharacterManager from "src/engine/character/instance";
-import { TEST_PATH } from "src/shared/constants";
+import CharacterManager from "../../../src/engine/character/instance";
+import { TEST_PATH } from "../../../src/shared/constants";
 import { beforeAll, describe, test } from "vitest";
 
 let CharManager: CharacterManager

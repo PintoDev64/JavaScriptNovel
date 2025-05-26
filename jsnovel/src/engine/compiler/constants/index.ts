@@ -1,4 +1,4 @@
-import { TTokenSpecialNames, TTokenTypes } from "src/engine/types/compiler";
+import { TTokenSpecialNames, TTokenTypes } from "../../../engine/types/compiler";
 
 export const PARENTHESIS_OPEN = '(';
 export const PARENTHESIS_CLOSE = ')';

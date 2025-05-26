@@ -1,4 +1,4 @@
-import type { NError } from "src/engine/types/compiler.js";
+import type { NError } from "../../../engine/types/compiler.js";
 
 const ERROR_DEFINITIONS = {
     TOKENIZER: "TokenizerError",

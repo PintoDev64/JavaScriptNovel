@@ -1,4 +1,4 @@
-import EngineInstructor from "src/engine/instructor/instance";
+import EngineInstructor from "../../../src/engine/instructor/instance";
 import { afterAll, beforeAll, describe, test } from "vitest";
 
 let InstructorInstance: EngineInstructor

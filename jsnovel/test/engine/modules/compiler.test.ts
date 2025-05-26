@@ -2,7 +2,7 @@
 import { writeFileSync } from "node:fs"
 import { afterAll, beforeAll, describe, test } from "vitest"
 
-import novelScriptCompiler from "src/engine/compiler"
+import novelScriptCompiler from "../../../src/engine/compiler"
 
 beforeAll(() => {
     console.log("\n|---------------------------------------------");

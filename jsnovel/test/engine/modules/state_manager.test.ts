@@ -1,9 +1,9 @@
-import novelScriptCompiler from "src/engine/compiler";
-import EngineConfig from "src/engine/config/instance";
+import novelScriptCompiler from "../../../src/engine/compiler";
+import EngineConfig from "../../../src/engine/config/instance";
 import { beforeAll, describe, test } from "vitest";
 
-import { NParser } from "src/engine/types/compiler"
-import StateManager from "src/engine/state_manager/instance";
+import { NParser } from "../../../src/engine/types/compiler"
+import StateManager from "../../../src/engine/state_manager/instance";
 
 let ScriptCompiled: NParser.INode[] = []
 let newStateManager: StateManager
@@ -15,7 +15,7 @@ beforeAll(async () => {
 
     ScriptCompiled = await novelScriptCompiler(ScriptConfig.getConfigKey("scripts")!)
 
-    newStateManager = StateManager.getInstance(ScriptCompiled)
+    newStateManager = StateManager.setInstance(ScriptCompiled)
 })
 
 describe("Engine -> State Manager", () => {

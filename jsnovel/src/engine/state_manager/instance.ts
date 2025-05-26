@@ -6,15 +6,21 @@ export default class StateManager implements IStateManager {
     private variables: IStateManagerVariables = {}
 
     private constructor(nodes: NParser.INode[]) {
+        if (!Array.isArray(nodes) || nodes.length === 0) return;
+        
         const variablesFiltered = nodes.filter(node => node.type === "VariableDeclaration")
-
+        
         variablesFiltered.forEach(node => {
             this.addVariable(node.name!, (node.value as NParser.INode).value as IStateManagerVariablesValues)
         })
     }
 
-    static getInstance(nodes: NParser.INode[]): StateManager {
+    static setInstance(nodes: NParser.INode[] = []): StateManager {
         if (!StateManager.INSTANCE) StateManager.INSTANCE = new StateManager(nodes);
+        return StateManager.INSTANCE
+    }
+
+    static getInstance(): StateManager | null {
         return StateManager.INSTANCE
     }
 

@@ -1,4 +1,4 @@
-import type { NParser } from "src/engine/types/compiler.js";
+import type { NParser } from "../../../../../engine/types/compiler.js";
 
 export default function LexerCallExpression(ParserNode: NParser.INode): NParser.INode {
     console.log("LexerCallExpression: ", ParserNode);

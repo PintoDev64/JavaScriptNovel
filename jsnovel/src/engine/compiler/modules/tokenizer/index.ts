@@ -1,4 +1,4 @@
-import type { NTokenizer } from "src/engine/types/compiler.js";
+import type { NTokenizer } from "../../../../engine/types/compiler.js";
 
 import { NEWLINE } from "../../constants";
 import CreateToken from "./createToken";

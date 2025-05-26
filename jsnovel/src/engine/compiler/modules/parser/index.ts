@@ -1,4 +1,4 @@
-import type { NTokenizer, NParser } from "src/engine/types/compiler.js";
+import type { NTokenizer, NParser } from "../../../../engine/types/compiler.js";
 
 import CreateNode from "./createNode";
 

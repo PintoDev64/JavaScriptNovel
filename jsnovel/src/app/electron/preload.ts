@@ -1,11 +1,23 @@
+import { contextBridge, ipcRenderer } from 'electron';
+import { IStateManagerVariables } from '../../engine/types/state_manager';
+
 console.log("XD");
 
-import { contextBridge, ipcRenderer } from 'electron';
-import { IStateManagerVariables } from 'src/engine/types/state_manager';
-
 const processAPI = {
-    eventVariables(handler: (...args: any) => any) {
-        ipcRenderer.on("game:variable", (_event, variable: IStateManagerVariables) => {
+    getMedia() {
+        return ipcRenderer.invoke("game:media:get")
+    },
+    getCharacter() {
+        return ipcRenderer.invoke("game:character:get")
+    },
+    getState() {
+        return ipcRenderer.sendSync("game:state:get")
+    },
+    setState(state: IStateManagerVariables) {
+        ipcRenderer.send("game:state:set", state)
+    },
+    eventState(handler: (args: IStateManagerVariables) => any) {
+        ipcRenderer.on("game:state:change", (_event, variable: IStateManagerVariables) => {
             handler(variable)
         })
     }

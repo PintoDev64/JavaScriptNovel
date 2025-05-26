@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
 
 // Modules
-import { PROJECT_PATH } from "src/shared/constants";
-import { resolvedPath } from "src/shared/utils";
+import { PROJECT_PATH } from "../../shared/constants";
+import { resolvedPath } from "../../shared/utils";
 import { NParser } from "../types/compiler";
 import EngineConfig from "../config/instance";
 import { ICharacter } from "../types/character";

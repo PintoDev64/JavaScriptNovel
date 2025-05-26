@@ -1,17 +1,17 @@
 import { assert, beforeAll, describe, test } from "vitest"
 
-import { NParser } from "src/engine/types/compiler"
+import { NParser } from "../../../src/engine/types/compiler"
 
 // Mocks
 import {
     TEST_MEDIA_AUDIO_NODE,
     TEST_MEDIA_IMAGE_NODE
-} from "src/shared/mocks"
+} from "../../../src/shared/mocks"
 
 // Modules
-import MediaInstance from "src/engine/media/instance"
-import novelScriptCompiler from "src/engine/compiler"
-import EngineConfig from "src/engine/config/instance"
+import MediaInstance from "../../../src/engine/media/instance"
+import novelScriptCompiler from "../../../src/engine/compiler"
+import EngineConfig from "../../../src/engine/config/instance"
 
 let ScriptCompiled: NParser.INode[] = []
 let newMediaInstance: MediaInstance
@@ -23,7 +23,7 @@ beforeAll(async () => {
 
     ScriptCompiled = await novelScriptCompiler(ScriptConfig.getConfigKey("scripts")!)
 
-    newMediaInstance = MediaInstance.getInstance(ScriptCompiled)
+    newMediaInstance = MediaInstance.setInstance(ScriptCompiled)
 })
 
 describe("Engine -> Media", () => {

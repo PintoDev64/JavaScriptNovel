@@ -1,4 +1,4 @@
-import type { NTokenizer, NParser } from "src/engine/types/compiler.js";
+import type { NTokenizer, NParser } from "../../../../../engine/types/compiler.js";
 
 import { CURLY_OPEN, PARENTHESIS_CLOSE, PARENTHESIS_OPEN } from "../../../constants/index.js";
 import CreateNode from "../createNode.js";

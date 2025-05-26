@@ -1,4 +1,4 @@
-import { NParser } from "src/engine/types/compiler";
+import { NParser } from "../engine/types/compiler";
 
 export const TEST_MEDIA_IMAGE_NODE: NParser.INode = {
     "type": "ImageDeclaration",

@@ -1,13 +1,12 @@
+
 import { app, BrowserWindow, ipcMain } from "electron";
 import { join, resolve } from "path";
 import { loadEnvFile } from "process";
-/* import { readFileSync } from "fs";
-import { runInThisContext } from "vm"; */
+
+loadEnvFile(resolve(process.cwd(), ".development.env"));
 
 import { PROJECT_PATH } from "../../shared/constants";
 import registerEvents from "./events";
-
-loadEnvFile(resolve(PROJECT_PATH, ".development.env"));
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -24,8 +23,6 @@ async function createWindow() {
         },
         title: "NovelJs - Preview",
     });
-
-    console.log("--> ", process.env.NODE_ENV);
 
     if (process.env.NODE_ENV === "development") {
         mainWindow.loadURL("http://localhost:5173"); // si estás usando Vite

@@ -4,8 +4,11 @@ import { resolve } from "node:path";
 
 import {
     LIBRARY_PATH,
-    PROJECT_PATH
+    PROJECT_PATH,
+    TEST_PATH,
+    USER_PROJECT_PATH
 } from "./constants";
+import { IEngineConfigStructure } from "src/engine/types/config";
 
 export function resolvedPath(basePath: string, pattern: string | string[]): string {
     return Array.isArray(pattern)

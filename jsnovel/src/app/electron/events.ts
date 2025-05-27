@@ -5,7 +5,6 @@ import StateManager from "../../engine/state_manager/instance";
 import { IStateManagerVariables } from "../../engine/types/state_manager";
 
 export default async function registerEvents(ipcMain: Electron.IpcMain) {
-    // Cargar el archivo de configuración del motor
     await InitEngine.startInstance();
     console.log("Electron events registered");
 

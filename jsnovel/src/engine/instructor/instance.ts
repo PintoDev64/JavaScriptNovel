@@ -19,8 +19,6 @@ export default class EngineInstructor implements IInstructor {
     private constructor() {
         const InstanceEngineConfig = EngineConfig.getInstance()
 
-        console.log("EngineInstructor: ", InstanceEngineConfig.getConfigKey("scripts"));
-
         this.ready = novelScriptCompiler(InstanceEngineConfig.getConfigKey("scripts")!)
             .then((nodes) => {
                 this.setCompiledScript(nodes)

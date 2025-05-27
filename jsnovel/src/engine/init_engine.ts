@@ -23,8 +23,6 @@ export default class InitEngine {
 
         const scriptNodes = engineInstructorInstance.getCompileScript()
 
-        console.log("InitEngine: ",scriptNodes);
-
         StateManager.setInstance(scriptNodes);
         MediaInstance.setInstance(scriptNodes);
         CharacterManager.setInstance(scriptNodes);

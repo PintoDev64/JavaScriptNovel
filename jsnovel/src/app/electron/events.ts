@@ -21,13 +21,13 @@ export default async function registerEvents(ipcMain: Electron.IpcMain) {
         return characterInstance!.getAllCharacters();
     })
 
-    ipcMain.on("game:state:get", async _event => {
+    ipcMain.handle("game:state:get", async _event => {
         const stateManager = StateManager.getInstance();
         if (!stateManager) return;
 
         const state = stateManager.getAllVariables();
 
-        _event.returnValue = state;
+        return state;
     })
 
     ipcMain.on("game:state:set", async (_event, state: IStateManagerVariables) => {

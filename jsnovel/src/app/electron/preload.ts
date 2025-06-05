@@ -11,7 +11,7 @@ const processAPI = {
         return ipcRenderer.invoke("game:character:get")
     },
     getState() {
-        return ipcRenderer.sendSync("game:state:get")
+        return ipcRenderer.invoke("game:state:get")
     },
     setState(state: IStateManagerVariables) {
         ipcRenderer.send("game:state:set", state)

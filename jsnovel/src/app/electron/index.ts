@@ -18,14 +18,13 @@ async function createWindow() {
         height: 640,
         webPreferences: {
             preload: join(__dirname, "preload.js"),
-            contextIsolation: true, // importante para seguridad
             nodeIntegration: false,
         },
         title: "NovelJs - Preview",
     });
 
     if (process.env.NODE_ENV === "development") {
-        mainWindow.loadURL("http://localhost:5173"); // si estás usando Vite
+        mainWindow.loadURL("http://localhost:5173");
     } else {
         console.log("--> ", resolve(PROJECT_PATH, "src/shared/index.html"));
         mainWindow.loadFile(resolve(PROJECT_PATH, "src/shared/index.html"));
